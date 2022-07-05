@@ -8,17 +8,25 @@ public class ExpenseTest {
 
     private Expense expense1;
     private Date date1;
+    private Date date2;
     private Category category1;
+    private Category category2;
     private Person person1;
+    private Person person2;
     private Purpose purpose1;
+    private Purpose purpose3;
 
     @org.junit.Before
     public void setUp() throws Exception {
 
         category1 = new Category("Life Essential");
+        category2 = new Category("Telecom");
         date1 = new Date(2022,01,01);
+        date2 = new Date(2022,01,02);
         person1 = new Person("Hansel",0,2000);
+        person2 = new Person("Gretel",0,200000);
         purpose1 = new Purpose("Hansel");
+        purpose3 = new Purpose("Household");
         expense1 = new Expense(date1,"H Phone","Voxi",1000,category1,3,person1,purpose1,true);
     }
 
@@ -28,11 +36,13 @@ public class ExpenseTest {
 
     @org.junit.Test
     public void hasDate() {
-    assertEquals(date1,expense1.getDate());
+        assertEquals(date1,expense1.getDate());
     }
 
     @org.junit.Test
-    public void setDate() {
+    public void canChangeDate() {
+        expense1.setDate(date2);
+        assertEquals(date2,expense1.getDate());
     }
 
     @org.junit.Test
@@ -41,7 +51,9 @@ public class ExpenseTest {
     }
 
     @org.junit.Test
-    public void setName() {
+    public void canChangeName() {
+        expense1.setName("Mobile fee");
+        assertEquals("Mobile fee",expense1.getName());
     }
 
     @org.junit.Test
@@ -50,7 +62,9 @@ public class ExpenseTest {
     }
 
     @org.junit.Test
-    public void setPlace() {
+    public void canChangePlace() {
+        expense1.setPlace("O2");
+        assertEquals("O2",expense1.getPlace());
     }
 
     @org.junit.Test
@@ -59,7 +73,9 @@ public class ExpenseTest {
     }
 
     @org.junit.Test
-    public void setAmount() {
+    public void canChangeAmount() {
+        expense1.setAmount(1200);
+        assertEquals(1200,expense1.getAmount());
     }
 
     @org.junit.Test
@@ -68,7 +84,9 @@ public class ExpenseTest {
     }
 
     @org.junit.Test
-    public void setCategory() {
+    public void canChangeCategory() {
+        expense1.setCategory(category2);
+        assertEquals("Telecom", expense1.getCategory().getCategoryName());
     }
 
     @org.junit.Test
@@ -77,17 +95,21 @@ public class ExpenseTest {
     }
 
     @org.junit.Test
-    public void setNecessityIndex() {
+    public void canChangeNecessityIndex() {
+        expense1.setNecessityIndex(2);
+        assertEquals(2,expense1.getNecessityIndex());
+
     }
 
     @org.junit.Test
     public void hasPerson() {
-
         assertEquals("Hansel",expense1.getPerson().getName());
     }
 
     @org.junit.Test
-    public void setPerson() {
+    public void canChangePerson() {
+        expense1.setPerson(person2);
+        assertEquals("Gretel",expense1.getPerson().getName());
     }
 
     @org.junit.Test
@@ -96,7 +118,10 @@ public class ExpenseTest {
     }
 
     @org.junit.Test
-    public void setPurpose() {
+    public void canChangePurpose() {
+        expense1.setPurpose(purpose3);
+        assertEquals("Household",expense1.getPurpose().getPurposeName());
+
     }
 
     @org.junit.Test
@@ -105,7 +130,9 @@ public class ExpenseTest {
     }
 
     @org.junit.Test
-    public void setDirectDebit() {
+    public void canChangeDirectDebit() {
+        expense1.setDirectDebit(false);
+        assertEquals(false,expense1.isDirectDebit());
     }
 
 }
