@@ -35,13 +35,13 @@ public class PersonTest {
     }
 
     @Test
-    public void getName() {
+    public void hasName() {
         assertEquals("Hansel",person1.getName());
         assertEquals("Aelish",person2.getName());
     }
 
     @Test
-    public void setName() {
+    public void canChangeName() {
         person2.setName("Gretel");
         assertEquals("Gretel",person2.getName());
     }
