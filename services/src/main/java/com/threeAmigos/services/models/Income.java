@@ -1,8 +1,5 @@
 package com.threeAmigos.services.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import org.springframework.web.bind.annotation.GetMapping;
-
 import javax.persistence.*;
 import java.util.Date;
 
