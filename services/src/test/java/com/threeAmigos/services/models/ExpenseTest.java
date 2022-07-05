@@ -1,11 +1,25 @@
 package com.threeAmigos.services.models;
 
+import java.util.Date;
+
 import static org.junit.Assert.*;
 
 public class ExpenseTest {
 
+    private Expense expense1;
+    private Date date1;
+    private Category category1;
+    private Person person1;
+    private Purpose purpose1;
+
     @org.junit.Before
     public void setUp() throws Exception {
+
+        category1 = new Category("Life Essential");
+        date1 = new Date(2022,01,01);
+        person1 = new Person("Hansel",0,2000);
+        purpose1 = new Purpose("Hansel");
+        expense1 = new Expense(date1,"H Phone","Voxi",1000,category1,3,person1,purpose1,true);
     }
 
     @org.junit.Test
@@ -13,7 +27,8 @@ public class ExpenseTest {
     }
 
     @org.junit.Test
-    public void getDate() {
+    public void hasDate() {
+    assertEquals(date1,expense1.getDate());
     }
 
     @org.junit.Test
@@ -21,7 +36,8 @@ public class ExpenseTest {
     }
 
     @org.junit.Test
-    public void getName() {
+    public void hasName() {
+        assertEquals("H Phone",expense1.getName());
     }
 
     @org.junit.Test
@@ -29,7 +45,8 @@ public class ExpenseTest {
     }
 
     @org.junit.Test
-    public void getPlace() {
+    public void hasPlace() {
+        assertEquals("Voxi",expense1.getPlace());
     }
 
     @org.junit.Test
@@ -37,7 +54,8 @@ public class ExpenseTest {
     }
 
     @org.junit.Test
-    public void getAmount() {
+    public void hasAmount() {
+        assertEquals(1000,expense1.getAmount());
     }
 
     @org.junit.Test
@@ -45,7 +63,8 @@ public class ExpenseTest {
     }
 
     @org.junit.Test
-    public void getCategory() {
+    public void hasCategory() {
+        assertEquals("Life Essential",expense1.getCategory().getCategoryName());
     }
 
     @org.junit.Test
@@ -53,7 +72,8 @@ public class ExpenseTest {
     }
 
     @org.junit.Test
-    public void getNecessityIndex() {
+    public void hasNecessityIndex() {
+        assertEquals(3,expense1.getNecessityIndex());
     }
 
     @org.junit.Test
@@ -61,7 +81,9 @@ public class ExpenseTest {
     }
 
     @org.junit.Test
-    public void getPerson() {
+    public void hasPerson() {
+
+        assertEquals("Hansel",expense1.getPerson().getName());
     }
 
     @org.junit.Test
@@ -69,7 +91,8 @@ public class ExpenseTest {
     }
 
     @org.junit.Test
-    public void getPurpose() {
+    public void hasPurpose() {
+        assertEquals("Hansel",expense1.getPurpose().getPurposeName());
     }
 
     @org.junit.Test
@@ -78,13 +101,11 @@ public class ExpenseTest {
 
     @org.junit.Test
     public void isDirectDebit() {
+        assertEquals(true,expense1.isDirectDebit());
     }
 
     @org.junit.Test
     public void setDirectDebit() {
     }
 
-    @org.junit.Test
-    public void getId() {
-    }
 }
