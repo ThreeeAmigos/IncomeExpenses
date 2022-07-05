@@ -16,8 +16,6 @@ public class PurposeTest {
         purpose1 = new Purpose("Hansel");
         purpose2 = new Purpose("Aelish");
         purpose3 = new Purpose("Household");
-
-
     }
 
     @Test
