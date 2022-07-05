@@ -1,6 +1,9 @@
 package com.threeAmigos.services.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "household")
@@ -16,6 +19,10 @@ public class Household {
 
     @Column(name = "current_balance")
     private int currentBalance;
+
+    @OneToMany(mappedBy = "household")
+    @JsonBackReference
+    private List<Person> persons;
 
     public Household(int target, int currentBalance) {
         this.target = target;
