@@ -18,8 +18,8 @@ public class Income {
     @Column(name = "date", nullable = false)
     private Date date;
 
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "income_name", nullable = false)
+    private String incomeName;
 
     @Column(name = "amount", nullable = false)
     private int amount;
@@ -32,9 +32,9 @@ public class Income {
     @Column(name = "is_salary", nullable = false)
     private boolean isSalary;
 
-    public Income(Date date, String name, int amount, Person person, boolean isSalary) {
+    public Income(Date date, String incomeName, int amount, Person person, boolean isSalary) {
         this.date = date;
-        this.name = name;
+        this.incomeName = incomeName;
         this.amount = amount;
         this.person = person;
         this.isSalary = isSalary;
@@ -59,12 +59,12 @@ public class Income {
         this.date = date;
     }
 
-    public String getName() {
-        return name;
+    public String getIncomeName() {
+        return incomeName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setIncomeName(String incomeName) {
+        this.incomeName = incomeName;
     }
 
     public int getAmount() {
