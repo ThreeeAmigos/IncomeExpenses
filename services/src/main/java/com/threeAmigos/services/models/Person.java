@@ -1,5 +1,7 @@
 package com.threeAmigos.services.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -19,6 +21,11 @@ public class Person {
 
     @Column(name = "current_position", nullable = false)
     private int currentPosition;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "household_id", nullable = false)
+    @JsonBackReference
+    private Household household;
 
     public Person(String name, int loan, int currentPosition) {
         this.name = name;
