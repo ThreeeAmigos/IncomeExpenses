@@ -11,13 +11,13 @@ public class Person {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "person_name")
+    @Column(name = "person_name", nullable = false)
     private String name;
 
-    @Column(name = "loan")
+    @Column(name = "loan", nullable = false)
     private int loan;
 
-    @Column(name = "current_position")
+    @Column(name = "current_position", nullable = false)
     private int currentPosition;
 
     public Person(String name, int loan, int currentPosition) {
