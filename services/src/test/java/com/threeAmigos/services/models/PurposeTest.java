@@ -20,6 +20,13 @@ public class PurposeTest {
 
     }
 
+    @Test
+    public void getId() {
+    }
+
+    @Test
+    public void setId() {
+    }
 
     @Test
     public void hasPurposeName() {
@@ -34,11 +41,5 @@ public class PurposeTest {
         assertEquals("Another User",purpose1.getPurposeName());
     }
 
-    @Test
-    public void getId() {
-    }
 
-    @Test
-    public void setId() {
-    }
 }
