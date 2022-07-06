@@ -32,6 +32,14 @@ public class Household {
     public Household() {
     }
 
+    public List<Person> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(List<Person> persons) {
+        this.persons = persons;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
