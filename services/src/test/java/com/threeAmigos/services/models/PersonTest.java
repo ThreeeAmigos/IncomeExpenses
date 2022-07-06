@@ -19,7 +19,7 @@ public class PersonTest {
 
     @Before
     public void setUp() throws Exception {
-        homeSweetHome = new Household(20000, 10000);
+        homeSweetHome = new Household(20000);
 //        DOES a household actually need its current balance to be modelled? maybe it's just a calculation
         person1 = new Person("Hansel",100000,300000, homeSweetHome);
         person2 = new Person("Aelish",0,1200000, homeSweetHome);
