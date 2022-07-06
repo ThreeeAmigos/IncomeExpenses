@@ -17,16 +17,12 @@ public class Household {
     @Column(name = "target")
     private int target;
 
-    @Column(name = "current_balance")
-    private int currentBalance;
-
     @OneToMany(mappedBy = "household")
     @JsonBackReference
     private List<Person> persons;
 
-    public Household(int target, int currentBalance) {
+    public Household(int target) {
         this.target = target;
-        this.currentBalance = currentBalance;
     }
 
     public Household() {
@@ -50,14 +46,6 @@ public class Household {
 
     public void setTarget(int target) {
         this.target = target;
-    }
-
-    public int getCurrentBalance() {
-        return currentBalance;
-    }
-
-    public void setCurrentBalance(int currentBalance) {
-        this.currentBalance = currentBalance;
     }
 
     public Long getId() {

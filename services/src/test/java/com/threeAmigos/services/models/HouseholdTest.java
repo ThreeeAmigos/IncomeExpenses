@@ -11,7 +11,7 @@ public class HouseholdTest {
 
     @Before
     public void setUp() throws Exception {
-        household = new Household(2000000,800000);
+        household = new Household(2000000);
     }
 
     @Test
@@ -33,15 +33,5 @@ public class HouseholdTest {
         assertEquals(2100000,household.getTarget());
     }
 
-    @Test
-    public void hasCurrentBalance() {
-        assertEquals(800000,household.getCurrentBalance());
-    }
-
-    @Test
-    public void canChangeCurrentBalance() {
-        household.setCurrentBalance(900000);
-        assertEquals(900000,household.getCurrentBalance());
-    }
 
 }
