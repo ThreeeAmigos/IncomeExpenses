@@ -1,5 +1,7 @@
 package com.threeAmigos.services.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -24,16 +26,22 @@ public class Expense {
     @Column(name = "amount")
     private int amount;
 
-    @Column(name = "category_id")
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    @JsonBackReference
     private Category category;
 
     @Column(name = "necessity_index")
     private int necessityIndex;
 
-    @Column(name = "person_id")
+    @ManyToOne
+    @JoinColumn(name = "person_id", nullable = false)
+    @JsonBackReference
     private Person person;
 
-    @Column(name = "purpose_id")
+    @ManyToOne
+    @JoinColumn(name = "purpose_id", nullable = false)
+    @JsonBackReference
     private Purpose purpose;
 
     @Column(name = "is_direct_debit")
