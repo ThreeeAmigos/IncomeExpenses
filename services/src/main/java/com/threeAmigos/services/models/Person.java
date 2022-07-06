@@ -3,6 +3,8 @@ package com.threeAmigos.services.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "person")
@@ -27,10 +29,22 @@ public class Person {
     @JsonBackReference
     private Household household;
 
-    public Person(String name, int loan, int currentPosition) {
+    @OneToMany(mappedBy = "person")
+    @JsonBackReference
+    private List<Expense> allExpenses;
+
+    @OneToMany(mappedBy = "person")
+    @JsonBackReference
+    private List<Income> allIncomes;
+
+
+    public Person(String name, int loan, int currentPosition, Household household) {
         this.name = name;
         this.loan = loan;
         this.currentPosition = currentPosition;
+        this.allExpenses = new ArrayList<>();
+        this.allIncomes = new ArrayList<>();
+        this.household = household;
     }
 
     public Person() {
@@ -67,5 +81,29 @@ public class Person {
 
     public void setCurrentPosition(int currentPosition) {
         this.currentPosition = currentPosition;
+    }
+
+    public Household getHousehold() {
+        return household;
+    }
+
+    public void setHousehold(Household household) {
+        this.household = household;
+    }
+
+    public List<Expense> getAllExpenses() {
+        return allExpenses;
+    }
+
+    public void setAllExpenses(List<Expense> allExpenses) {
+        this.allExpenses = allExpenses;
+    }
+
+    public List<Income> getAllIncomes() {
+        return allIncomes;
+    }
+
+    public void setAllIncomes(List<Income> allIncomes) {
+        this.allIncomes = allIncomes;
     }
 }

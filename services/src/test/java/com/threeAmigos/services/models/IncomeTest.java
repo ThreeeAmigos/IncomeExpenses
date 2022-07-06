@@ -10,17 +10,22 @@ import static org.junit.Assert.*;
 public class IncomeTest {
     private Date date1;
     private Date date2;
+    private Household homeSweetHome;
     private Person person1;
     private Person person2;
     private Income income1;
     private Income income2;
 
+
+// Simple date format is a class in java that does formatting for you
+//    when fetching from database with React, we will need to drop time from instances of date data
     @Before
     public void setUp() throws Exception {
         date1 = new Date(2022,01,01);
         date2 = new Date(2022,01,02);
-        person1 = new Person("Hansel",0,2000);
-        person2 = new Person("Gretel",0,200000);
+        homeSweetHome = new Household(2000000,800000);
+        person1 = new Person("Hansel",0,2000, homeSweetHome);
+        person2 = new Person("Gretel",0,200000, homeSweetHome);
         income1 = new Income(date1,"Photo Shoot",16000,person1,true);
         income2 = new Income(date2,"Sandy Bells",30000,person2,false);
     }
