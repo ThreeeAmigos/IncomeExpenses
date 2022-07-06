@@ -38,12 +38,13 @@ public class Person {
     private List<Income> allIncomes;
 
 
-    public Person(String name, int loan, int currentPosition) {
+    public Person(String name, int loan, int currentPosition, Household household) {
         this.name = name;
         this.loan = loan;
         this.currentPosition = currentPosition;
         this.allExpenses = new ArrayList<>();
         this.allIncomes = new ArrayList<>();
+        this.household = household;
     }
 
     public Person() {
