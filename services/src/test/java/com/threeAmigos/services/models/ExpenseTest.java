@@ -11,6 +11,7 @@ public class ExpenseTest {
     private Date date2;
     private Category category1;
     private Category category2;
+    private Household homeSweetHome;
     private Person person1;
     private Person person2;
     private Purpose purpose1;
@@ -23,8 +24,9 @@ public class ExpenseTest {
         category2 = new Category("Telecom");
         date1 = new Date(2022,01,01);
         date2 = new Date(2022,01,02);
-        person1 = new Person("Hansel",0,2000);
-        person2 = new Person("Gretel",0,200000);
+        homeSweetHome = new Household(2000000,800000);
+        person1 = new Person("Hansel",0,2000, homeSweetHome);
+        person2 = new Person("Gretel",0,200000, homeSweetHome);
         purpose1 = new Purpose("Hansel");
         purpose3 = new Purpose("Household");
         expense1 = new Expense(date1,"H Phone","Voxi",1000,category1,3,person1,purpose1,true);
