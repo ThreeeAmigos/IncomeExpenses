@@ -23,7 +23,7 @@ public class IncomeTest {
     public void setUp() throws Exception {
         date1 = new Date(2022,01,01);
         date2 = new Date(2022,01,02);
-        homeSweetHome = new Household(2000000,800000);
+        homeSweetHome = new Household(2000000);
         person1 = new Person("Hansel",0,2000, homeSweetHome);
         person2 = new Person("Gretel",0,200000, homeSweetHome);
         income1 = new Income(date1,"Photo Shoot",16000,person1,true);

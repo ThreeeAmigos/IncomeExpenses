@@ -16,10 +16,12 @@ public class PersonTest {
     private Date date1;
     private Purpose purpose1;
     private Household homeSweetHome;
+    private Household coupleBalance;
 
     @Before
     public void setUp() throws Exception {
-        homeSweetHome = new Household(20000, 10000);
+        homeSweetHome = new Household(20000);
+        coupleBalance = new Household(100000);
 //        DOES a household actually need its current balance to be modelled? maybe it's just a calculation
         person1 = new Person("Hansel",100000,300000, homeSweetHome);
         person2 = new Person("Aelish",0,1200000, homeSweetHome);
@@ -70,5 +72,16 @@ public class PersonTest {
     public void changeCurrentPosition() {
         person1.setCurrentPosition(person1.getCurrentPosition()-expense1.getAmount());
         assertEquals(299000,person1.getCurrentPosition());
+    }
+
+    @Test
+    public void hasHousehold() {
+        assertEquals(20000,person1.getHousehold().getTarget());
+    }
+
+    @Test
+    public void canChangeHousehold(){
+        person1.setHousehold(coupleBalance);
+        assertEquals(100000,person1.getHousehold().getTarget());
     }
 }
