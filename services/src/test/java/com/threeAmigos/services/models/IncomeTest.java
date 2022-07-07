@@ -3,13 +3,14 @@ package com.threeAmigos.services.models;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import static org.junit.Assert.*;
 
 public class IncomeTest {
-    private Date date1;
-    private Date date2;
+    private LocalDate date1;
+    private LocalDate date2;
     private Household homeSweetHome;
     private Person person1;
     private Person person2;
@@ -21,8 +22,8 @@ public class IncomeTest {
 //    when fetching from database with React, we will need to drop time from instances of date data
     @Before
     public void setUp() throws Exception {
-        date1 = new Date(2022,01,01);
-        date2 = new Date(2022,01,02);
+        date1 = LocalDate.of(2022, 01, 01);
+        date2 = LocalDate.of(2022,01,02);
         homeSweetHome = new Household(2000000);
         person1 = new Person("Hansel",0,2000, homeSweetHome);
         person2 = new Person("Gretel",0,200000, homeSweetHome);
@@ -40,7 +41,7 @@ public class IncomeTest {
 
     @Test
     public void hasDate() {
-        assertEquals(02,income2.getDate().getDate());
+        assertEquals(02,income2.getDate().getDayOfMonth());
         assertEquals(2022,income2.getDate().getYear());
 
     }

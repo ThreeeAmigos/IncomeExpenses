@@ -1,5 +1,6 @@
 package com.threeAmigos.services.models;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import static org.junit.Assert.*;
@@ -7,8 +8,8 @@ import static org.junit.Assert.*;
 public class ExpenseTest {
 
     private Expense expense1;
-    private Date date1;
-    private Date date2;
+    private LocalDate date1;
+    private LocalDate date2;
     private Category category1;
     private Category category2;
     private Household homeSweetHome;
@@ -22,8 +23,8 @@ public class ExpenseTest {
 
         category1 = new Category("Life Essential");
         category2 = new Category("Telecom");
-        date1 = new Date(2022,01,01);
-        date2 = new Date(2022,01,02);
+        date1 = LocalDate.of(2022,01,01);
+        date2 = LocalDate.of(2022,01,02);
         homeSweetHome = new Household(2000000);
         person1 = new Person("Hansel",0,2000, homeSweetHome);
         person2 = new Person("Gretel",0,200000, homeSweetHome);

@@ -7,6 +7,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -33,25 +37,29 @@ class ServicesApplicationTests {
 	@Autowired
 	PurposeRepository purposeRepository;
 
-	private Household homeSweetHome;
-	private Person person1;
-	private Category maintenance;
-	private Date date;
-	private Purpose jointExpense;
-	private Expense maintenanceExpense;
+//	private Household homeSweetHome;
+//	private Person person1;
+//	private Category maintenance;
+//	private Date date1;
+//	private Date date2;
+//	private Purpose jointExpense;
+//	private Expense maintenanceExpense1;
+//	private Expense maintenanceExpense2;
 
 
-	@Before
-	public void before(){
-////		homeSweetHome = new Household(20000000, 10);
-//		homeSweetHome = householdRepository.getReferenceById(1L);
-//		person1 = new Person("Hansel", 10000000, 2000000, homeSweetHome);
-		person1 = personRepository.getReferenceById(1L);
-		date = new Date(2022, 06, 06);
-		maintenance = categoryRepository.getReferenceById(1L);
-		jointExpense = purposeRepository.getReferenceById(1L);
-		maintenanceExpense = new Expense(date, "Maintenance Expense", "ABC Maintenance", 10000, maintenance, 1, person1, jointExpense, false);
-	}
+//	@Before
+//	public void before(){
+//////		homeSweetHome = new Household(20000000, 10);
+////		homeSweetHome = householdRepository.getReferenceById(1L);
+////		person1 = new Person("Hansel", 10000000, 2000000, homeSweetHome);
+//		person1 = personRepository.getReferenceById(1L);
+//		date1 = new Date(2022, , 01);
+//		date2 = new Date(2022, 01, 02);
+//		maintenance = categoryRepository.getReferenceById(1L);
+//		jointExpense = purposeRepository.getReferenceById(1L);
+//		maintenanceExpense1 = new Expense(date1, "Maintenance Expense", "ABC Maintenance", 10000, maintenance, 1, person1, jointExpense, false);
+//		maintenanceExpense2 = new Expense(date2, "Maintenance Expense", "ABC Maintenance", 20000, maintenance, 1, person1, jointExpense, false);
+//	}
 
 	@Test
 	void contextLoads() {
@@ -73,17 +81,33 @@ class ServicesApplicationTests {
 		assertEquals("Hansel",householdRepository.getById(1L).getPersons().get(0).getName());
 	}
 
+	@Test
+	public void findPersonNameByHouseholdIDAndIndexOfPersonsList(){
+		assertEquals("Hansel",householdRepository.getPersonNameByIDAndIndex(1L,0));
+	}
+
 //	@Test
 //	public void createCategoryThenSave(){
 //
 //		categoryRepository.save(maintenance);
 //	}
 
-	@Test
-	public void createExpenseThenSave(){
-		expenseRepository.save(maintenanceExpense);
+//	@Test
+//	public void createExpenseThenSave(){
+//		expenseRepository.save(maintenanceExpense1);
+//
+//	}
 
-	}
+	// Test ExpenseRepository
+
+
+
+//	@Test
+//	public void getTotalAmountOfExpenses(){
+//		LocalDate date1 = LocalDate.of(2022, 1,1);
+//		LocalDate date2 = LocalDate.of(2022, 1,3);
+//		assertEquals(0, expenseRepository.findByDateBetween(date1,date2));
+//	}
 
 
 

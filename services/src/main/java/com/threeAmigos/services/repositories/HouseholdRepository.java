@@ -10,4 +10,10 @@ public interface HouseholdRepository extends JpaRepository<Household, Long> {
 
     @Override
     Household getById(Long aLong);
+
+    default String getPersonNameByIDAndIndex(Long ID, int index){
+        return getById(ID).getPersons().get(index).getName();
+    }
+
+
 }

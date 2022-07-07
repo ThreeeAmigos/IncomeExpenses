@@ -3,7 +3,7 @@ package com.threeAmigos.services.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "expense")
@@ -15,8 +15,7 @@ public class Expense {
     private Long id;
 
     @Column(name = "date")
-    private Date date;
-
+    private LocalDate localDate;
     @Column(name = "name")
     private String name;
 
@@ -47,7 +46,7 @@ public class Expense {
     @Column(name = "is_direct_debit")
     private boolean isDirectDebit;
 
-    public Expense(Date date,
+    public Expense(LocalDate localDate,
                    String name,
                    String place,
                    int amount,
@@ -56,7 +55,7 @@ public class Expense {
                    Person person,
                    Purpose purpose,
                    boolean isDirectDebit) {
-        this.date = date;
+        this.localDate = localDate;
         this.name = name;
         this.place = place;
         this.amount = amount;
@@ -78,12 +77,12 @@ public class Expense {
         this.id = id;
     }
 
-    public Date getDate() {
-        return date;
+    public LocalDate getDate() {
+        return localDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDate(LocalDate localDate) {
+        this.localDate = localDate;
     }
 
     public String getName() {
@@ -149,7 +148,5 @@ public class Expense {
     public void setDirectDebit(boolean directDebit) {
         isDirectDebit = directDebit;
     }
-
-
 
 }

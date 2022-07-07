@@ -1,6 +1,7 @@
 package com.threeAmigos.services.models;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -13,7 +14,7 @@ public class Income {
     private Long id;
 
     @Column(name = "date", nullable = false)
-    private Date date;
+    private LocalDate localDate;
 
     @Column(name = "income_name", nullable = false)
     private String incomeName;
@@ -29,8 +30,8 @@ public class Income {
     @Column(name = "is_salary", nullable = false)
     private boolean isSalary;
 
-    public Income(Date date, String incomeName, int amount, Person person, boolean isSalary) {
-        this.date = date;
+    public Income(LocalDate localDate, String incomeName, int amount, Person person, boolean isSalary) {
+        this.localDate = localDate;
         this.incomeName = incomeName;
         this.amount = amount;
         this.person = person;
@@ -48,12 +49,12 @@ public class Income {
         this.id = id;
     }
 
-    public Date getDate() {
-        return date;
+    public LocalDate getDate() {
+        return localDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDate(LocalDate localDate) {
+        this.localDate = localDate;
     }
 
     public String getIncomeName() {
