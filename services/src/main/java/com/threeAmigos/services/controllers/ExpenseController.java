@@ -47,33 +47,33 @@ public class ExpenseController {
     ) {
         // GET  /expenses?date=2022-01-01
         if (date != null) {
-            return new ResponseEntity(expenseRepository.findByDate(date), HttpStatus.OK);
+            return new ResponseEntity(expenseRepository.findByLocalDate(date), HttpStatus.OK);
         }
         // GET  /expenses?start_date=2022-01-01?end_date=2022-01-02
         if (startDate != null && endDate != null) {
-            return new ResponseEntity(expenseRepository.findBetweenDates(startDate, endDate), HttpStatus.OK);
+            return new ResponseEntity(expenseRepository.findAmountByLocalDateBetween(startDate, endDate), HttpStatus.OK);
         }
 
         // GET  /expenses?category=1
         if (categoryId != null) {
-            return new ResponseEntity(expenseRepository.findByCategory(categoryId), HttpStatus.OK);
+            return new ResponseEntity(expenseRepository.findByCategory_Id(categoryId), HttpStatus.OK);
         }
 
         // GET  /expenses?person=1
         // This action defines who SPENT it
         if (personId != null) {
-            return new ResponseEntity(expenseRepository.findByPersonId(personId), HttpStatus.OK);
+            return new ResponseEntity(expenseRepository.findByPerson_Id(personId), HttpStatus.OK);
         }
 
         // GET  /expenses?purpose=1
         // This action defines who CONSUMED it
         if (purposeId != null) {
-            return new ResponseEntity(expenseRepository.findByPurposeId(purposeId), HttpStatus.OK);
+            return new ResponseEntity(expenseRepository.findByPurpose_Id(purposeId), HttpStatus.OK);
         }
 
         // GET  /expenses?placename=Tesco
         if (placeName != null) {
-            return new ResponseEntity(expenseRepository.findByPlaceName(placeName), HttpStatus.OK);
+            return new ResponseEntity(expenseRepository.findByPlace(placeName), HttpStatus.OK);
         }
 
         // GET  /expenses?necessityindex=1
@@ -83,7 +83,7 @@ public class ExpenseController {
 
         // GET  /expenses?isdirectdebit=true
         if (isDirectDebit != null) {
-            return new ResponseEntity(expenseRepository.findByDirectDebit(isDirectDebit), HttpStatus.OK);
+            return new ResponseEntity(expenseRepository.findByIsDirectDebit(isDirectDebit), HttpStatus.OK);
         }
 
         // GET /expenses

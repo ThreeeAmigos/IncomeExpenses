@@ -30,7 +30,7 @@ public class PersonController {
     ) {
         // GET  /persons?personid=1
         if (personId != null) {
-            return new ResponseEntity(personRepository.findByCategory(personId), HttpStatus.OK);
+            return new ResponseEntity(personRepository.findById(personId), HttpStatus.OK);
         }
 
         // GET  /persons

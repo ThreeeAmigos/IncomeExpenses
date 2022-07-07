@@ -31,7 +31,7 @@ public class PurposeController {
     ) {
         // GET  /purposes?purposeid=1
         if (purposeId != null) {
-            return new ResponseEntity(purposeRepository.findByCategory(purposeId), HttpStatus.OK);
+            return new ResponseEntity(purposeRepository.findByPurposeOfExpenseList_Id(purposeId), HttpStatus.OK);
         }
 
         // GET  /purposes

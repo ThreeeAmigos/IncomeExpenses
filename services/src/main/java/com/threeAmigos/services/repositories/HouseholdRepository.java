@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface HouseholdRepository extends JpaRepository<Household, Long> {
@@ -17,9 +18,7 @@ public interface HouseholdRepository extends JpaRepository<Household, Long> {
         return getById(ID).getPersons().get(index).getName();
     }
 
-    Household findByPersons_Household_Id(Long id);
 
-
-
-
+    @Override
+    Optional<Household> findById(Long aLong);
 }

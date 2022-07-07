@@ -38,23 +38,23 @@ public class IncomeController {
     ) {
         // GET  /incomes?date=2022-01-01
         if (date != null) {
-            return new ResponseEntity(incomeRepository.findByDate(date), HttpStatus.OK);
+            return new ResponseEntity(incomeRepository.findByLocalDate(date), HttpStatus.OK);
         }
         // GET  /incomes?start_date=2022-01-01?end_date=2022-01-02
         if (startDate != null && endDate != null) {
-            return new ResponseEntity(incomeRepository.findBetweenDates(startDate, endDate), HttpStatus.OK);
+            return new ResponseEntity(incomeRepository.findByLocalDateBetween(startDate, endDate), HttpStatus.OK);
         }
 
 
         // GET  /incomes?person=1
         if (personId != null) {
-            return new ResponseEntity(incomeRepository.findByPersonId(personId), HttpStatus.OK);
+            return new ResponseEntity(incomeRepository.findByPerson_Id(personId), HttpStatus.OK);
         }
 
 
         // GET  /incomes?issalary=true
         if (isSalary != null) {
-            return new ResponseEntity(incomeRepository.findBySalary(isSalary), HttpStatus.OK);
+            return new ResponseEntity(incomeRepository.findByIsSalary(isSalary), HttpStatus.OK);
         }
 
         // GET /incomes

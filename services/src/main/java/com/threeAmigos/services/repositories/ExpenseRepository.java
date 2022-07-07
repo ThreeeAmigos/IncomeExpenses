@@ -20,14 +20,41 @@ import java.util.List;
 public interface ExpenseRepository extends JpaRepository<Expense, Long> {
 
 
-    @Query("select e from Expense e where e.localDate between ?1 and ?2")
-    List<Expense> findByLocalDateBetween(LocalDate localDateStart, LocalDate localDateEnd);
-
     @Query(value= "SELECT SUM(m.amount) FROM expense m", nativeQuery = true)
     int totalAmount();
 
     @Query(value = "select SUM(e.amount) from expense e where e.date between ?1 and ?2", nativeQuery = true)
     int findAmountByLocalDateBetween(LocalDate localDateStart, LocalDate localDateEnd);
+
+    @Query("select e from Expense e where e.category.id = ?1")
+    List<Expense> findByCategory_Id(Long id);
+
+    @Query("select e from Expense e where e.localDate = ?1")
+    List<Expense> findByLocalDate(LocalDate localDate);
+
+    @Query("select e from Expense e where e.person.id = ?1")
+    List<Expense> findByPerson_Id(Long id);
+
+    @Query("select e from Expense e where e.purpose.id = ?1")
+    List<Expense> findByPurpose_Id(Long id);
+
+    @Query("select e from Expense e where e.place = ?1")
+    List<Expense> findByPlace(String place);
+
+    @Query("select e from Expense e where e.necessityIndex = ?1")
+    List<Expense> findByNecessityIndex(int necessityIndex);
+
+    @Query("select e from Expense e where e.isDirectDebit = ?1")
+    List<Expense> findByIsDirectDebit(boolean isDirectDebit);
+
+
+
+
+
+
+
+
+
 
 
 

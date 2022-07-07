@@ -30,7 +30,7 @@ public class CategoryController {
     ) {
         // GET  /households?householdid=1
         if (categoryId != null) {
-            return new ResponseEntity(categoryRepository.findByCategory(categoryId), HttpStatus.OK);
+            return new ResponseEntity(categoryRepository.findById(categoryId), HttpStatus.OK);
         }
 
         // GET  /categories
