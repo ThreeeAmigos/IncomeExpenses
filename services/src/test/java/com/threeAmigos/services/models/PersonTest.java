@@ -3,6 +3,7 @@ package com.threeAmigos.services.models;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import static org.junit.Assert.*;
@@ -13,7 +14,7 @@ public class PersonTest {
     private Person person2;
     private Expense expense1;
     private Category category1;
-    private Date date1;
+    private LocalDate date1;
     private Purpose purpose1;
     private Household homeSweetHome;
     private Household coupleBalance;
@@ -26,7 +27,7 @@ public class PersonTest {
         person1 = new Person("Hansel",100000,300000, homeSweetHome);
         person2 = new Person("Aelish",0,1200000, homeSweetHome);
         category1 = new Category("Life Essential");
-        date1 = new Date(2022,01,01);
+        date1 = LocalDate.of(2022,01,01);
         purpose1 = new Purpose("Hansel");
         expense1 = new Expense(date1,"H Phone","Voxi",1000,category1,3,person1,purpose1,true);
     }

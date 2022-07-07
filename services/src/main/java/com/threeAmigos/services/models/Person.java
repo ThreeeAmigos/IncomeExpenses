@@ -106,4 +106,12 @@ public class Person {
     public void setAllIncomes(List<Income> allIncomes) {
         this.allIncomes = allIncomes;
     }
+
+    public int getTotalExpenseAmount(){
+        int count = 0;
+        for (Expense object: allExpenses){
+            count += object.getAmount();
+        }
+        return count;
+    }
 }
