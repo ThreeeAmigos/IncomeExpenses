@@ -28,7 +28,7 @@ public class CategoryController {
             @RequestParam(required = false, name = "category") Long categoryId
 
     ) {
-        // GET  /households?householdid=1
+        // GET  /categories?categoryid=1
         if (categoryId != null) {
             return new ResponseEntity(categoryRepository.findById(categoryId), HttpStatus.OK);
         }
