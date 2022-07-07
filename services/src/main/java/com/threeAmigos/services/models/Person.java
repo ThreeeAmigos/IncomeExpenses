@@ -107,11 +107,23 @@ public class Person {
         this.allIncomes = allIncomes;
     }
 
+
+    // Check if it works without person
     public int getTotalExpenseAmount(){
-        int count = 0;
+        int totalAmount = 0;
         for (Expense object: allExpenses){
-            count += object.getAmount();
+            totalAmount += object.getAmount();
         }
-        return count;
+        return totalAmount;
     }
+
+    // This is what we want
+
+//    int getExpensesOfPersons(List<Person> persons){
+//        int totalAmount = 0;
+//        for (Person person: persons) {
+//            totalAmount += person.getTotalExpenseAmount();
+//        }
+//        return totalAmount;
+//    }
 }

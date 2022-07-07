@@ -13,6 +13,8 @@ import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+
 
 import static org.junit.Assert.assertEquals;
 
@@ -106,9 +108,29 @@ class ServicesApplicationTests {
 //	public void getTotalAmountOfExpenses(){
 //		LocalDate date1 = LocalDate.of(2022, 1,1);
 //		LocalDate date2 = LocalDate.of(2022, 1,3);
-//		assertEquals(0, expenseRepository.findByDateBetween(date1,date2));
+//		assertEquals(104544, expenseRepository.findByLocalDateBetween(date1,date2));
 //	}
 
+	@Test
+	public void findAllPersons(){
+		assertEquals(2,personRepository.findAll().size());
+	}
+
+	@Test
+	public void findAllExpenseOfOnePerson() {
+		assertEquals(166500, personRepository.findByName("Hansel").getTotalExpenseAmount());
+	}
+
+	@Test
+	public void findTotalAmountOfExpense() {
+		assertEquals(517351, expenseRepository.totalAmount());
+	}
+
+	@Test
+	public void findTotalAmountOfExpenseBetweenPeriod() {
+
+		assertEquals(94297,expenseRepository.findAmountByLocalDateBetween(LocalDate.of(2022,1,1),LocalDate.of(2022,1,1)));
+	}
 
 
 }
