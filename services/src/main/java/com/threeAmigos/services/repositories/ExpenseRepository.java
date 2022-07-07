@@ -29,6 +29,33 @@ public interface ExpenseRepository extends JpaRepository<Expense, Long> {
     @Query("select e from Expense e where e.category.id = ?1")
     List<Expense> findByCategory_Id(Long id);
 
+    @Query("select e from Expense e where e.localDate = ?1")
+    List<Expense> findByLocalDate(LocalDate localDate);
+
+    @Query("select e from Expense e where e.person.id = ?1")
+    List<Expense> findByPerson_Id(Long id);
+
+    @Query("select e from Expense e where e.purpose.id = ?1")
+    List<Expense> findByPurpose_Id(Long id);
+
+    @Query("select e from Expense e where e.place = ?1")
+    List<Expense> findByPlace(String place);
+
+    @Query("select e from Expense e where e.necessityIndex = ?1")
+    List<Expense> findByNecessityIndex(int necessityIndex);
+
+    @Query("select e from Expense e where e.isDirectDebit = ?1")
+    List<Expense> findByIsDirectDebit(boolean isDirectDebit);
+
+
+
+
+
+
+
+
+
+
 
 
 
