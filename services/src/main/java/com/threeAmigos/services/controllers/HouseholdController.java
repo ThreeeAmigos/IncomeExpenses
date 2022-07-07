@@ -31,7 +31,7 @@ public class HouseholdController {
     ) {
         // GET  /households?householdid=1
         if (householdId != null) {
-            return new ResponseEntity(householdRepository.findByHousehold(householdId), HttpStatus.OK);
+            return new ResponseEntity(householdRepository.findById(householdId), HttpStatus.OK);
         }
 
         // GET /households
