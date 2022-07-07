@@ -12,6 +12,14 @@ import java.util.List;
 
 @Repository
 public interface IncomeRepository extends JpaRepository<Income, Long> {
+
+    @Query(value= "select sum(e.amount) FROM income e", nativeQuery = true)
+    int totalAmountOfIncome();
+
+    @Query(value = "select sum(e.amount) from income e where e.date between ?1 and ?2", nativeQuery = true)
+    int findAmountOfIncomeByLocalDateBetween(LocalDate localDateStart, LocalDate localDateEnd);
+
+
     @Query("select i from Income i where i.localDate = ?1")
     List<Income> findByLocalDate(LocalDate localDate);
 

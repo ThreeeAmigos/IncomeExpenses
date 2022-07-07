@@ -130,7 +130,19 @@ class ServicesApplicationTests {
 	public void findTotalAmountOfExpenseBetweenPeriod() {
 
 		assertEquals(94297,expenseRepository.findAmountByLocalDateBetween(LocalDate.of(2022,1,1),LocalDate.of(2022,1,1)));
+
 	}
+
+	@Test
+	public void canTotalAmountOfExpenseInCategory(){
+		assertEquals(36800,expenseRepository.findTotalAmountByCategory_Id(3L));
+	}
+
+	@Test
+	public void canTotalAmountOfIncomeInCategory(){
+		assertEquals(1086309, incomeRepository.totalAmountOfIncome());
+	}
+
 
 
 }
