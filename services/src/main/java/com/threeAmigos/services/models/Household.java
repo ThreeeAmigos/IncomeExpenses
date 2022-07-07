@@ -51,4 +51,20 @@ public class Household {
     public Long getId() {
         return id;
     }
+
+    int getTotalExpense(){
+        int totalAmount = 0;
+        for (Person person: persons) {
+            totalAmount += person.getTotalExpenseAmount();
+        }
+        return totalAmount;
+    }
+
+//    public int getTotalExpenseAmount(){
+//        int totalAmount = 0;
+//        for (Household object: persons){
+//            totalAmount += object.getAmount();
+//        }
+//        return totalAmount;
+//    }
 }

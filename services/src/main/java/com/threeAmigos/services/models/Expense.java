@@ -1,9 +1,13 @@
 package com.threeAmigos.services.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.threeAmigos.services.repositories.PersonRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "expense")
@@ -148,5 +152,9 @@ public class Expense {
     public void setDirectDebit(boolean directDebit) {
         isDirectDebit = directDebit;
     }
+
+
+
+
 
 }
