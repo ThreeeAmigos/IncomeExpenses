@@ -19,7 +19,7 @@ public class CategoryController {
     /**
      * Handles routes and filters:
      *  GET  /categories
-     *  GET  /categories?categoryid=1
+     *  GET  /categories?category=1
      * @return `ResponseEntity<List<Category>>`
      */
     @GetMapping(value = "/categories")
@@ -27,7 +27,7 @@ public class CategoryController {
             @RequestParam(required = false, name = "category") Long categoryId
 
     ) {
-        // GET  /categories?categoryid=1
+        // GET  /categories?category=1
         if (categoryId != null) {
             return new ResponseEntity(categoryRepository.findById(categoryId), HttpStatus.OK);
         }
