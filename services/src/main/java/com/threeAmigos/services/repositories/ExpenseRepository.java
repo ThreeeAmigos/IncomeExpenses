@@ -19,11 +19,15 @@ import java.util.List;
 public interface ExpenseRepository extends JpaRepository<Expense, Long> {
 
 
-    @Query(value= "SELECT SUM(m.amount) FROM expense m", nativeQuery = true)
+    @Query(value= "select sum(m.amount) FROM expense m", nativeQuery = true)
     int totalAmount();
 
-    @Query(value = "select SUM(e.amount) from expense e where e.date between ?1 and ?2", nativeQuery = true)
+    @Query(value = "select sum(e.amount) from expense e where e.date between ?1 and ?2", nativeQuery = true)
     int findAmountByLocalDateBetween(LocalDate localDateStart, LocalDate localDateEnd);
+
+    @Query(value = "select sum(e.amount) from expense e where e.category_id = ?1", nativeQuery = true)
+    int findTotalAmountByCategory_Id(Long id);
+
 
     @Query("select e from Expense e where e.category.id = ?1")
     List<Expense> findByCategory_Id(Long id);
