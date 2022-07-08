@@ -1,13 +1,13 @@
 package com.threeAmigos.services.controllers;
 
+import com.threeAmigos.services.models.Category;
+import com.threeAmigos.services.models.Purpose;
 import com.threeAmigos.services.repositories.PersonRepository;
 import com.threeAmigos.services.repositories.PurposeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,6 +37,12 @@ public class PurposeController {
         // GET  /purposes
         return new ResponseEntity(purposeRepository.findAll(), HttpStatus.OK);
 
+    }
+
+    @PostMapping(value = "/purposes")
+    public ResponseEntity<Purpose> postPurpose(@RequestBody Purpose newPurpose) {
+        purposeRepository.save(newPurpose);
+        return new ResponseEntity<>(newPurpose, HttpStatus.CREATED);
     }
 
 }
