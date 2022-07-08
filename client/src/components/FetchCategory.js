@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { getElements } from "../services/TrackerServices";
 
-const FetchExpenses = () => {
+const FetchCategory = () => {
 
-  const [expenses, setExpenses] = useState();
+  const [categories, setCategories] = useState();
 
   useEffect(() => {
-    getElements("expenses")
+    getElements("categories");
   }, [])
+
+  
 }
 
-export default FetchExpenses;
+export default FetchCategory;
