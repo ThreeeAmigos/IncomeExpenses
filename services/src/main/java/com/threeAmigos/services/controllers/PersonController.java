@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @RestController
@@ -19,10 +20,12 @@ public class PersonController {
 
     /**
      * Handles routes and filters:
-     *  GET  /persons
-     *  GET  /persons?personid=1
+     *  GET     /persons
+     *  GET     /persons?personid={id}
      * @return `ResponseEntity<List<Person>>`
-     *  Post /persons
+     *  POST    /persons
+     *  PUT     /persons/{id}
+     *  DELETE  /persons?id={id}
      */
     @GetMapping(value = "/persons")
     public ResponseEntity getAllPersonsAndFilters(
@@ -67,6 +70,18 @@ public class PersonController {
         return new ResponseEntity<>(newPerson, HttpStatus.ACCEPTED);
 
     }
+
+    @DeleteMapping("/persons")
+    public ResponseEntity<String> deletePerson(
+            @RequestParam(required = false, name = "id") Long id)
+    {
+        if (!personRepository.existsById(id)) {
+            throw new EntityNotFoundException("Invalid Id");
+        }
+        personRepository.deleteById(id);
+        return new ResponseEntity<>( "Deleted id "+ id, HttpStatus.ACCEPTED);
+    }
+
 
 
 }

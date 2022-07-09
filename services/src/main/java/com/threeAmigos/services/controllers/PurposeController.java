@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @RestController
@@ -22,10 +23,11 @@ public class PurposeController {
     /**
      * Handles routes and filters:
      *  GET     /purposes
-     *  GET     /purposes?purposeid=1
+     *  GET     /purposes?purposeid={id}
      * @return `ResponseEntity<List<Purpose>>`
      *  POST    /purpose
      *  PUT     /purpose/{id}
+     *  DELETE /purpose?id={id}
      */
     @GetMapping(value = "/purposes")
     public ResponseEntity getAllPurposesAndFilters(
@@ -62,5 +64,18 @@ public class PurposeController {
         return new ResponseEntity<>(newPurpose, HttpStatus.ACCEPTED);
 
     }
+
+    @DeleteMapping("/purposes")
+    public ResponseEntity<String> deletePurpose(
+            @RequestParam(required = false, name = "id") Long id)
+    {
+        if (!purposeRepository.existsById(id)) {
+            throw new EntityNotFoundException("Invalid Id");
+        }
+        purposeRepository.deleteById(id);
+        return new ResponseEntity<>( "Deleted id "+ id, HttpStatus.ACCEPTED);
+    }
+
+
 
 }
