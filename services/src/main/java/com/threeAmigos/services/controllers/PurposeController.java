@@ -47,4 +47,19 @@ public class PurposeController {
         return new ResponseEntity<>(newPurpose, HttpStatus.CREATED);
     }
 
+    @PutMapping("/purposes/{id}")
+    public ResponseEntity<Purpose> putPurpose(@RequestBody Purpose newPurpose, @PathVariable Long id) {
+        purposeRepository.findById(id)
+                .map(category -> {
+                    category.setPurposeName(newPurpose.getPurposeName());
+                    return purposeRepository.save(category);
+                })
+                .orElseGet(() -> {
+                    newPurpose.setId(id);
+                    return purposeRepository.save(newPurpose);
+                });
+        return new ResponseEntity<>(newPurpose, HttpStatus.ACCEPTED);
+
+    }
+
 }
