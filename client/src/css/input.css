@@ -1,0 +1,17 @@
+input {
+    font-weight: bold;
+    border-radius: 15px;
+    text-align: center;
+}
+
+button {
+    border-radius: 15px;
+}
+
+
+#pound {
+     background-image: none;
+     background-repeat: no-repeat;
+}
+
+
