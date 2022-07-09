@@ -24,6 +24,7 @@ public class PurposeController {
      *  GET  /purposes
      *  GET  /purposes?purposeid=1
      * @return `ResponseEntity<List<Purpose>>`
+     *  POST /purpose
      */
     @GetMapping(value = "/purposes")
     public ResponseEntity getAllPurposesAndFilters(
