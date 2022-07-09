@@ -1,5 +1,6 @@
 package com.threeAmigos.services.controllers;
 
+import com.threeAmigos.services.models.Category;
 import com.threeAmigos.services.models.Person;
 import com.threeAmigos.services.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,28 @@ public class PersonController {
         return new ResponseEntity<>(newPerson, HttpStatus.CREATED);
     }
 
+    @PutMapping("/persons/{id}")
+    public ResponseEntity<Person> putPerson(@RequestBody Person newPerson, @PathVariable Long id) {
+        personRepository.findById(id)
+                .map(name -> {
+                    name.setName(newPerson.getName());
+                    return personRepository.save(name);
+                })
+                .map(position -> {
+                    position.setCurrentPosition(newPerson.getCurrentPosition());
+                    return personRepository.save(position);
+                })
+                .map(loan -> {
+                    loan.setLoan(newPerson.getLoan());
+                    return personRepository.save(loan);
+                })
+                .orElseGet(() -> {
+                    newPerson.setId(id);
+                    return personRepository.save(newPerson);
+                });
+        return new ResponseEntity<>(newPerson, HttpStatus.ACCEPTED);
+
+    }
 
 
 }
