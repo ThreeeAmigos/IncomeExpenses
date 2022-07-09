@@ -26,6 +26,7 @@ public class IncomeController {
      *  GET  /incomes?person=1
      *  GET  /incomes?issalary=true
      * @return `ResponseEntity<List<Income>>`
+     *  POST /incomes
      */
     @GetMapping(value = "/incomes")
     public ResponseEntity getAllIncomesAndFilters(

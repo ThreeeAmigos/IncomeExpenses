@@ -29,6 +29,7 @@ public class ExpenseController {
      *  GET  /expenses?necessityindex=1
      *  GET  /expenses?isdirectdebit=true
      * @return `ResponseEntity<List<Expense>>`
+     *  Post /expenses
      */
     @GetMapping(value = "/expenses")
     public ResponseEntity getAllExpensesAndFilters(
