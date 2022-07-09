@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -32,6 +33,7 @@ public class ExpenseController {
      * @return `ResponseEntity<List<Expense>>`
      *  Post    /expenses
      *  PUT     /expenses/{id}
+     *  DELETE  /expense?id={id}
      */
     @GetMapping(value = "/expenses")
     public ResponseEntity getAllExpensesAndFilters(
@@ -144,6 +146,17 @@ public class ExpenseController {
 
         return new ResponseEntity<>(newExpense, HttpStatus.ACCEPTED);
 
+    }
+
+    @DeleteMapping("/expenses")
+    public ResponseEntity<String> deleteExpense(
+            @RequestParam(required = false, name = "id") Long id)
+    {
+        if (!expenseRepository.existsById(id)) {
+            throw new EntityNotFoundException("Invalid Id");
+        }
+        expenseRepository.deleteById(id);
+        return new ResponseEntity<>( "Deleted id "+ id, HttpStatus.ACCEPTED);
     }
 
 }
