@@ -1,6 +1,7 @@
 package com.threeAmigos.services.controllers;
 
 import com.threeAmigos.services.models.Expense;
+import com.threeAmigos.services.models.Income;
 import com.threeAmigos.services.repositories.ExpenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,17 +20,18 @@ public class ExpenseController {
 
     /**
      * Handles routes and filters:
-     *  GET  /expenses
-     *  GET  /expenses?date=2022-01-01
-     *  GET  /expenses?start_date=2022-01-01?end_date=2022-01-02
-     *  GET  /expenses?category=1
-     *  GET  /expenses?person=1
-     *  GET  /expenses?purpose=1
-     *  GET  /expenses?placename=1
-     *  GET  /expenses?necessityindex=1
-     *  GET  /expenses?isdirectdebit=true
+     *  GET     /expenses
+     *  GET     /expenses?date=2022-01-01
+     *  GET     /expenses?start_date=2022-01-01?end_date=2022-01-02
+     *  GET     /expenses?category=1
+     *  GET     /expenses?person=1
+     *  GET     /expenses?purpose=1
+     *  GET     /expenses?placename=1
+     *  GET     /expenses?necessityindex=1
+     *  GET     /expenses?isdirectdebit=true
      * @return `ResponseEntity<List<Expense>>`
-     *  Post /expenses
+     *  Post    /expenses
+     *  PUT     /expenses/{id}
      */
     @GetMapping(value = "/expenses")
     public ResponseEntity getAllExpensesAndFilters(
@@ -94,6 +96,54 @@ public class ExpenseController {
     public ResponseEntity<Expense> postExpense(@RequestBody Expense newExpense) {
         expenseRepository.save(newExpense);
         return new ResponseEntity<>(newExpense, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/expenses/{id}")
+    public ResponseEntity<Expense> putExpense(@RequestBody Expense newExpense, @PathVariable Long id) {
+        expenseRepository.findById(id)
+                .map(name -> {
+                    name.setName(newExpense.getName());
+                    return expenseRepository.save(name);
+                })
+                .map(place -> {
+                    place.setPlace(newExpense.getPlace());
+                    return expenseRepository.save(place);
+                })
+                .map(amount -> {
+                    amount.setAmount(newExpense.getAmount());
+                    return expenseRepository.save(amount);
+                })
+                .map(index -> {
+                    index.setNecessityIndex(newExpense.getNecessityIndex());
+                    return expenseRepository.save(index);
+                })
+                .map(date -> {
+                    date.setDate(newExpense.getDate());
+                    return expenseRepository.save(date);
+                })
+                .map(salary -> {
+                    salary.setDirectDebit(newExpense.isDirectDebit());
+                    return expenseRepository.save(salary);
+                })
+                .map(category -> {
+                    category.setCategory(newExpense.getCategory());
+                    return expenseRepository.save(category);
+                })
+                .map(person -> {
+                    person.setPerson(newExpense.getPerson());
+                    return expenseRepository.save(person);
+                })
+                .map(purpose -> {
+                    purpose.setPurpose(newExpense.getPurpose());
+                    return expenseRepository.save(purpose);
+                })
+                .orElseGet(() -> {
+                    newExpense.setId(id);
+                    return expenseRepository.save(newExpense);
+                });
+
+        return new ResponseEntity<>(newExpense, HttpStatus.ACCEPTED);
+
     }
 
 }
