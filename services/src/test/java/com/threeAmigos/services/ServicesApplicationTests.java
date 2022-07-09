@@ -116,10 +116,10 @@ class ServicesApplicationTests {
 		assertEquals(2,personRepository.findAll().size());
 	}
 
-	@Test
-	public void findAllExpenseOfOnePerson() {
-		assertEquals(166500, personRepository.findByName("Hansel").getTotalExpenseAmount());
-	}
+//	@Test
+//	public void findAllExpenseOfOnePerson() {
+//		assertEquals(166500, personRepository.findByName("Hansel").getTotalExpenseAmount());
+//	}
 
 	@Test
 	public void findTotalAmountOfExpense() {

@@ -21,6 +21,7 @@ public class CategoryController {
      *  GET  /categories
      *  GET  /categories?category=1
      * @return `ResponseEntity<List<Category>>`
+     *  Post /categories
      */
     @GetMapping(value = "/categories")
     public ResponseEntity getAllCategoriesAndFilters(
