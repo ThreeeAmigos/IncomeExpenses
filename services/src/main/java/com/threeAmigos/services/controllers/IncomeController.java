@@ -1,12 +1,12 @@
 package com.threeAmigos.services.controllers;
 
+import com.threeAmigos.services.models.Income;
+import com.threeAmigos.services.models.Purpose;
 import com.threeAmigos.services.repositories.IncomeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -60,6 +60,12 @@ public class IncomeController {
         // GET /incomes
         return new ResponseEntity(incomeRepository.findAll(), HttpStatus.OK);
 
+    }
+
+    @PostMapping(value = "/incomes")
+    public ResponseEntity<Income> postIncome(@RequestBody Income newIncome) {
+        incomeRepository.save(newIncome);
+        return new ResponseEntity<>(newIncome, HttpStatus.CREATED);
     }
 
 }
