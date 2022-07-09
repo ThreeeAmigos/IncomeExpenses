@@ -28,6 +28,8 @@ public interface ExpenseRepository extends JpaRepository<Expense, Long> {
     @Query(value = "select sum(e.amount) from expense e where e.category_id = ?1", nativeQuery = true)
     int findTotalAmountByCategory_Id(Long id);
 
+    @Query(value = "select sum(e.amount) from expense e where e.person_id = ?1", nativeQuery = true)
+    int findTotalAmountByPersonID(Long id);
 
     @Query("select e from Expense e where e.category.id = ?1")
     List<Expense> findByCategory_Id(Long id);
@@ -37,6 +39,13 @@ public interface ExpenseRepository extends JpaRepository<Expense, Long> {
 
     @Query("select e from Expense e where e.person.id = ?1")
     List<Expense> findByPerson_Id(Long id);
+
+
+
+    @Query("select e from Expense e where e.person.name = ?1")
+    List<Expense> findByPerson_Name(String name);
+
+
 
     @Query("select e from Expense e where e.purpose.id = ?1")
     List<Expense> findByPurpose_Id(Long id);
