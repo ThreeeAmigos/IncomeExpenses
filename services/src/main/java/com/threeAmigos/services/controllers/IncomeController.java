@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -29,6 +30,7 @@ public class IncomeController {
      * @return `ResponseEntity<List<Income>>`
      *  POST    /incomes
      *  PUT     /incomes/{id}
+     *  DELETE  /incomes?id={id}
      */
     @GetMapping(value = "/incomes")
     public ResponseEntity getAllIncomesAndFilters(
@@ -100,6 +102,17 @@ public class IncomeController {
                 });
         return new ResponseEntity<>(newIncome, HttpStatus.ACCEPTED);
 
+    }
+
+    @DeleteMapping("/incomes")
+    public ResponseEntity<String> deleteIncome(
+            @RequestParam(required = false, name = "id") Long id)
+    {
+        if (!incomeRepository.existsById(id)) {
+            throw new EntityNotFoundException("Invalid Id");
+        }
+        incomeRepository.deleteById(id);
+        return new ResponseEntity<>( "Deleted id "+ id, HttpStatus.ACCEPTED);
     }
 
 
