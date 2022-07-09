@@ -1,6 +1,7 @@
 package com.threeAmigos.services.controllers;
 
 import com.threeAmigos.services.models.Category;
+import com.threeAmigos.services.models.Person;
 import com.threeAmigos.services.models.Purpose;
 import com.threeAmigos.services.repositories.PersonRepository;
 import com.threeAmigos.services.repositories.PurposeRepository;

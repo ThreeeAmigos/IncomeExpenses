@@ -52,13 +52,13 @@ public class Household {
         return id;
     }
 
-    int getTotalExpense(){
-        int totalAmount = 0;
-        for (Person person: persons) {
-            totalAmount += person.getTotalExpenseAmount();
-        }
-        return totalAmount;
-    }
+//    int getTotalExpense(){
+//        int totalAmount = 0;
+//        for (Person person: persons) {
+//            totalAmount += person.getTotalExpenseAmount();
+//        }
+//        return totalAmount;
+//    }
 
 //    public int getTotalExpenseAmount(){
 //        int totalAmount = 0;

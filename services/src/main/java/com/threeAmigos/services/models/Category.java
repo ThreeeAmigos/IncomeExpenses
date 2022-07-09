@@ -18,13 +18,13 @@ public class Category {
     @Column(name = "category_name")
     private String categoryName;
 
-    @OneToMany(mappedBy = "category")
-    @JsonBackReference
-    private List<Expense> purposeOfCategoryList;
+//    @OneToMany(mappedBy = "category")
+//    @JsonBackReference
+//    private List<Expense> purposeOfCategoryList;
 
     public Category(String categoryName) {
         this.categoryName = categoryName;
-        this.purposeOfCategoryList = new ArrayList<>();
+//        this.purposeOfCategoryList = new ArrayList<>();
     }
 
     public Category() {
@@ -46,11 +46,11 @@ public class Category {
         this.categoryName = categoryName;
     }
 
-    public List<Expense> getPurposeOfCategoryList() {
-        return purposeOfCategoryList;
-    }
-
-    public void setPurposeOfCategoryList(List<Expense> purposeOfCategoryList) {
-        this.purposeOfCategoryList = purposeOfCategoryList;
-    }
+//    public List<Expense> getPurposeOfCategoryList() {
+//        return purposeOfCategoryList;
+//    }
+//
+//    public void setPurposeOfCategoryList(List<Expense> purposeOfCategoryList) {
+//        this.purposeOfCategoryList = purposeOfCategoryList;
+//    }
 }

@@ -116,10 +116,10 @@ class ServicesApplicationTests {
 		assertEquals(2,personRepository.findAll().size());
 	}
 
-	@Test
-	public void findAllExpenseOfOnePerson() {
-		assertEquals(166500, personRepository.findByName("Hansel").getTotalExpenseAmount());
-	}
+//	@Test
+//	public void findAllExpenseOfOnePerson() {
+//		assertEquals(166500, personRepository.findByName("Hansel").getTotalExpenseAmount());
+//	}
 
 	@Test
 	public void findTotalAmountOfExpense() {
@@ -138,11 +138,21 @@ class ServicesApplicationTests {
 		assertEquals(36800,expenseRepository.findTotalAmountByCategory_Id(3L));
 	}
 
+
+	@Test
+	public void canGetExpensesListByPerson_Name(){
+		assertEquals(110,expenseRepository.findByPerson_Name("Hansel").size());
+	}
+
+	@Test
+	public void canGetTotalExpensesByPerson_ID(){
+		assertEquals(166500,expenseRepository.findTotalAmountByPersonID(1L));
+	}
+
 	@Test
 	public void canTotalAmountOfIncomeInCategory(){
 		assertEquals(1086309, incomeRepository.totalAmountOfIncome());
 	}
-
 
 
 }

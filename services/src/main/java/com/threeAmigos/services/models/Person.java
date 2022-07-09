@@ -29,21 +29,21 @@ public class Person {
     @JsonBackReference
     private Household household;
 
-    @OneToMany(mappedBy = "person")
-    @JsonBackReference
-    private List<Expense> allExpenses;
-
-    @OneToMany(mappedBy = "person")
-    @JsonBackReference
-    private List<Income> allIncomes;
+//    @OneToMany(mappedBy = "person")
+//    @JsonBackReference
+//    private List<Expense> allExpenses;
+//
+//    @OneToMany(mappedBy = "person")
+//    @JsonBackReference
+//    private List<Income> allIncomes;
 
 
     public Person(String name, int loan, int currentPosition, Household household) {
         this.name = name;
         this.loan = loan;
         this.currentPosition = currentPosition;
-        this.allExpenses = new ArrayList<>();
-        this.allIncomes = new ArrayList<>();
+//        this.allExpenses = new ArrayList<>();
+//        this.allIncomes = new ArrayList<>();
         this.household = household;
     }
 
@@ -91,34 +91,35 @@ public class Person {
         this.household = household;
     }
 
-    public List<Expense> getAllExpenses() {
-        return allExpenses;
-    }
-
-    public void setAllExpenses(List<Expense> allExpenses) {
-        this.allExpenses = allExpenses;
-    }
-
-    public List<Income> getAllIncomes() {
-        return allIncomes;
-    }
-
-    public void setAllIncomes(List<Income> allIncomes) {
-        this.allIncomes = allIncomes;
-    }
+//    public List<Expense> getAllExpenses() {
+//        return allExpenses;
+//    }
+//
+//    public void setAllExpenses(List<Expense> allExpenses) {
+//        this.allExpenses = allExpenses;
+//    }
+//
+//    public List<Income> getAllIncomes() {
+//        return allIncomes;
+//    }
+//
+//    public void setAllIncomes(List<Income> allIncomes) {
+//        this.allIncomes = allIncomes;
+//    }
 
 
     // Check if it works without person
-    public int getTotalExpenseAmount(){
-        int totalAmount = 0;
-        for (Expense object: allExpenses){
-            totalAmount += object.getAmount();
-        }
-        return totalAmount;
-    }
+    // Use Query instead
+//    public int getTotalExpenseAmount(){
+//        int totalAmount = 0;
+//        for (Expense object: allExpenses){
+//            totalAmount += object.getAmount();
+//        }
+//        return totalAmount;
+//    }
+
 
     // This is what we want
-
 //    int getExpensesOfPersons(List<Person> persons){
 //        int totalAmount = 0;
 //        for (Person person: persons) {

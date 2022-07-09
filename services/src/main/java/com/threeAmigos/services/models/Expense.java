@@ -31,7 +31,7 @@ public class Expense {
 
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
-    @JsonBackReference
+//    @JsonBackReference
     private Category category;
 
     @Column(name = "necessity_index")
@@ -39,12 +39,12 @@ public class Expense {
 
     @ManyToOne
     @JoinColumn(name = "person_id", nullable = false)
-    @JsonBackReference
+//    @JsonBackReference
     private Person person;
 
     @ManyToOne
     @JoinColumn(name = "purpose_id", nullable = false)
-    @JsonBackReference
+//    @JsonBackReference
     private Purpose purpose;
 
     @Column(name = "is_direct_debit")
