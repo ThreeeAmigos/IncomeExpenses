@@ -21,10 +21,11 @@ public class PurposeController {
 
     /**
      * Handles routes and filters:
-     *  GET  /purposes
-     *  GET  /purposes?purposeid=1
+     *  GET     /purposes
+     *  GET     /purposes?purposeid=1
      * @return `ResponseEntity<List<Purpose>>`
-     *  POST /purpose
+     *  POST    /purpose
+     *  PUT     /purpose/{id}
      */
     @GetMapping(value = "/purposes")
     public ResponseEntity getAllPurposesAndFilters(
