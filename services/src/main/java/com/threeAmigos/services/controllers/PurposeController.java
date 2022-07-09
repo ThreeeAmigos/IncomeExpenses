@@ -27,7 +27,7 @@ public class PurposeController {
      * @return `ResponseEntity<List<Purpose>>`
      *  POST    /purpose
      *  PUT     /purpose/{id}
-     *  Purpose /purpose?id={id}
+     *  DELETE /purpose?id={id}
      */
     @GetMapping(value = "/purposes")
     public ResponseEntity getAllPurposesAndFilters(
