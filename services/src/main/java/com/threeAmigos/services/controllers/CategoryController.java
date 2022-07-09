@@ -18,10 +18,11 @@ public class CategoryController {
 
     /**
      * Handles routes and filters:
-     *  GET  /categories
-     *  GET  /categories?category=1
+     *  GET     /categories
+     *  GET     /categories?category=1
      * @return `ResponseEntity<List<Category>>`
-     *  Post /categories
+     *  Post    /categories
+     *  Put     /categories/{id}
      */
     @GetMapping(value = "/categories")
     public ResponseEntity getAllCategoriesAndFilters(
@@ -42,6 +43,21 @@ public class CategoryController {
     public ResponseEntity<Category> postCategory(@RequestBody Category newCategory) {
         categoryRepository.save(newCategory);
         return new ResponseEntity<>(newCategory, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/categories/{id}")
+    public ResponseEntity<Category> putCategory(@RequestBody Category newCategory, @PathVariable Long id) {
+        categoryRepository.findById(id)
+                .map(category -> {
+                    category.setCategoryName(newCategory.getCategoryName());
+                    return categoryRepository.save(category);
+                })
+                .orElseGet(() -> {
+                    newCategory.setId(id);
+                    return categoryRepository.save(newCategory);
+                });
+        return new ResponseEntity<>(newCategory, HttpStatus.ACCEPTED);
+
     }
 
 }

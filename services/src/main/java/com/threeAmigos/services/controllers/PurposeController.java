@@ -21,10 +21,11 @@ public class PurposeController {
 
     /**
      * Handles routes and filters:
-     *  GET  /purposes
-     *  GET  /purposes?purposeid=1
+     *  GET     /purposes
+     *  GET     /purposes?purposeid=1
      * @return `ResponseEntity<List<Purpose>>`
-     *  POST /purpose
+     *  POST    /purpose
+     *  PUT     /purpose/{id}
      */
     @GetMapping(value = "/purposes")
     public ResponseEntity getAllPurposesAndFilters(
@@ -45,6 +46,21 @@ public class PurposeController {
     public ResponseEntity<Purpose> postPurpose(@RequestBody Purpose newPurpose) {
         purposeRepository.save(newPurpose);
         return new ResponseEntity<>(newPurpose, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/purposes/{id}")
+    public ResponseEntity<Purpose> putPurpose(@RequestBody Purpose newPurpose, @PathVariable Long id) {
+        purposeRepository.findById(id)
+                .map(category -> {
+                    category.setPurposeName(newPurpose.getPurposeName());
+                    return purposeRepository.save(category);
+                })
+                .orElseGet(() -> {
+                    newPurpose.setId(id);
+                    return purposeRepository.save(newPurpose);
+                });
+        return new ResponseEntity<>(newPurpose, HttpStatus.ACCEPTED);
+
     }
 
 }

@@ -1,6 +1,7 @@
 package com.threeAmigos.services.controllers;
 
 import com.threeAmigos.services.models.Income;
+import com.threeAmigos.services.models.Person;
 import com.threeAmigos.services.models.Purpose;
 import com.threeAmigos.services.repositories.IncomeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +21,14 @@ public class IncomeController {
 
     /**
      * Handles routes and filters:
-     *  GET  /incomes
-     *  GET  /incomes?date=2022-01-01
-     *  GET  /incomes?start_date=2022-01-01?end_date=2022-01-02
-     *  GET  /incomes?person=1
-     *  GET  /incomes?issalary=true
+     *  GET     /incomes
+     *  GET     /incomes?date=2022-01-01
+     *  GET     /incomes?start_date=2022-01-01?end_date=2022-01-02
+     *  GET     /incomes?person=1
+     *  GET     /incomes?issalary=true
      * @return `ResponseEntity<List<Income>>`
-     *  POST /incomes
+     *  POST    /incomes
+     *  PUT     /incomes/{id}
      */
     @GetMapping(value = "/incomes")
     public ResponseEntity getAllIncomesAndFilters(
@@ -68,5 +70,37 @@ public class IncomeController {
         incomeRepository.save(newIncome);
         return new ResponseEntity<>(newIncome, HttpStatus.CREATED);
     }
+
+    @PutMapping("/incomes/{id}")
+    public ResponseEntity<Income> putIncome(@RequestBody Income newIncome, @PathVariable Long id) {
+        incomeRepository.findById(id)
+                .map(name -> {
+                    name.setIncomeName(newIncome.getIncomeName());
+                    return incomeRepository.save(name);
+                })
+                .map(amount -> {
+                    amount.setAmount(newIncome.getAmount());
+                    return incomeRepository.save(amount);
+                })
+                .map(date -> {
+                    date.setDate(newIncome.getDate());
+                    return incomeRepository.save(date);
+                })
+                .map(salary -> {
+                    salary.setSalary(newIncome.isSalary());
+                    return incomeRepository.save(salary);
+                })
+                .map(person -> {
+                    person.setPerson(newIncome.getPerson());
+                    return incomeRepository.save(person);
+                })
+                .orElseGet(() -> {
+                    newIncome.setId(id);
+                    return incomeRepository.save(newIncome);
+                });
+        return new ResponseEntity<>(newIncome, HttpStatus.ACCEPTED);
+
+    }
+
 
 }
