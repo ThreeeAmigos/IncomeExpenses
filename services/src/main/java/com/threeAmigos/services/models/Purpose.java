@@ -19,7 +19,7 @@ public class Purpose {
     private String purposeName;
 
     @OneToMany(mappedBy = "purpose")
-    @JsonBackReference
+//    @JsonBackReference
     private List<Expense> purposeOfExpenseList;
 
     public Purpose(String purposeName) {
@@ -47,11 +47,11 @@ public class Purpose {
         this.purposeName = purposeName;
     }
 
-    public List<Expense> getPurposeOfExpenseList() {
-        return purposeOfExpenseList;
-    }
-
-    public void setPurposeOfExpenseList(List<Expense> purposeOfExpenseList) {
-        this.purposeOfExpenseList = purposeOfExpenseList;
-    }
+//    public List<Expense> getPurposeOfExpenseList() {
+//        return purposeOfExpenseList;
+//    }
+//
+//    public void setPurposeOfExpenseList(List<Expense> purposeOfExpenseList) {
+//        this.purposeOfExpenseList = purposeOfExpenseList;
+//    }
 }
