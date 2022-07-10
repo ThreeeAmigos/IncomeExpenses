@@ -18,11 +18,13 @@ public class PersonTest {
     private Purpose purpose1;
     private Household homeSweetHome;
     private Household coupleBalance;
+    private LocalDate date;
 
     @Before
     public void setUp() throws Exception {
-        homeSweetHome = new Household(20000);
-        coupleBalance = new Household(100000);
+        date = LocalDate.of(2023,1,2);
+        homeSweetHome = new Household(20000,date);
+        coupleBalance = new Household(100000,date);
 //        DOES a household actually need its current balance to be modelled? maybe it's just a calculation
         person1 = new Person("Hansel",100000,300000, homeSweetHome);
         person2 = new Person("Aelish",0,1200000, homeSweetHome);

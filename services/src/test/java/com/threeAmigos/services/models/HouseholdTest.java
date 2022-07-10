@@ -3,15 +3,20 @@ package com.threeAmigos.services.models;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDate;
+
 import static org.junit.Assert.*;
 
 public class HouseholdTest {
 
     private Household household;
+    LocalDate date;
+
 
     @Before
     public void setUp() throws Exception {
-        household = new Household(2000000);
+        date = LocalDate.of(2022,03,01);
+        household = new Household(2000000, date);
     }
 
     @Test

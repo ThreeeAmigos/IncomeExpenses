@@ -25,7 +25,7 @@ public class ExpenseTest {
         category2 = new Category("Telecom");
         date1 = LocalDate.of(2022,01,01);
         date2 = LocalDate.of(2022,01,02);
-        homeSweetHome = new Household(2000000);
+        homeSweetHome = new Household(2000000, date2);
         person1 = new Person("Hansel",0,2000, homeSweetHome);
         person2 = new Person("Gretel",0,200000, homeSweetHome);
         purpose1 = new Purpose("Hansel");
