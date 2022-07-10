@@ -2,17 +2,19 @@ import React, { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
 
-const RegisterCurrentBalance = () => {
+const RegisterCurrentBalance = (userList) => {
 
 
     const [inputCount, setInputCount] = useState(0)
     const [inputDebtCount, setInputDebtCount] = useState(0)
     const [totalSavings, setTotalSavings] = useState(0)
     const [totalDebts, setTotalDebts] = useState(0)
+    const [message, setMessage] = useState('')
 
     let savingTotal = 0
     let debtTotal = 0
-    
+
+
 
     const handleClick = () => {
         setInputCount(inputCount + 1);
@@ -41,39 +43,94 @@ const RegisterCurrentBalance = () => {
         setTotalDebts(debtTotal)
     }
 
-        return (
-            <>
-                <button onClick={handleClick}> add current balance </button>
-                {Array.from(Array(inputCount)).map((number, index) => {
-                    return (
-                        <>
-                            <br />
-                            <input type="number" onChange={handleChange} name="saving" id={index} />
-                        </>
-                    )
-
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+        try {
+            const res = await fetch("http://localhost:8080/persons", {
+                method: "POST",
+                headers: new Headers({ "Content-Type": "application/json" }),
+                body: JSON.stringify({
+                    name: userList.userList.purposeName,
+                    loan: totalDebts,
+                    currentPosition: totalSavings - totalDebts,
+                    household: {
+                        id: 1
+                    }
                 }
 
                 )
-                }
+
+            })
+
+            const resJson = await res.json()
+            if (res.status === 201) {
+                setMessage("User Saved")
+            } else {
+                setMessage("Error")
+            }
+        }
+        catch (err) {
+            console.log(err)
+        }
+
+    }
+
+
+    return (
+        <>
+        
+            <button onClick={handleClick}> add current balance </button>
+            {Array.from(Array(inputCount)).map((number, index) => {
+                return (
+                    <>
+                        <br />
+                        <input type="number" onChange={handleChange} name="saving" id={index} />
+                    </>
+                )
+
+            }
+
+            )
+            }
+            <br />
+            <br />
+            <button onClick={handleDebtClick}> add current debt </button>
+            {Array.from(Array(inputDebtCount)).map((number, index) => {
+                return (
+                    <>
+                        <br />
+                        <input type="number" onChange={handleDebtChange} name="debt" id={index} />
+                    </>
+                )
+            })}
+            <form onSubmit={handleSubmit}>
+            
                 <br />
-                <button onClick={handleDebtClick}> add current debt </button>
-                {Array.from(Array(inputDebtCount)).map((number, index) => {
-                    return (
-                        <>
-                            <br />
-                            <input type="number" onChange={handleDebtChange}  name="debt" id={index} />
-                        </>
-                    )
-                })}
                 <div>Total Savings: {totalSavings} </div>
+                <br/>
                 <div>Total Debts: {totalDebts} </div>
+                <br />
                 <div>Total Current Balance: {totalSavings - totalDebts} </div>
+                <br />
+                <div>This is for {userList.userList.purposeName}</div>
+                <br />
+                <button onClick={handleSubmit} type="submit">Set {userList.userList.purposeName}'s Account</button>
+                <br />
+                
+                {message}
+            </form>
 
+            {/* 
+                    
+                    for (let i = 0; i < userList.length; i++) {
+            return userList[i].name
+            }
+        }
+                    
+                     */}
+        </>
+    )
 
-            </>
-        )
-    
 }
 
 export default RegisterCurrentBalance

@@ -2,10 +2,12 @@ input {
     font-weight: bold;
     border-radius: 15px;
     text-align: center;
+    width: 30vw;
 }
 
 button {
     border-radius: 15px;
+    width: 31vw;
 }
 
 

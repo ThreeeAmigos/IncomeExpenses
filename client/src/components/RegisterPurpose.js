@@ -13,6 +13,9 @@ const RegisterPage = () => {
     const [userList, setUserList] = useState(completeUserList)
     const [inputCount, setInputCount] = useState(0)
 
+
+
+
     // POST Persons
     const [purposeName, setPurposeName] = useState("")
 
@@ -62,10 +65,13 @@ const RegisterPage = () => {
 
             <form onSubmit={handleSubmit}>
                 <div>
-                    Who we are talking to ? <input type="text" onChange={handleChange} value={purposeName} placeholder='Your name' required />  <button type="submit" onClick={handleAdd}>Add</button>
+                    Who we are talking to ? <br />
+                    <input type="text" onChange={handleChange} value={purposeName} placeholder='Your name' required />  <br />
+                    <button type="submit" onClick={handleAdd}>Add</button>
                 </div>
             </form>
                 <div>
+                <hr />
                     <div>Household</div>
 
                     {/* Need to Change to fetch Purpose or Person List */}
@@ -78,12 +84,14 @@ const RegisterPage = () => {
                 </div>
             
             <div>
+                <hr />
                 <ul>
                     <li>We want to buy a house</li>
                     <li>We want to buy a car</li>
                     <li>We want to send our children to uni</li>
                 </ul>
             </div>
+            <hr />
 
             <RegisterTarget/>
 
@@ -92,10 +100,21 @@ const RegisterPage = () => {
                     <li key={uuidv4()}> {item.name} </li>
                 ))}
             </ul>
-            
-            <RegisterCurrentBalance/>
 
+            {Array.from(Array(userList.length)).map((number, index) => {
+                return (
+                    <>
+                        <br />
+                        <hr />
+                        {userList[0] == userList[index] ? <div>{userList[index].purposeName},Empty your Pocket</div> : <div>You too,{userList[index].purposeName}, cough up!</div>}
+                        <br />
+                        <RegisterCurrentBalance userList={userList[index]}/>
+                    </>
+                )
 
+            }
+            )
+            }
            
         </>
     )
