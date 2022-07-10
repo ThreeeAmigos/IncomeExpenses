@@ -55,8 +55,8 @@ const RegisterTarget = () => {
         <>
             <form onSubmit={handleSubmit}>
                 <div>
-                    So we need £ <input id="pound" type="number" placeholder="20,000" onChange={handleTargetChange} value={target} required /> 
-                    <br /> by <input key={uuidv4()} type="date" onChange={handleDateChange} value={date} required/> 
+                    So we need £ <br /><input id="pound" type="number" placeholder="20,000" onChange={handleTargetChange} value={target} required /> 
+                    <br /> by <br /><input key={uuidv4()} type="date" onChange={handleDateChange} value={date} required /> <br />
                     <button onClick={handleSubmit} type="submit-target">Set Target</button>
                     {message}
                 </div>
