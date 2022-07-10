@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import RegisterTarget from './RegisterTarget';
+import RegisterCurrentBalance from './RegisterCurrentBalance';
 import '../css/input.css'
 import '../css/list.css'
 
@@ -52,10 +53,7 @@ const RegisterPage = () => {
         setUserList(newList)
     }
 
-    const handleClick = () => {
-        setInputCount(inputCount + 1);
 
-    }
 
     return (
         <>
@@ -94,14 +92,11 @@ const RegisterPage = () => {
                     <li key={uuidv4()}> {item.name} </li>
                 ))}
             </ul>
-            <button onClick={handleClick}> add current balance </button>
-            {Array.from(Array(inputCount)).map((placeholder, index) => {
-                return <input key={uuidv4()} type="text"></input>
-            })}
-
-            <div id="current-position"></div>
+            
+            <RegisterCurrentBalance/>
 
 
+           
         </>
     )
 
