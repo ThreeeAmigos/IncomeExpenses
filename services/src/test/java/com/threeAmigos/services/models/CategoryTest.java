@@ -23,11 +23,13 @@ public class CategoryTest {
 
     @Before
     public void setUp() throws Exception {
+        date1 = LocalDate.of(2022,01,01);
+        date2 = LocalDate.of(2022,01,02);
         category1 = new Category("Life Essential");
         category2 = new Category("Telecom");
         date1 = LocalDate.of(2022,01,01);
         date2 = LocalDate.of(2022,01,02);
-        homeSweetHome = new Household(2000000);
+        homeSweetHome = new Household(2000000,date1);
         person1 = new Person("Hansel",0,2000, homeSweetHome);
         person2 = new Person("Gretel",0,200000, homeSweetHome);
         purpose1 = new Purpose("Hansel");

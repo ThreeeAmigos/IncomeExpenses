@@ -3,6 +3,7 @@ package com.threeAmigos.services.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -17,12 +18,18 @@ public class Household {
     @Column(name = "target")
     private int target;
 
+    @Column(name = "byDate")
+    private LocalDate date;
+
     @OneToMany(mappedBy = "household")
     @JsonBackReference
     private List<Person> persons;
 
-    public Household(int target) {
+
+
+    public Household(int target, LocalDate date) {
         this.target = target;
+        this.date = date;
     }
 
     public Household() {
@@ -50,6 +57,14 @@ public class Household {
 
     public Long getId() {
         return id;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
 //    int getTotalExpense(){
