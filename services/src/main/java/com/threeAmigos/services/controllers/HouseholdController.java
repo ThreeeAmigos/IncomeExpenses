@@ -39,7 +39,7 @@ public class HouseholdController {
 
     }
 
-    @PutMapping("/household/{id}")
+    @PutMapping("/households/{id}")
     public ResponseEntity<Household> putHousehold(@RequestBody Household newHousehold, @PathVariable Long id) {
         householdRepository.findById(id)
                 .map(household -> {
