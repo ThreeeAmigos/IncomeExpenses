@@ -3,8 +3,7 @@ const baseURL = "http://localhost:8080/";
 // Get elements from a given end point
 export const getElements = (endPoint) => {
   return fetch(baseURL + endPoint)
-    .then(res => res.json()
-    .then(res => console.log(res)));
+    .then(res => res.json())
 }
 
 // Post an element to a given endpoint
