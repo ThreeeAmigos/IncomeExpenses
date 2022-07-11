@@ -1,18 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import RegisterTarget from './RegisterTarget';
 import RegisterCurrentBalance from './RegisterCurrentBalance';
-import '../css/input.css'
-import '../css/list.css'
+import { getElements } from '../services/TrackerServices';
+import '../css/input.css';
+import '../css/list.css';
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    Link
+} from "react-router-dom";
 
-const RegisterPage = () => {
+
+const RegisterPurpose = () => {
+
+
+    const [userList, setUserList] = useState([])
+    const [purposeList, setPurposeList] = useState([])
+
+
+    const fetchData = () => {
+        getElements("purposes")
+            .then(item => setPurposeList(item))
+    }
+
+
+    useEffect(() => {
+        fetchData()
+    }, [])
 
     
 
-    const completeUserList = []
-    const [userList, setUserList] = useState(completeUserList)
-    const [inputCount, setInputCount] = useState(0)
-
+    
 
 
 
@@ -21,13 +41,13 @@ const RegisterPage = () => {
 
     // Error Messages
     const [message, setMessage] = useState("")
-    
-    const handleSubmit = async(event) => {
+
+    const handleSubmit = async (event) => {
         event.preventDefault()
         try {
             const res = await fetch("http://localhost:8080/purposes", {
                 method: "POST",
-                headers: new Headers({"Content-Type": "application/json"}),
+                headers: new Headers({ "Content-Type": "application/json" }),
                 body: JSON.stringify({
                     purposeName: purposeName
                 })
@@ -41,20 +61,26 @@ const RegisterPage = () => {
             }
 
         }
-        catch (err){
+        catch (err) {
             console.log(err)
         }
+        fetchData();
 
     }
+    
 
     const handleChange = (event) => {
         setPurposeName(event.target.value)
     }
 
+
     const handleAdd = () => {
-        const newList = userList.concat({purposeName:purposeName})
+        const newList = userList.concat({ purposeName: purposeName })
         setUserList(newList)
+
     }
+
+
 
 
 
@@ -70,19 +96,14 @@ const RegisterPage = () => {
                     <button type="submit" onClick={handleAdd}>Add</button>
                 </div>
             </form>
-                <div>
+            <div>
                 <hr />
-                    <div>Household</div>
 
-                    {/* Need to Change to fetch Purpose or Person List */}
-                    <ul>
-                        {userList.map((item) => (
-                            <li key={uuidv4()}> {item.purposeName} </li>
-                        ))}
-                    </ul>
-                    {message}
-                </div>
-            
+                {purposeList[0] ? purposeList.map((item) =>
+                    <div key={uuidv4()}>{item.purposeName}</div>) : <div key={uuidv4()}> Loading </div>}
+
+            </div>
+
             <div>
                 <hr />
                 <ul>
@@ -93,7 +114,7 @@ const RegisterPage = () => {
             </div>
             <hr />
 
-            <RegisterTarget/>
+            <RegisterTarget />
 
             <ul>
                 {userList.map((item) => (
@@ -103,22 +124,22 @@ const RegisterPage = () => {
 
             {Array.from(Array(userList.length)).map((number, index) => {
                 return (
-                    <>
+                    <div key={uuidv4()}>
                         <br />
                         <hr />
-                        {userList[0] == userList[index] ? <div>{userList[index].purposeName},Empty your Pocket</div> : <div>You too,{userList[index].purposeName}, cough up!</div>}
+                        {userList[0] == userList[index] ? <div key={uuidv4()} >{userList[index].purposeName},Empty your Pocket</div> : <div key={uuidv4()} >You too,{userList[index].purposeName}, cough up!</div>}
                         <br />
-                        <RegisterCurrentBalance userList={userList[index]}/>
-                    </>
+                        <RegisterCurrentBalance userList={userList[index]} />
+                    </div>
                 )
 
             }
             )
             }
-           
+            <Link to="/registerIncome">Register Income</Link>
         </>
     )
 
 }
 
-export default RegisterPage
+export default RegisterPurpose
