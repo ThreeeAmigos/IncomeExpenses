@@ -520,7 +520,7 @@ export const expenseData = [
         "date": "2022-01-11",
         "name": "Coffee",
         "place": "Coffee",
-        "amount": -2000,
+        "amount": 20,
         "category_id": 20,
         "necessity_index": 3,
         "person_id": 2,
