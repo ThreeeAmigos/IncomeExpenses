@@ -5,16 +5,14 @@ import ExpenseEdit from './ExpenseEdit';
 const Expense = () => {
 
     const [expense, setExpense] = useState([])
-    const [message, setMessage] = useState('')
-    const [newExpenseName, setNewExpenseName] = useState('')
 
 
-    const fetchData = () => {
+    useEffect(() => {
         getElements("expenses")
             .then(item => setExpense(item))
-    }
+    }, [])
 
-
+console.log(expense)
 
     return (
 
@@ -26,9 +24,9 @@ const Expense = () => {
 
                 return (
                     <div>
-
+                        {expense[idx].name} + {expense[idx].amount} + {expense[idx].date} + {expense[idx].category.categoryName} +{expense[idx].person.name} + {expense[idx].purpose.purposeName} 
                         <details>
-                            <summary>{expense[idx].expenseName}</summary>
+                            <summary>Edit</summary>
                             <p ><ExpenseEdit idx={expense[idx]} /></p>
                         </details>
 
