@@ -26,7 +26,6 @@ const RegisterIncomeEach = (person) => {
 
 
 
-
     const handleSubmit = async (event) => {
         event.preventDefault()
         try {
