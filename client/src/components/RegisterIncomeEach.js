@@ -5,19 +5,11 @@ import { v4 as uuidv4 } from 'uuid';
 const RegisterIncomeEach = (person) => {
 
 
-    const [inputCount, setInputCount] = useState(0)
     const [amount, setAmount] = useState(0)
     const [incomeName, setIncomeName] = useState('')
     const [date, setDate] = useState()
     const [message, setMessage] = useState('')
-    const [formsCount, setFormsCount] = useState(0)
 
-
-
-
-    const handleClick = () => {
-        setInputCount(inputCount + 1);
-    }
 
     const handleAmountChange = (event) => {
         setAmount(event.target.value)

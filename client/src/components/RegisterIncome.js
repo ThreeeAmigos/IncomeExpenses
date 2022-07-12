@@ -9,12 +9,18 @@ const RegisterIncome = () => {
     const [personList, setPersonList] = useState([])
     const [total, setTotal] = useState(0)
     const [formCount, setFormcount] = useState(1)
+    const [formCount2, setFormcount2] = useState(1)
+    const [formCount3, setFormcount3] = useState(1)
     
 
 
 
     const handleFormClick = () => { 
         setFormcount(formCount + 1);   }
+
+    const handleFormClick2 = () => {
+        setFormcount2(formCount2 + 1);
+    }
 
     useEffect(() => {
         getElements("persons")
@@ -56,7 +62,6 @@ const RegisterIncome = () => {
         <br />
         <div>£000 per month we need not to waste! </div>
 
-        Your payday is <input type="number"/> 
 
         <br/>
 
@@ -68,7 +73,7 @@ const RegisterIncome = () => {
                     {personList[0] == personList[index] ? <div key={uuidv4()} >{personList[index].name}, What are you biring home each month? 
                     <br/>
 
-                        <button onClick={handleFormClick}> add current balance </button>
+                        <button onClick={handleFormClick}> add regular incomes </button>
                         {Array.from(Array(formCount)).map((number, idx) => {
 
                         return(
@@ -79,10 +84,14 @@ const RegisterIncome = () => {
                     </div> 
                     : <div key={uuidv4()} >{personList[index].name} you ?
                     
-                    
-                            <br />
-                            <RegisterIncomeEach person={personList[index]} />
                     <br/>
+                            <button onClick={handleFormClick2}> add regular incomes </button>
+                            {Array.from(Array(formCount2)).map((number, idx) => {
+
+                                return (
+                                    <RegisterIncomeEach person={personList[index]} />)
+                            })
+                            }
                             
                     </div>}
                     <br />
