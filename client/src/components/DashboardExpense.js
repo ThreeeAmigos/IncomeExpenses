@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import { getElements } from "../services/TrackerServices";
 import { v4 as uuidv4 } from 'uuid';
 
-
-const RegisterExpenseEach = (person) => {
-
+const DashboardExpense = () => {
 
     const [amount, setAmount] = useState(0)
     const [expensePlace, setExpensePlace] = useState('')
@@ -13,8 +11,10 @@ const RegisterExpenseEach = (person) => {
     const [categoryId, setCategoryId] = useState('')
     const [categoryList, setCategoryList] = useState('')
     const [purposeList, setPurposeList] = useState('')
+    const [personList, setPersonList] = useState('')
     const [purpose, setPurpose] = useState('')
     const [date, setDate] = useState()
+    const [person, setPerson] = useState()
     const [message, setMessage] = useState('')
 
 
@@ -23,7 +23,10 @@ const RegisterExpenseEach = (person) => {
             .then(item => setCategoryList(item))
         getElements("purposes")
             .then(item => setPurposeList(item))
+        getElements("persons")
+            .then(item => setPersonList(item))
     }, [])
+
 
     const handleAmountChange = (event) => {
         setAmount(event.target.value)
@@ -35,7 +38,7 @@ const RegisterExpenseEach = (person) => {
         setNecessityIndex(parseInt(event.target.value))
     }
     const handleCategoryChange = (event) => {
-        setCategoryId( parseInt(event.target.value) )
+        setCategoryId(parseInt(event.target.value))
     }
     const handleNameChange = (event) => {
         setExpenseName(event.target.value)
@@ -46,6 +49,12 @@ const RegisterExpenseEach = (person) => {
     const handlePurposeChange = (event) => {
         setPurpose(parseInt(event.target.value))
     }
+
+    const handlePersonChange = (event) => {
+        setPerson(parseInt(event.target.value))
+    }
+
+
     const handleSubmit = async (event) => {
         event.preventDefault()
         try {
@@ -58,12 +67,12 @@ const RegisterExpenseEach = (person) => {
                     amount: amount,
                     necessityIndex: necessityIndex,
                     date: date,
-                    directDebit: true,
-                    category: { 
+                    directDebit: false,
+                    category: {
                         id: categoryId
                     },
                     person: {
-                        id: person.person.id
+                        id: person
                     },
                     purpose: {
                         id: purpose
@@ -83,8 +92,11 @@ const RegisterExpenseEach = (person) => {
     }
 
 
-    return (
-        <>
+    console.log(personList)
+
+return (
+
+<div>
 
             <form onSubmit={handleSubmit}>
                 <br />
@@ -110,7 +122,17 @@ const RegisterExpenseEach = (person) => {
                 }
                 </select>
                 <br/>
-                <label for="purpose">Purpose</label>
+            <label for="person">Who Pay</label>
+            <select name="person" onChange={handlePersonChange}>
+                {Array.from(Array(personList.length)).map((number, idx) => {
+
+                    return (
+                        <option value={idx + 1} id={uuidv4()} >{personList[idx].name}</option>
+                    )
+                })
+                }
+            </select>
+                <label for="purpose">Who For</label>
                 <select name="purpose" onChange={handlePurposeChange}>
                     {Array.from(Array(purposeList.length)).map((number, idx) => {
 
@@ -126,15 +148,10 @@ const RegisterExpenseEach = (person) => {
                 {message}
 
                 <br />
-                <button onClick={handleSubmit()} type="submit">Set a single direct debit</button>
+                <button onClick={handleSubmit()} type="submit">Add expense</button>
             </form>
 
+    </div>
+)}
 
-
-
-        </>
-    )
-
-}
-
-export default RegisterExpenseEach
+export default DashboardExpense;

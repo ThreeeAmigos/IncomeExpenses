@@ -81,10 +81,9 @@ const RegisterCurrentBalance = (userList) => {
         
             <button onClick={handleSavingClick}> add current balance </button>
             {Array.from(Array(inputSavingCount)).map((number, index) => {
-                   return( <>
-                        <br />
-                        <input type="number" onChange={handleChange} name="saving" id={index} />
-                    </>
+                return (<div >
+                       <input type="number" onChange={handleChange} name="saving" id={index} />
+                    </div>
                    )
             })}
 

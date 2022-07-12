@@ -52,7 +52,7 @@ const RegisterIncome = () => {
 
 
     return (<>
-        <div>OK We have £ {personList[0] ? calculateTotal() : <div key={uuidv4()}> Loading </div>} </div>
+        <div>OK We have £ {personList[0] ? calculateTotal() : <div> Loading </div>} </div>
         <br />
         <div>+ Cam's Graph +</div>
 
@@ -66,7 +66,7 @@ const RegisterIncome = () => {
 
         {Array.from(Array(personList.length)).map((number, index) => {
             return (
-                <div key={uuidv4()}>
+                <div >
                     <br />
                     <hr />
                     {personList[0] == personList[index] ? <div key={uuidv4()} >{personList[index].name}, What are you biring home each month? 
@@ -76,7 +76,7 @@ const RegisterIncome = () => {
                         {Array.from(Array(formCount)).map((number, idx) => {
 
                         return(
-                            <RegisterIncomeEach person={personList[index]} /> )})
+                            <RegisterIncomeEach person={personList[index]} id={uuidv4()} /> )})
                         }
                         
                     
@@ -88,7 +88,7 @@ const RegisterIncome = () => {
                             {Array.from(Array(formCount2)).map((number, idx) => {
 
                                 return (
-                                    <RegisterIncomeEach person={personList[index]} />)
+                                    <RegisterIncomeEach person={personList[index]} id={uuidv4()} />)
                             })
                             }
                             

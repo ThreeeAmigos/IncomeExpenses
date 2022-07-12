@@ -42,7 +42,7 @@ const RegisterExpense = () => {
                 {Array.from(Array(categoryList.length)).map((number, idx) => {
 
                     return (
-                        <p>{categoryList[idx].categoryName}</p>
+                        <p >{categoryList[idx].categoryName}</p>
                         )
                 })
                 }
@@ -53,17 +53,17 @@ const RegisterExpense = () => {
 
         {Array.from(Array(personList.length)).map((number, index) => {
             return (
-                <div key={uuidv4()}>
+                <div >
                     <br />
                     <hr />
-                    {personList[0] == personList[index] ? <div key={uuidv4()} >{personList[index].name}, What do you have going out?
+                    {personList[0] == personList[index] ? <div >{personList[index].name}, What do you have going out?
                         <br />
 
                         <button onClick={handleFormClick}> add your direct debit </button>
                         {Array.from(Array(formCount)).map((number, idx) => {
 
                             return (
-                                <RegisterExpenseEach person={personList[index]} />)
+                                <RegisterExpenseEach person={personList[index]} id={uuidv4()} />)
                         })
                         }
 
@@ -76,7 +76,7 @@ const RegisterExpense = () => {
                             {Array.from(Array(formCount2)).map((number, idx) => {
 
                                 return (
-                                    <RegisterExpenseEach person={personList[index]} />)
+                                    <RegisterExpenseEach person={personList[index]} id={uuidv4()} />)
                             })
                             }
 
