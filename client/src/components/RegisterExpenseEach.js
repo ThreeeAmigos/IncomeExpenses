@@ -13,6 +13,7 @@ const RegisterExpenseEach = (person) => {
     const [categoryId, setCategoryId] = useState('')
     const [categoryList, setCategoryList] = useState('')
     const [purposeList, setPurposeList] = useState('')
+    const [purpose, setPurpose] = useState('')
     const [date, setDate] = useState()
     const [message, setMessage] = useState('')
 
@@ -42,6 +43,9 @@ const RegisterExpenseEach = (person) => {
     const handleDateChange = (event) => {
         setDate(event.target.value)
     }
+    const handlePurposeChange = (event) => {
+        setPurpose(event.target.value)
+    }
     const handleSubmit = async (event) => {
         event.preventDefault()
         try {
@@ -55,20 +59,20 @@ const RegisterExpenseEach = (person) => {
                     necessityIntex: necessityIntex,
                     date: date,
                     directDebit: true,
-                    // category: { 
-                    //     id: categoryId
-                    // },
+                    category: { 
+                        id: categoryId
+                    },
                     person: {
                         id: person.person.id
                     },
-                    // purpose: {
-                    //     id: purpose.purpose.id
-                    // }
+                    purpose: {
+                        id: purpose
+                    }
                 })
             })
             const resJson = await res.json()
             if (res.status === 201) {
-                setMessage("Income has been Saved")
+                setMessage("Direct Debit has been Saved")
             } else {
                 setMessage("Error")
             }
@@ -92,17 +96,29 @@ const RegisterExpenseEach = (person) => {
                     <option value="2" >2</option>
                     <option value="3" >3</option>
                 </select>
+               
                 <input type="date" onChange={handleDateChange} name="date" value={date} id={uuidv4()} />
-                <select type="number" onChange={handleCategoryChange} name="category" id={uuidv4()}  
-                >
-                    {/* {Array.from(Array(categoryList.length)).map((number, idx) => {
+                <br />
+                <label for="category">Category</label>
+                <select name="category" onChange={handleCategoryChange}>
+                {Array.from(Array(categoryList.length)).map((number, idx) => {
+
+                    return (
+                        <option value={idx}>{categoryList[idx].categoryName}</option>
+                    )
+                })
+                }
+                </select>
+                <br/>
+                <label for="purpose">Purpose</label>
+                <select name="purpose" onChange={handlePurposeChange}>
+                    {Array.from(Array(purposeList.length)).map((number, idx) => {
 
                         return (
-                            <p>{categoryList[idx]}</p>
+                            <option value={idx}>{purposeList[idx].purposeName}</option>
                         )
                     })
-                    }  */}
-                    
+                    }
                 </select>
                 <br />
 
@@ -110,7 +126,7 @@ const RegisterExpenseEach = (person) => {
                 {message}
 
                 <br />
-                <button onClick={handleSubmit()} type="submit">Set single regular income</button>
+                <button onClick={handleSubmit()} type="submit">Set a single direct debit</button>
             </form>
 
 
