@@ -81,7 +81,7 @@ const DashboardExpense = () => {
             })
             const resJson = await res.json()
             if (res.status === 201) {
-                setMessage("Direct Debit has been Saved")
+                setMessage("Saved")
             } else {
                 setMessage("Error")
             }
@@ -92,27 +92,25 @@ const DashboardExpense = () => {
     }
 
 
-    console.log(personList)
-
 return (
 
 <div>
 
             <form onSubmit={handleSubmit}>
                 <br />
-                <input type="text" onChange={handleNameChange} name="expenseName"  placeholder="What is for" />
-                <input type="text" onChange={handlePlaceChange} name="expensePlace"  placeholder="from where" />
-                <input type="number" onChange={handleAmountChange} name="amount" placeholder="how much" />
-                <select type="number" onChange={handleNecessityIndex} name="necessityIntex" placeholder="how important?" >
-                    <option value={1} >1</option>
-                    <option value={2} >2</option>
-                    <option value={3} >3</option>
-                </select>
+            <input type="text" onChange={handleNameChange} name="expenseName" placeholder="What is for" required />
+            <input type="text" onChange={handlePlaceChange} name="expensePlace" placeholder="from where" required />
+            <input type="number" onChange={handleAmountChange} name="amount" placeholder="how much" required />
+            <p>How important is this purchase:</p>
+            <input type="radio" id="html" onChange={handleNecessityIndex} name="necessityIntex" required value={1}/><label for="html">1</label>
+            <input type="radio" id="html" onChange={handleNecessityIndex} name="necessityIntex" required value={2} /><label for="html">2</label>
+            <input type="radio" id="html" onChange={handleNecessityIndex} name="necessityIntex" required value={3} /><label for="html">3</label>
+            <br/>
                
-                <input type="date" onChange={handleDateChange} name="date" value={date} />
+            <input type="date" onChange={handleDateChange} name="date" value={date} required />
                 <br />
                 <label for="category">Category</label>
-                <select name="category" onChange={handleCategoryChange}>
+                <select name="category" onChange={handleCategoryChange} required>
                 {Array.from(Array(categoryList.length)).map((number, idx) => {
 
                     return (
