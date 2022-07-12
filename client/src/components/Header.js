@@ -18,7 +18,7 @@ const HeaderItem = styled.div`
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 200;
   width: fit-content;
-`
+`;
 
 const Header = () => {
   return (
@@ -26,7 +26,7 @@ const Header = () => {
       <HeaderItem>Element one</HeaderItem>
       <HeaderItem>Element two</HeaderItem>
     </MainHeader>
-  )
-}
+  );
+};
 
 export default Header;
