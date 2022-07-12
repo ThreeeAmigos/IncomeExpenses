@@ -1,9 +1,24 @@
-import { ResponsiveContainer, LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Line } from 'recharts'
-import createTrend from 'trendline'
+import { useEffect, useState } from 'react'
+import { ResponsiveContainer, LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Scatter, ScatterChart } from 'recharts'
+import { getElements } from '../services/TrackerServices'
 
 
+const GraphTest = () => {
 
-const GraphTest = ({expenses, incomes}) => {
+    const [expenses, setExpenses] = useState([])
+    const [incomes, setIncomes] = useState([])
+
+    useEffect(()=>{
+        getElements("expenses")
+            .then(item => setExpenses(item))
+    }, [])
+
+    useEffect(()=>{
+        getElements("incomes")
+            .then(item => setIncomes(item))
+    }, [])
+
+
 
     if (expenses[0] && incomes[0]) {
 
@@ -40,29 +55,44 @@ const GraphTest = ({expenses, incomes}) => {
         incomesTally(incomes)
 
         const savingsTally = () => {
-            console.log('Savings Tally', incomesTally(incomes) - expensesTally(expenses) )
             return incomesTally(incomes) - expensesTally(expenses)
         }
 
-        savingsTally()
+        
     }
 
+    const incomesWithNewKey = incomes.map(income => ({...income, amount2: income.amount, amount: undefined}))
+    const allTxs = expenses.concat(incomesWithNewKey)
+    const allTxsSorted = allTxs.sort((tx1, tx2) => Number(tx1.date.replace(/-/g, "")) - Number(tx2.date.replace(/-/g, "")))
+    const allTxsSortedPounds = allTxsSorted.map(txn => ({...txn, amount: txn.amount/100}))
+
+    console.log('look here', allTxsSortedPounds)
+
+
+    
 
 
     return (
         <>
-            {/* <ResponsiveContainer width="90%" height={300}> */}
-            <LineChart width={730} height={500}
-                margin={{ top: 50, right: 30, left: 20, bottom: 5 }}>
-                {/* <CartesianGrid strokeDasharray="3 3" /> */}
-                <XAxis  name="time" dataKey="date" />
-                <YAxis dataKey="amount"/>
-                <Tooltip />
-                <Legend />
-                <Line  data={expenses} type="function" dataKey="amount" stroke="#8884d8"  />
-                <Line data={incomes} type="category" dataKey="amount" stroke="#82ca9d" />
-            </LineChart>
-            {/* </ResponsiveContainer> */}
+            <ResponsiveContainer width="99%" aspect={2} >
+                <ScatterChart 
+                    margin={{ 
+                        top: 50, 
+                        right: 50, 
+                        left: 50, 
+                        bottom: 50 }}
+                        data={allTxsSorted}>
+                    {/* <CartesianGrid strokeDasharray="3 3" /> */}
+                    <XAxis  name="time" dataKey="date" />
+                    <YAxis />
+                    <Tooltip cursor={{ strokeDasharray: '3 3' }}/>
+                    {/* <Legend /> */}
+                    {/* <Line  data={expenses} type="category" dataKey="amount" stroke="#8884d8"  />
+                    <Line data={incomes} type="category" dataKey="amount" stroke="#82ca9d" /> */}
+                    <Scatter  dataKey="amount" fill="#8884d8"  />
+                    <Scatter  dataKey="amount2" fill="#82ca9d" />
+                </ScatterChart>
+            </ResponsiveContainer>
         </>
     )
 }
