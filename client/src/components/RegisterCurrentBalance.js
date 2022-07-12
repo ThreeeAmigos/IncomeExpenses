@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 const RegisterCurrentBalance = (userList) => {
 
 
-    const [inputCount, setInputCount] = useState(0)
+    const [inputSavingCount, setInputSavingCount] = useState(0)
     const [inputDebtCount, setInputDebtCount] = useState(0)
     const [totalSavings, setTotalSavings] = useState(0)
     const [totalDebts, setTotalDebts] = useState(0)
@@ -16,8 +16,8 @@ const RegisterCurrentBalance = (userList) => {
 
 
 
-    const handleClick = () => {
-        setInputCount(inputCount + 1);
+    const handleSavingClick = () => {
+        setInputSavingCount(inputSavingCount + 1);
     }
     const handleDebtClick = () => {
         setInputDebtCount(inputDebtCount + 1);
@@ -79,21 +79,18 @@ const RegisterCurrentBalance = (userList) => {
     return (
         <>
         
-            <button onClick={handleClick}> add current balance </button>
-            {Array.from(Array(inputCount)).map((number, index) => {
-                return (
-                    <>
+            <button onClick={handleSavingClick}> add current balance </button>
+            {Array.from(Array(inputSavingCount)).map((number, index) => {
+                   return( <>
                         <br />
                         <input type="number" onChange={handleChange} name="saving" id={index} />
                     </>
-                )
+                   )
+            })}
 
-            }
-
-            )
-            }
             <br />
             <br />
+
             <button onClick={handleDebtClick}> add current debt </button>
             {Array.from(Array(inputDebtCount)).map((number, index) => {
                 return (
