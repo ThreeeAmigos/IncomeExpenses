@@ -10,7 +10,7 @@ const RegisterExpenseEach = (person) => {
     const [expensePlace, setExpensePlace] = useState('')
     const [necessityIndex, setNecessityIndex] = useState(0)
     const [expenseName, setExpenseName] = useState('')
-    const [categoryId, setCategoryId] = useState('')
+    const [categoryId, setCategoryId] = useState(1)
     const [categoryList, setCategoryList] = useState('')
     const [purposeList, setPurposeList] = useState('')
     const [purpose, setPurpose] = useState('')
@@ -91,11 +91,13 @@ const RegisterExpenseEach = (person) => {
                 <input type="text" onChange={handleNameChange} name="expenseName"  placeholder="What is for" />
                 <input type="text" onChange={handlePlaceChange} name="expensePlace"  placeholder="from where" />
                 <input type="number" onChange={handleAmountChange} name="amount" placeholder="how much" />
-                <select type="number" onChange={handleNecessityIndex} name="necessityIntex" placeholder="how important?" >
-                    <option value={1} >1</option>
-                    <option value={2} >2</option>
-                    <option value={3} >3</option>
-                </select>
+
+                <p>How important is this purchase:</p>
+                <input type="radio" id="index1" onChange={handleNecessityIndex} name="necessityIntex" required value={1} /><label for="index1">1</label>
+                <input type="radio" id="index2" onChange={handleNecessityIndex} name="necessityIntex" required value={2} /><label for="index2">2</label>
+                <input type="radio" id="index3" onChange={handleNecessityIndex} name="necessityIntex" required value={3} /><label for="index3">3</label>
+                <br />
+
                
                 <input type="date" onChange={handleDateChange} name="date" value={date} />
                 <br />
@@ -110,16 +112,15 @@ const RegisterExpenseEach = (person) => {
                 }
                 </select>
                 <br/>
-                <label for="purpose">Purpose</label>
-                <select name="purpose" onChange={handlePurposeChange}>
-                    {Array.from(Array(purposeList.length)).map((number, idx) => {
-
-                        return (
-                            <option value={purposeList[idx].id} id={uuidv4()} >{purposeList[idx].purposeName}</option>
-                        )
-                    })
-                    }
-                </select>
+                <p for="purpose">Who For</p>
+                {Array.from(Array(purposeList.length)).map((number, idx) => {
+                    return (
+                        <>
+                            <input type="radio" name="purpose" id="purpose" onChange={handlePurposeChange} required value={purposeList[idx].id} /><label for="purpose">{purposeList[idx].purposeName}</label>
+                        </>
+                    )
+                })
+                }
                 <br />
 
                 <br />

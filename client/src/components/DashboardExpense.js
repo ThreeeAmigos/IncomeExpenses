@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { getElements } from "../services/TrackerServices";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -8,8 +8,8 @@ const DashboardExpense = () => {
     const [expensePlace, setExpensePlace] = useState('')
     const [necessityIndex, setNecessityIndex] = useState(0)
     const [expenseName, setExpenseName] = useState('')
-    const [categoryId, setCategoryId] = useState('')
     const [categoryList, setCategoryList] = useState('')
+    const [categoryId, setCategoryId] = useState(1)
     const [purposeList, setPurposeList] = useState('')
     const [personList, setPersonList] = useState('')
     const [purpose, setPurpose] = useState('')
@@ -92,54 +92,54 @@ const DashboardExpense = () => {
     }
 
 
-return (
+    return (
 
-<div>
+        <div>
 
             <form onSubmit={handleSubmit}>
                 <br />
-            <input type="text" onChange={handleNameChange} name="expenseName" placeholder="What is for" required />
-            <input type="text" onChange={handlePlaceChange} name="expensePlace" placeholder="from where" required />
-            <input type="number" onChange={handleAmountChange} name="amount" placeholder="how much" required />
-            <p>How important is this purchase:</p>
-            <input type="radio" id="html" onChange={handleNecessityIndex} name="necessityIntex" required value={1}/><label for="html">1</label>
-            <input type="radio" id="html" onChange={handleNecessityIndex} name="necessityIntex" required value={2} /><label for="html">2</label>
-            <input type="radio" id="html" onChange={handleNecessityIndex} name="necessityIntex" required value={3} /><label for="html">3</label>
-            <br/>
-               
-            <input type="date" onChange={handleDateChange} name="date" value={date} required />
+                <input type="text" onChange={handleNameChange} name="expenseName" placeholder="What is for" required />
+                <input type="text" onChange={handlePlaceChange} name="expensePlace" placeholder="from where" required />
+                <input type="number" onChange={handleAmountChange} name="amount" placeholder="how much" required />
+                <p>How important is this purchase:</p>
+                <input type="radio" id="index1" onChange={handleNecessityIndex} name="necessityIntex" required value={1} /><label for="index1">1</label>
+                <input type="radio" id="index2" onChange={handleNecessityIndex} name="necessityIntex" required value={2} /><label for="index2">2</label>
+                <input type="radio" id="index3" onChange={handleNecessityIndex} name="necessityIntex" required value={3} /><label for="index3">3</label>
+                <br />
+
+                <input type="date" onChange={handleDateChange} name="date" value={date} required />
                 <br />
                 <label for="category">Category</label>
                 <select name="category" onChange={handleCategoryChange} required>
-                {Array.from(Array(categoryList.length)).map((number, idx) => {
-
-                    return (
-                        <option value={categoryList[idx].id} id={uuidv4()}>{categoryList[idx].categoryName}</option>
-                    )
-                })
-                }
-                </select>
-                <br/>
-            <label for="person">Who Pay</label>
-            <select name="person" onChange={handlePersonChange}>
-                {Array.from(Array(personList.length)).map((number, idx) => {
-
-                    return (
-                        <option value={personList[idx].id} id={uuidv4()} >{personList[idx].name}</option>
-                    )
-                })
-                }
-            </select>
-                <label for="purpose">Who For</label>
-                <select name="purpose" onChange={handlePurposeChange}>
-                    {Array.from(Array(purposeList.length)).map((number, idx) => {
-
+                    {Array.from(Array(categoryList.length)).map((number, idx) => {
                         return (
-                            <option value={purposeList[idx].id} id={uuidv4()} >{purposeList[idx].purposeName}</option>
+                            <option value={categoryList[idx].id} id={uuidv4()} placeholder="Category">{categoryList[idx].categoryName}</option>
                         )
                     })
                     }
                 </select>
+                <br />
+                <p>Who Pay</p>
+        
+                    {Array.from(Array(personList.length)).map((number, idx) => {
+
+                        return (
+                            <>
+                                <input type="radio" name="person" id="person" onChange={handlePersonChange} required value={personList[idx].id} /><label for="person">{personList[idx].name}</label>
+                            </>
+                        )
+                    })
+                    }
+                
+                <p for="purpose">Who For</p>
+                    {Array.from(Array(purposeList.length)).map((number, idx) => {
+                        return (
+                            <>
+                                <input type="radio" name="purpose" id="purpose" onChange={handlePurposeChange} required value={purposeList[idx].id} /><label for="purpose">{purposeList[idx].purposeName}</label>
+                            </>
+                        )
+                    })
+                    }
                 <br />
 
                 <br />
@@ -149,7 +149,8 @@ return (
                 <button onClick={handleSubmit()} type="submit">Add expense</button>
             </form>
 
-    </div>
-)}
+        </div>
+    )
+}
 
 export default DashboardExpense;
