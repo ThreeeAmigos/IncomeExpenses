@@ -9,6 +9,7 @@ import {
     Route,
     Link
 } from "react-router-dom";
+import GraphTest from './GraphTest';
 
 
 
@@ -27,6 +28,7 @@ const Register = () => {
                     <Route path="/registerPurpose" element={<RegisterPurpose />} />
                     <Route path="/registerIncome" element={<RegisterIncome />} />
                     <Route path="/registerExpense" element={<RegisterExpense />} />
+                    <Route path="/" element={<GraphTest />} />
                 </Routes>
             </Router>
 
