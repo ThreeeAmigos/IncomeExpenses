@@ -14,8 +14,6 @@ const MainContainer = () => {
   return (
     <>
       <Register />
-      <FetchCategory />
-
     </>
   )
 }
