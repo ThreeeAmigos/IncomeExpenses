@@ -116,7 +116,7 @@ return (
                 {Array.from(Array(categoryList.length)).map((number, idx) => {
 
                     return (
-                        <option value={idx + 1} id={uuidv4()}>{categoryList[idx].categoryName}</option>
+                        <option value={categoryList[idx].id} id={uuidv4()}>{categoryList[idx].categoryName}</option>
                     )
                 })
                 }
@@ -127,7 +127,7 @@ return (
                 {Array.from(Array(personList.length)).map((number, idx) => {
 
                     return (
-                        <option value={idx + 1} id={uuidv4()} >{personList[idx].name}</option>
+                        <option value={personList[idx].id} id={uuidv4()} >{personList[idx].name}</option>
                     )
                 })
                 }
@@ -137,7 +137,7 @@ return (
                     {Array.from(Array(purposeList.length)).map((number, idx) => {
 
                         return (
-                            <option value={idx + 1} id={uuidv4()} >{purposeList[idx].purposeName}</option>
+                            <option value={purposeList[idx].id} id={uuidv4()} >{purposeList[idx].purposeName}</option>
                         )
                     })
                     }

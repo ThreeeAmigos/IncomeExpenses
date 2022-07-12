@@ -104,7 +104,7 @@ const RegisterExpenseEach = (person) => {
                 {Array.from(Array(categoryList.length)).map((number, idx) => {
 
                     return (
-                        <option value={idx + 1} id={uuidv4()}>{categoryList[idx].categoryName}</option>
+                        <option value={categoryList[idx].id} id={uuidv4()}>{categoryList[idx].categoryName}</option>
                     )
                 })
                 }
@@ -115,7 +115,7 @@ const RegisterExpenseEach = (person) => {
                     {Array.from(Array(purposeList.length)).map((number, idx) => {
 
                         return (
-                            <option value={idx + 1} id={uuidv4()} >{purposeList[idx].purposeName}</option>
+                            <option value={purposeList[idx].id} id={uuidv4()} >{purposeList[idx].purposeName}</option>
                         )
                     })
                     }
