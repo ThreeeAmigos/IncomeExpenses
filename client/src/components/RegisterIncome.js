@@ -10,7 +10,6 @@ const RegisterIncome = () => {
     const [total, setTotal] = useState(0)
     const [formCount, setFormcount] = useState(1)
     const [formCount2, setFormcount2] = useState(1)
-    const [formCount3, setFormcount3] = useState(1)
     
 
 
