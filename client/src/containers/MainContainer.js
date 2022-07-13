@@ -12,6 +12,7 @@ import Person from "../components/databaseReadings/Person";
 import GraphTest from '../components/GraphTest';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Footer from "../components/Footer";
+import {Navbar, Nav, Button } from 'react-bootstrap'
 
 
 const MainContainer = () => {
@@ -28,6 +29,7 @@ const MainContainer = () => {
         <Link to="/income">Income List</Link>
         <Link to="/person">Person List</Link>
         <Link to="/graph">Graph Test</Link>
+        
         <Routes>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/registerPurpose" element={<RegisterPurpose />} />

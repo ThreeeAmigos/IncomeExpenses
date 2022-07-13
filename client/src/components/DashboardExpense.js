@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getElements } from "../services/TrackerServices";
 import { v4 as uuidv4 } from 'uuid';
+import { Navbar, Nav, Button, Container } from "react-bootstrap";
 
 const DashboardExpense = () => {
 
@@ -98,55 +99,62 @@ const DashboardExpense = () => {
 
             <form onSubmit={handleSubmit}>
                 <br />
-                <input type="text" onChange={handleNameChange} name="expenseName" placeholder="What is for" required />
-                <input type="text" onChange={handlePlaceChange} name="expensePlace" placeholder="from where" required />
-                <input type="number" onChange={handleAmountChange} name="amount" placeholder="how much" required />
-                <p>How important is this purchase:</p>
-                <input type="radio" id="index1" onChange={handleNecessityIndex} name="necessityIntex" required value={1} /><label for="index1">1</label>
-                <input type="radio" id="index2" onChange={handleNecessityIndex} name="necessityIntex" required value={2} /><label for="index2">2</label>
-                <input type="radio" id="index3" onChange={handleNecessityIndex} name="necessityIntex" required value={3} /><label for="index3">3</label>
-                <br />
+                <input class="form-control" type="text" onChange={handleNameChange} name="expenseName" placeholder="What is for" required />
+                <input class="form-control" type="text" onChange={handlePlaceChange} name="expensePlace" placeholder="from where" required />
 
-                <input type="date" onChange={handleDateChange} name="date" value={date} required />
-                <br />
-                <label for="category">Category</label>
-                <select name="category" onChange={handleCategoryChange} required>
-                    {Array.from(Array(categoryList.length)).map((number, idx) => {
-                        return (
-                            <option value={categoryList[idx].id} id={uuidv4()} placeholder="Category">{categoryList[idx].categoryName}</option>
-                        )
-                    })
-                    }
-                </select>
-                <br />
-                <p>Who Pay</p>
-        
+                <input class="form-control" type="number" onChange={handleAmountChange} name="amount" placeholder="how much" required />
+                <label class="form-label mt-4">How important is this purchase:</label>
+                <fieldset class="form-control">
+                        <label class="form-check-label" >
+                        <input class="form-check-input" type="radio" id="index1" onChange={handleNecessityIndex} name="necessityIntex" required value={1} /> 1 &nbsp;&nbsp;</label>
+                        <label class="form-check-label" >
+                        <input class="form-check-input" type="radio" onChange={handleNecessityIndex} name="necessityIntex" required value={2} /> 2 &nbsp;&nbsp;</label>
+                    <input class="form-check-input" type="radio" id="index3" onChange={handleNecessityIndex} name="necessityIntex" required value={3} /><label for="index3"> 3 &nbsp;&nbsp;</label>
+                </fieldset>
+
+                <div class="form-group">
+                    <input class="form-control" type="date" onChange={handleDateChange} name="date" value={date} required />
+                    <br />
+                    <label class="form-label mt-4" for="category">Category</label>
+                    <select class="form-select"  name="category" onChange={handleCategoryChange} required>
+                        {Array.from(Array(categoryList.length)).map((number, idx) => {
+                            return (
+                                <option value={categoryList[idx].id} id={uuidv4()} placeholder="Category">{categoryList[idx].categoryName}</option>
+                            )
+                        })
+                        }
+                    </select>
+                    <br />
+                    <p>Who Pay</p>
+
                     {Array.from(Array(personList.length)).map((number, idx) => {
 
                         return (
-                            <>
-                                <input type="radio" name="person" id="person" onChange={handlePersonChange} required value={personList[idx].id} /><label for="person">{personList[idx].name}</label>
-                            </>
+                            <div class="form-control">
+                                <input type="radio" name="person" id="person" class="form-check-input"  onChange={handlePersonChange} required value={personList[idx].id} /><label for="person">&nbsp;{personList[idx].name}&nbsp;&nbsp;</label>
+                            </div>
                         )
                     })
                     }
-                
-                <p for="purpose">Who For</p>
+<br/>
+<br/>
+                    <label for="purpose">Who For&nbsp;&nbsp;</label>
                     {Array.from(Array(purposeList.length)).map((number, idx) => {
                         return (
-                            <>
-                                <input type="radio" name="purpose" id="purpose" onChange={handlePurposeChange} required value={purposeList[idx].id} /><label for="purpose">{purposeList[idx].purposeName}</label>
-                            </>
+                            <div class="form-control">
+                                <input type="radio" class="form-check-input"  name="purpose" id="purpose" onChange={handlePurposeChange} required value={purposeList[idx].id} /><label for="purpose">&nbsp;&nbsp;{purposeList[idx].purposeName}&nbsp;&nbsp;</label>
+                            </div>
                         )
                     })
                     }
-                <br />
+                    <br />
 
-                <br />
-                {message}
+                    <br />
+                    {message}
 
-                <br />
-                <button onClick={handleSubmit()} type="submit">Add expense</button>
+                    <br />
+                </div>
+                <button class="btn btn-primary" onClick={handleSubmit()} type="submit">Add expense</button>
             </form>
 
         </div>
