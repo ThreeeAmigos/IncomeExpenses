@@ -71,8 +71,8 @@ const RegisterIncome = () => {
                     <hr />
                     {personList[0] == personList[index] ? <div key={uuidv4()} >{personList[index].name}, What are you biring home each month? 
                     <br/>
-
-                        <button onClick={handleFormClick}> add regular incomes </button>
+                    <br/>
+                        <button class="btn btn-outline-primary" onClick={handleFormClick}> add regular incomes </button>
                         {Array.from(Array(formCount)).map((number, idx) => {
 
                         return(
@@ -82,9 +82,9 @@ const RegisterIncome = () => {
                     
                     </div> 
                     : <div key={uuidv4()} >{personList[index].name} you ?
-                    
                     <br/>
-                            <button onClick={handleFormClick2}> add regular incomes </button>
+                    <br/>
+                            <button class="btn btn-outline-primary" onClick={handleFormClick2}> add regular incomes </button>
                             {Array.from(Array(formCount2)).map((number, idx) => {
 
                                 return (
