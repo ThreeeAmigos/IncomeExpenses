@@ -16,6 +16,7 @@ const Income = () => {
     return (
 
         <div class="center">
+        <h1>Income</h1>
             <table >
                 <thead>
                     <tr>

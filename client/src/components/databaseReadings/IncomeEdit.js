@@ -142,7 +142,7 @@ const IncomeEdit = (idx) => {
 
                     return (
                         <>
-                            <input type="radio" name="person" id="person" onChange={handlePersonChange} required value={personList[index].id} /><label for="person">{personList[index].name}</label>
+                            <input type="radio" name="person" id="person" onChange={handlePersonChange} class="form-control"  required value={personList[index].id} /><label for="person">{personList[index].name}</label>
                             <br/>
                         </>
                     )

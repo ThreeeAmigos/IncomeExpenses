@@ -31,8 +31,8 @@ const Person = () => {
                 method: "POST",
                 headers: new Headers({ "Content-Type": "application/json" }),
                 body: JSON.stringify({
-                    currentPosition: position*100,
-                    loan: loan*100,
+                    currentPosition: position * 100,
+                    loan: loan * 100,
                     name: newPersonName,
                     household: household[0]
                 }
@@ -55,7 +55,7 @@ const Person = () => {
                 setMessage("")
             }
         }
-        
+
         catch (err) {
             console.log(err)
         }
@@ -78,44 +78,75 @@ const Person = () => {
     return (
 
         <>
-        <SetupMenu/>
+            <SetupMenu />
 
+            <div class="center">
 
-        <div class="align">
-            {Array.from(Array(person.length)).map((number, idx) => {
+                <h1>User List</h1>
+                <table >
+                    <thead>
+                        <tr>
+                            <th ></th>
+                            <th class="column-wide">Name</th>
+                            <th class="column-wide">Current Position</th>
+                            <th class="column-wide">Debt</th>
+                        </tr>
+                    </thead>
+                </table>
+                <table>
+                    <tbody>
+                        <tr class="table table-hover">
 
-                return (
-                    <div>
+                            {Array.from(Array(person.length)).map((number, idx) => {
 
-                        <details>
-                            <summary>{person[idx].name} + £{person[idx].currentPosition / 100} + loan £{person[idx].loan / 100}</summary>
-                            <p ><PersonEdit idx={person[idx]} /></p>
-                        </details>
+                                return (
+                                    <details>
+                                        <summary>
+                                            <td class="column">{idx + 1}</td>
+                                            <td class="column-wide">{person[idx].name}</td>
+                                            <td class="column-wide">£{person[idx].currentPosition / 100}</td>
+                                            <td class="column-wide">£{person[idx].loan / 100}</td>
+                                        </summary>
+                                        <p ><PersonEdit idx={person[idx]} /></p>
 
-                    </div>
-                )
-            })
-            }
+                                    </details>
 
-            <p>Add a new Person</p>
-            <form onSubmit={handlePost}>
+                                )
 
-                <input type="text" onChange={handleNewPersonChange} value={newPersonName} required placeholder="name"/> <br />
-                <label for="position">how much do you have now</label>
-                <input type="number" onChange={handleNewPositionChange} value={position} name="position" required /> <br />
-                <label for="loan">loan</label>
-                <input name="loan" type="number" onChange={handleLoanChange} value={loan} required /> <br />
+                            })
+                            }
+                        </tr>
+                    </tbody >
 
+                </table >
 
-
-
-                <button onClick={handlePost} type="submit-target" >Add Person</button>
                 <br />
-                {message}
-            </form>
+                <br />
+                <br />
+                <br />
+                <p>Add a new Person</p>
+                <form onSubmit={handlePost}>
 
-            <br />
-            </div>
+                    <input class="form-control" type="text" onChange={handleNewPersonChange} value={newPersonName} required placeholder="name" /> 
+                    <br />
+                    <label for="position">Current Position</label>
+                    <br />
+                    <input class="form-control" type="number" onChange={handleNewPositionChange} value={position} name="position" required /> 
+                    <br />
+                    <label for="loan">Debt</label>
+                    <br />
+                    <input class="form-control"  name="loan" type="number" onChange={handleLoanChange} value={loan} required /> <br />
+
+
+
+
+                    <button class="btn btn-outline-primary"  onClick={handlePost} type="submit-target" >Add Person</button>
+                    <br />
+                    {message}
+                </form>
+
+                <br />
+            </div >
         </>
     )
 }

@@ -23,6 +23,7 @@ const Expense = () => {
 
         <div class="center">
 
+            <h1>Expense</h1>
             <table >
                 <thead>
                     <tr>
@@ -35,26 +36,26 @@ const Expense = () => {
                         <th class="column-wide">Pay for</th>
                     </tr>
                 </thead>
-                </table>
-                <table >
+            </table>
+            <table >
                 <tbody><tr class="table table-hover">
                     {Array.from(Array(expense.length)).map((number, idx) => {
                         return (
                             <>
-                                
-                                    <details>
-                                        <summary>
-                                            <td class="column">{idx + 1}</td>
+
+                                <details>
+                                    <summary>
+                                        <td class="column">{idx + 1}</td>
                                         <td class="column-wide">{expense[idx].name}</td>
-                                            <td class="column-wide">£{expense[idx].amount / 100}</td>
-                                            <td class="column-wide">{expense[idx].date}</td>
-                                            <td class="column-wide">{expense[idx].category.categoryName}</td>
-                                            <td class="column-wide">{expense[idx].person.name}</td>
-                                            <td class="column-wide">{expense[idx].purpose.purposeName}</td>
-                                        </summary>
-                                        <p ><ExpenseEdit idx={expense[idx]} /></p>
-                                    </details>
-                                
+                                        <td class="column-wide">£{expense[idx].amount / 100}</td>
+                                        <td class="column-wide">{expense[idx].date}</td>
+                                        <td class="column-wide">{expense[idx].category.categoryName}</td>
+                                        <td class="column-wide">{expense[idx].person.name}</td>
+                                        <td class="column-wide">{expense[idx].purpose.purposeName}</td>
+                                    </summary>
+                                    <p ><ExpenseEdit idx={expense[idx]} /></p>
+                                </details>
+
                                 {/* <td colspan="7">
                                         <details>
                                             <summary>Edit</summary>
