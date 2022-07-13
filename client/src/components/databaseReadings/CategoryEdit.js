@@ -81,15 +81,15 @@ const CategoryEdit = (idx) => {
         <div>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <input type="text" onChange={handleCategoryChange} value={categoryName} required /> <br />
-                    <button onClick={handleSubmit} type="submit-target" >Change Name</button>
+                    <input class="form-control" type="text" onChange={handleCategoryChange} value={categoryName} required /> <br />
+                    <button class="btn btn-outline-primary" onClick={handleSubmit} type="submit-target" >Change Name</button>
                     <br />
                     {message}
                 </div>
             </form>
             <form onSubmit={handleDelete}>
                 <div>
-                    <button onClick={handleDelete} type="submit-target" >Delete</button>
+                    <button class="btn btn-outline-primary" onClick={handleDelete} type="submit-target" >Delete</button>
                     <br />
                     {deleteMessage}
                 </div>

@@ -187,24 +187,29 @@ const ExpenseEdit = (idx) => {
                         <>
                             <input type="radio" name="person" id="person" onChange={handlePersonChange} required value={personList[idx].id} /><label for="person">{personList[idx].name}</label>
                             <br/>
+                            <br/>
                         </>
                     )
                 })
                 }
 
                 <p for="purpose">Who For</p>
+                
                 {Array.from(Array(purposeList.length)).map((number, idx) => {
                     return (
                         <>
                             <input type="radio" name="purpose" id="purpose" onChange={handlePurposeChange} required value={purposeList[idx].id} /><label for="purpose">{purposeList[idx].purposeName}</label>
+                            <br/>
+                            <br/>
                         </>
                     )
                 })
                 }
-                <br />
+                
 
-                <br />
+                
                 {message}
+                
 
                 <br />
                 <button class="btn btn-outline-primary" onClick={handleSubmit()} type="submit">Add expense</button>
