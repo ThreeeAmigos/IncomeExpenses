@@ -8,7 +8,7 @@ const Dashboard = () => {
 
 return (
 <div>
-        <DashboardExpense/>
+        <DashboardExpense />
 </div>
 )
 }

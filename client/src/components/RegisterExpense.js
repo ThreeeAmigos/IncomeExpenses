@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { getElements } from '../services/TrackerServices';
 import RegisterExpenseEach from './RegisterExpenseEach';
+import { Container } from 'react-bootstrap'
 
 const RegisterExpense = () => {
 
