@@ -85,7 +85,7 @@ const RegisterPurpose = () => {
 
 
     return (
-        <>
+        <div class="align">
             <h1>TRACK YOUR EXPENSE</h1>
             <br />
             <h3>We're gonna make you rich!</h3>
@@ -140,7 +140,7 @@ const RegisterPurpose = () => {
             )
             }
             <Link to="/registerIncome">Register Income</Link>
-        </>
+        </div>
     )
 
 }

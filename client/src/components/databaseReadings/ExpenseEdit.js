@@ -147,7 +147,7 @@ const ExpenseEdit = (idx) => {
     }
 
     return (
-        <div>
+        <>
             <form onSubmit={handleSubmit}>
                 <br />
                 <input class="form-control" type="text" onChange={handleNameChange} name="expenseName" placeholder="What is for" required />
@@ -216,7 +216,7 @@ const ExpenseEdit = (idx) => {
                     {deleteMessage}
                 </div>
             </form>
-        </div>
+        </>
     )
 }
 

@@ -32,30 +32,43 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
- .align {
-   max-width: 80vw;
-   margin: auto;
- }
+.align {
+  max-width: 80vw;
+  margin-left: 20vw;
+  margin-right: 20vw;
+}
 
- details>summary {
-   list-style: none;
- }
+details>summary {
+  list-style: none;
+}
 
- details>summary::-webkit-details-marker {
-   display: none;
- }
+details>summary::-webkit-details-marker {
+  display: none;
+}
 
- .column{
-  width: 30px; 
+.column {
+  width: 30px;
   text-align: center
- }
+}
 
- .column-wide{
+.column-wide {
   width: 130px;
   text-align: center
- }
+}
+
+#top {
+  display: flex;
+  text-align: center;
+  position: absolute;
+  margin-top: 10vh;
+}
+
+#margin {
+  margin-top: 100px;
+}
