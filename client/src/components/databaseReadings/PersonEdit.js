@@ -119,13 +119,13 @@ const PersonEdit = (idx) => {
                 <label for="loan">loan</label>
                 <input name="loan" type="number" onChange={handleLoanChange} value={loan} required /> <br />
 
-                <button onClick={handleSubmit} type="submit-target" >Edit Current Position</button>
+                <button class="btn btn-outline-primary" onClick={handleSubmit} type="submit-target" >Edit Current Position</button>
                 <br />
                 {message}
             </form>
             <form onSubmit={handleDelete}>
                 <div>
-                    <button onClick={handleDelete} type="submit-target" >Delete</button>
+                    <button class="btn btn-outline-primary" onClick={handleDelete} type="submit-target" >Delete</button>
                     <br />
                     {deleteMessage}
                 </div>
