@@ -7,6 +7,7 @@ import RegisterIncome from "../components/RegisterIncome";
 import RegisterExpense from "../components/RegisterExpense";
 import Category from "../components/databaseReadings/Category";
 import Expense from "../components/databaseReadings/Expense";
+import RegisterIncomeEach from "../components/RegisterIncomeEach";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Footer from "../components/Footer";
 
@@ -14,6 +15,7 @@ import Footer from "../components/Footer";
 const MainContainer = () => {
   return (
     <>
+    <RegisterIncomeEach></RegisterIncomeEach>
       <Header />
       <Router>
         <Link to="/dashboard">Dashboard</Link>
