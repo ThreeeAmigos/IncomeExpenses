@@ -11,11 +11,11 @@ const Header = () => {
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container-fluid" id="narrow">
         <a class="navbar-brand" href="/dashboard">
-          <img src={menthe} width="25"></img> MINT</a>
-        <a class="navbar-brand" href="/expense" color="white">Expense</a>
+          <img src={menthe} width="25"></img> MINTid</a>
+        <a class="navbar-brand" href="/expense" color="white">Expenses</a>
         <a class="navbar-brand" href="/income" color="white">Income</a>
-        <a class="navbar-brand" href="/target" color="white">Setup</a>
-        <a class="navbar-brand" href="/registerPurpose" color="white">Register</a>
+        <a class="navbar-brand" href="/target" color="white">Goal</a>
+        <a class="navbar-brand" href="/registerPurpose" color="white">Household</a>
 
       </div>
     </nav>

@@ -86,13 +86,14 @@ const RegisterPurpose = () => {
 
     return (
         <div class="align">
-            <h1>TRACK YOUR EXPENSE</h1>
+            <br/>
+            <h1>OK, LET'S GET MINTid</h1>
             <br />
-            <h3>We're gonna make you rich!</h3>
+            <h3>Who's in?</h3>
             <br />
             <form onSubmit={handleSubmit}>
                 <div>
-                    Who we are talking to ? 
+                    Just the one? Are we talking shared goals?
                     <br />
                     <br />
                     <input class="form-control" type="text" onChange={handleChange} value={purposeName} placeholder='Your name' required />  <br />
@@ -110,9 +111,9 @@ const RegisterPurpose = () => {
             <div>
                 <hr />
                 <ul>
-                    <li>We want to buy a house</li>
-                    <li>We want to buy a car</li>
-                    <li>We want to send our children to uni</li>
+                    <li>Money doesn't buy happiness. But it usually f***ing helps. In the meantime, let's just focus on the goal...</li>
+                    <li></li>
+                    <li></li>
                 </ul>
             </div>
             <hr />
@@ -139,7 +140,7 @@ const RegisterPurpose = () => {
             }
             )
             }
-            <Link to="/registerIncome">Register Income</Link>
+            <Link to="/registerIncome">Add Incomes</Link>
         </div>
     )
 
