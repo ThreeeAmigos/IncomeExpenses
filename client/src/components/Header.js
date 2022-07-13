@@ -8,11 +8,11 @@ import styled from "styled-components";
 const Header = () => {
   return (
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <div class="container-fluid">
+      <div class="container-fluid" id="narrow">
         <a class="navbar-brand" href="/dashboard">MINT</a>
         <a class="navbar-brand" href="/expense" color="white">Expense</a>
         <a class="navbar-brand" href="/income" color="white">Income</a>
-        <a class="navbar-brand" href="/setup" color="white">Setup</a>
+        <a class="navbar-brand" href="/target" color="white">Setup</a>
         <a class="navbar-brand" href="/registerPurpose" color="white">Register</a>
 
       </div>

@@ -77,3 +77,8 @@ details>summary::-webkit-details-marker {
 #margin {
   margin-top: 100px;
 }
+
+#narrow {
+  margin-left:10vw;
+  margin-right:10vw;
+}
