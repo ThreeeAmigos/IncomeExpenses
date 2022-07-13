@@ -47,6 +47,7 @@ const RegisterExpenseEach = (person) => {
     const handlePurposeChange = (event) => {
         setPurpose(parseInt(event.target.value))
     }
+
     const handleSubmit = async (event) => {
         event.preventDefault()
         try {
@@ -56,7 +57,7 @@ const RegisterExpenseEach = (person) => {
                 body: JSON.stringify({
                     name: expenseName,
                     place: expensePlace,
-                    amount: amount,
+                    amount: amount*100,
                     necessityIndex: necessityIndex,
                     date: date,
                     directDebit: true,

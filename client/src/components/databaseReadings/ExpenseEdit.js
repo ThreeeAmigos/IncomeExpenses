@@ -96,9 +96,11 @@ const ExpenseEdit = (idx) => {
 
     }
 
+    
 
     const url = "http://localhost:8080/expenses/"
     const handleSubmit = async (event) => {
+        
         event.preventDefault()
         fetchData()
         try {
@@ -108,7 +110,7 @@ const ExpenseEdit = (idx) => {
                 body: JSON.stringify({
                     name: expenseName,
                     place: expensePlace,
-                    amount: amount,
+                    amount: amount*100,
                     necessityIndex: necessityIndex,
                     date: date,
                     directDebit: directDebit,

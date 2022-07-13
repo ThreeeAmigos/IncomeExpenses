@@ -72,6 +72,7 @@ const Expense = () => {
                 </tbody>
 
             </table>
+
             <br />
         </div>
     )
