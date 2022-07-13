@@ -23,7 +23,7 @@ const Income = () => {
 
                 return (
                     <div>
-                        {income[idx].incomeName} +{income[idx].amount} + {income[idx].date}
+                        {income[idx].incomeName} +£{income[idx].amount/100} + {income[idx].date}
                         {/* {income[idx].incomeName} + {income[idx].amount} + {income[idx].date} +{income[idx].personId.name} */}
                         <details>
                             <summary>Edit</summary>

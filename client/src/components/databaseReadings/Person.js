@@ -30,8 +30,8 @@ const Person = () => {
                 method: "POST",
                 headers: new Headers({ "Content-Type": "application/json" }),
                 body: JSON.stringify({
-                    currentPosition: position,
-                    loan: loan,
+                    currentPosition: position*100,
+                    loan: loan*100,
                     name: newPersonName,
                     household: household[0]
                 }
@@ -86,7 +86,7 @@ const Person = () => {
                     <div>
 
                         <details>
-                            <summary>{person[idx].name}</summary>
+                            <summary>{person[idx].name} + £{person[idx].currentPosition / 100} + loan £{person[idx].loan / 100}</summary>
                             <p ><PersonEdit idx={person[idx]} /></p>
                         </details>
 
