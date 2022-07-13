@@ -1,7 +1,7 @@
 import "./App.css";
+import "./css/input.css"
 import MainContainer from "./containers/MainContainer";
 import "./css/bootstrap.min.css"
-import { Container} from "react-bootstrap"
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -14,9 +14,7 @@ const Wrapper = styled.div`
 function App() {
   return (
     <Wrapper>
-    <Container>
       <MainContainer></MainContainer>
-      </Container>
     </Wrapper>
   );
 }

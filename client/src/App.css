@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+
+ .align {
+   max-width: 80vw;
+   margin: auto;
+ }
+
+ details>summary {
+   list-style: none;
+ }
+
+ details>summary::-webkit-details-marker {
+   display: none;
+ }
+
+ .column{
+  width: 30px; 
+  text-align: center
+ }
+
+ .column-wide{
+  width: 130px;
+  text-align: center
+ }

@@ -97,9 +97,9 @@ const DashboardExpense = () => {
 
     return (
 
-        <div>
+        <div >
 
-            <form onSubmit={handleSubmit}>
+            <form class="align" onSubmit={handleSubmit}>
                 <br />
                 <input class="form-control" type="text" onChange={handleNameChange} name="expenseName" placeholder="What is for" required />
                 <br />

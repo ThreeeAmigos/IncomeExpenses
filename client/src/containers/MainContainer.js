@@ -20,16 +20,6 @@ const MainContainer = () => {
     <>
       <Header />
       <Router>
-        <Link to="/dashboard">Dashboard</Link>
-        <Link to="/registerPurpose">Register Purpose</Link>
-        <Link to="/registerIncome">Register Income</Link>
-        <Link to="/registerExpense">Register Expense</Link>
-        <Link to="/category">Set Categories</Link>
-        <Link to="/expense">Expense List</Link>
-        <Link to="/income">Income List</Link>
-        <Link to="/person">Person List</Link>
-        <Link to="/graph">Graph Test</Link>
-        
         <Routes>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/registerPurpose" element={<RegisterPurpose />} />
