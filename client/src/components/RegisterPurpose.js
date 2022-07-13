@@ -87,13 +87,16 @@ const RegisterPurpose = () => {
     return (
         <>
             <h1>TRACK YOUR EXPENSE</h1>
+            <br />
             <h3>We're gonna make you rich!</h3>
-
+            <br />
             <form onSubmit={handleSubmit}>
                 <div>
-                    Who we are talking to ? <br />
-                    <input type="text" onChange={handleChange} value={purposeName} placeholder='Your name' required />  <br />
-                    <button type="submit" onClick={handleAdd}>Add</button>
+                    Who we are talking to ? 
+                    <br />
+                    <br />
+                    <input class="form-control" type="text" onChange={handleChange} value={purposeName} placeholder='Your name' required />  <br />
+                    <button class="btn btn-outline-primary" type="submit" onClick={handleAdd}>Add</button>
                 </div>
             </form>
             <div>

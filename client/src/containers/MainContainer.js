@@ -9,7 +9,6 @@ import Category from "../components/databaseReadings/Category";
 import Expense from "../components/databaseReadings/Expense";
 import Income from "../components/databaseReadings/Income";
 import Person from "../components/databaseReadings/Person";
-import GraphLogIncomeLogExpensesOverTime from '../components/GraphLogIncomeLogExpensesOverTime';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import {Navbar, Nav, Button } from 'react-bootstrap'
