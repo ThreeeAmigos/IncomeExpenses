@@ -21,7 +21,7 @@ const RegisterTarget = () => {
                 method: "PUT",
                 headers: new Headers({ "Content-Type": "application/json" }),
                 body: JSON.stringify({
-                    target: target,
+                    target: target*100,
                     date: date
                 }
                 

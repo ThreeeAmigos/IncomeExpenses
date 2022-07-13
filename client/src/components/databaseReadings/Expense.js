@@ -21,9 +21,9 @@ const Expense = () => {
 
     return (
 
-        <div>
+        <div class="center">
 
-            <table class="align">
+            <table >
                 <thead>
                     <tr>
                         <th ></th>
@@ -36,7 +36,7 @@ const Expense = () => {
                     </tr>
                 </thead>
                 </table>
-                <table class="align">
+                <table >
                 <tbody><tr class="table table-hover">
                     {Array.from(Array(expense.length)).map((number, idx) => {
                         return (
