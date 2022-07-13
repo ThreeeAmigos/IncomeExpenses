@@ -67,7 +67,7 @@ const RegisterIncomeEach = (person) => {
                         
                         {message}
                         
-                        <button class="btn btn-outline-primary" onClick={handleSubmit()} type="submit">Set single regular income</button>
+                        <button class="btn btn-outline-primary" onClick={handleSubmit()} type="submit">Set Income Source</button>
                     </form>
       
 

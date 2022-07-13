@@ -90,11 +90,11 @@ const RegisterExpenseEach = (person) => {
 
             <form onSubmit={handleSubmit}>
                 <br />
-                <input type="text" onChange={handleNameChange} name="expenseName"  placeholder="What is for" />
-                <input type="text" onChange={handlePlaceChange} name="expensePlace"  placeholder="from where" />
-                <input type="number" onChange={handleAmountChange} name="amount" placeholder="how much" />
+                <input type="text" onChange={handleNameChange} name="expenseName"  placeholder="What did you buy then?" />
+                <input type="text" onChange={handlePlaceChange} name="expensePlace"  placeholder="Where from?" />
+                <input type="number" onChange={handleAmountChange} name="amount" placeholder="What was the damage?" />
 
-                <p>How important is this purchase:</p>
+                <p>How essential was this? You can't live without 1. Don't worry too much about 2. 3 is naughty.</p>
                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                 <input type="radio" id="index1" onChange={handleNecessityIndex} name="necessityIntex" required value={1} /><label for="index1">1</label>
                 <input type="radio" id="index2" onChange={handleNecessityIndex} name="necessityIntex" required value={2} /><label for="index2">2</label>
@@ -116,7 +116,7 @@ const RegisterExpenseEach = (person) => {
                 }
                 </select>
                 <br/>
-                <p for="purpose">Who For</p>
+                <p for="purpose">Who's this actually for?</p>
                 {Array.from(Array(purposeList.length)).map((number, idx) => {
                     return (
                         <>

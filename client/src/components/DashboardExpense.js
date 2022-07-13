@@ -17,6 +17,8 @@ const DashboardExpense = () => {
     const [date, setDate] = useState()
     const [person, setPerson] = useState()
     const [message, setMessage] = useState('')
+    const [directDebit, setDirectDebit] = useState(true)
+
 
 
     useEffect(() => {
@@ -53,6 +55,10 @@ const DashboardExpense = () => {
 
     const handlePersonChange = (event) => {
         setPerson(parseInt(event.target.value))
+    }
+
+    const handleDirectDebitChange = (event) => {
+        setDirectDebit(Boolean(event))
     }
 
 
@@ -99,20 +105,23 @@ const DashboardExpense = () => {
 
         <div >
 
+            
+
             <form class="align" onSubmit={handleSubmit}>
+                <h1>You been spending again?</h1>
                 <br />
-                <input class="form-control" type="text" onChange={handleNameChange} name="expenseName" placeholder="What is for" required />
+                <input class="form-control" type="text" onChange={handleNameChange} name="expenseName" placeholder="What did you buy then?" required />
                 <br />
-                <input class="form-control" type="text" onChange={handlePlaceChange} name="expensePlace" placeholder="from where" required />
+                <input class="form-control" type="text" onChange={handlePlaceChange} name="expensePlace" placeholder="Where from?" required />
                 <br />
-                <input class="form-control" type="number" onChange={handleAmountChange} name="amount" placeholder="how much" required />
-                <label class="form-label mt-4">How important is this purchase:</label>
+                <input class="form-control" type="number" onChange={handleAmountChange} name="amount" placeholder="What was the damage?" required />
+                <label class="form-label mt-4">Essential, was it?</label>
                 <fieldset class="form-control">
                     <label class="form-check-label" >
-                        <input class="form-check-input" type="radio" id="index1" onChange={handleNecessityIndex} name="necessityIntex" required value={1} /> 1 &nbsp;&nbsp;</label>
+                        <input class="form-check-input" type="radio" id="index1" onChange={handleNecessityIndex} name="necessityIntex" required value={1} /> 1: you can't live without &nbsp;&nbsp;</label>
                     <label class="form-check-label" >
-                        <input class="form-check-input" type="radio" onChange={handleNecessityIndex} name="necessityIntex" required value={2} /> 2 &nbsp;&nbsp;</label>
-                    <input class="form-check-input" type="radio" id="index3" onChange={handleNecessityIndex} name="necessityIntex" required value={3} /><label for="index3"> 3 &nbsp;&nbsp;</label>
+                        <input class="form-check-input" type="radio" onChange={handleNecessityIndex} name="necessityIntex" required value={2} /> 2: paying for a haircut etc &nbsp;&nbsp;</label>
+                    <input class="form-check-input" type="radio" id="index3" onChange={handleNecessityIndex} name="necessityIntex" required value={3} /><label for="index3"> 3: is just plain naughty and you know it &nbsp;&nbsp;</label>
                 </fieldset>
                 <br />
 
@@ -128,14 +137,19 @@ const DashboardExpense = () => {
                         })
                         }
                     </select>
+                    <select class="btn btn-outline-primary" name="directDebit" onChange={handleDirectDebitChange} required>
+                        <option value="true">Direct Debit</option>
+                        <br/>
+                        <option value="false">One-Off</option>
+                    </select>
                     <br />
-                    <p>Who Pay</p>
+                    <p>Whose account?</p>
                     <div class="form-control">
                         {Array.from(Array(personList.length)).map((number, idx) => {
 
                             return (
                                 <div>
-                                    <input type="radio" name="person" id="person" class="form-check-input" onChange={handlePersonChange} required value={personList[idx].id} /><label for="person">&nbsp;{personList[idx].name}&nbsp;&nbsp;</label>
+                                    <input type="radio" name="person" id="person" class="form-check-input" onChange={handlePersonChange} required value={personList[idx].id} /><label for="person">&nbsp;{personList[idx].name}'s&nbsp;&nbsp;</label>
                                 </div>
                             )
                         })
@@ -143,7 +157,7 @@ const DashboardExpense = () => {
                     </div>
                     <br />
                     <br />
-                    <label for="purpose">Who For<br />&nbsp;&nbsp;</label>
+                    <label for="purpose">Who was this actually for?<br />&nbsp;&nbsp;</label>
                     <div class="form-control">
                         {Array.from(Array(purposeList.length)).map((number, idx) => {
                             return (

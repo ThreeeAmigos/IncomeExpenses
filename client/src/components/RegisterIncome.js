@@ -72,10 +72,10 @@ const RegisterIncome = () => {
                         <div >
                             <br />
                             <hr />
-                            {personList[0] == personList[index] ? <div key={uuidv4()} >{personList[index].name}, What are you biring home each month?
+                            {personList[0] == personList[index] ? <div key={uuidv4()} >Right, {personList[index].name}, what're you bringing home each month?
                                 <br />
                                 <br />
-                                <button class="btn btn-outline-primary" onClick={handleFormClick}> add regular incomes </button>
+                                <button class="btn btn-outline-primary" onClick={handleFormClick}> Add Another Source </button>
                                 {Array.from(Array(formCount)).map((number, idx) => {
 
                                     return (
@@ -85,10 +85,10 @@ const RegisterIncome = () => {
 
 
                             </div>
-                                : <div key={uuidv4()} >{personList[index].name} you ?
+                                : <div key={uuidv4()} >And you, {personList[index].name}? What you stacking?
                                     <br />
                                     <br />
-                                    <button class="btn btn-outline-primary" onClick={handleFormClick2}> add regular incomes </button>
+                                    <button class="btn btn-outline-primary" onClick={handleFormClick2}> Add Another Source </button>
                                     {Array.from(Array(formCount2)).map((number, idx) => {
 
                                         return (
@@ -104,7 +104,7 @@ const RegisterIncome = () => {
                 }
                 )
                 }
-                <a href="http://localhost:3000/dashboard">Start tracking your expense now!</a>
+                <a href="http://localhost:3000/dashboard"> Visualise Goal</a>
 
             </div>
         </>)
