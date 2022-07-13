@@ -89,7 +89,7 @@ const IncomeEdit = (idx) => {
                 headers: new Headers({ "Content-Type": "application/json" }),
                 body: JSON.stringify({
                     incomeName: incomeName,
-                    amount: amount,
+                    amount: amount*100,
                     date: date,
                     isSalary: salaryChange,
                     person: {

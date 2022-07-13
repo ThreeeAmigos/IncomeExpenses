@@ -13,8 +13,6 @@ const CategoryEdit = (idx) => {
         getElements("categories")
             .then(item => setCategory(item))
     }
-   
-console.log("a")
 
     useEffect(() => {
         fetchData()

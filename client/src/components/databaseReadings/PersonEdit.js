@@ -64,8 +64,8 @@ const PersonEdit = (idx) => {
                 method: "PUT",
                 headers: new Headers({ "Content-Type": "application/json" }),
                 body: JSON.stringify({
-                    currentPosition: position,
-                    loan: loan,
+                    currentPosition: position*100,
+                    loan: loan*100,
                     name: newPersonName,
                     household: household[0]
                 }

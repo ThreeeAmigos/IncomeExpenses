@@ -64,7 +64,7 @@ const DashboardExpense = () => {
                 body: JSON.stringify({
                     name: expenseName,
                     place: expensePlace,
-                    amount: amount,
+                    amount: amount*100,
                     necessityIndex: necessityIndex,
                     date: date,
                     directDebit: false,
@@ -79,6 +79,8 @@ const DashboardExpense = () => {
                     }
                 })
             })
+
+            
             const resJson = await res.json()
             if (res.status === 201) {
                 setMessage("Saved")

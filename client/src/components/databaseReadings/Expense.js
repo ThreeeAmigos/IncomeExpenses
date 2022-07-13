@@ -24,7 +24,7 @@ console.log(expense)
 
                 return (
                     <div>
-                        {expense[idx].name} + {expense[idx].amount} + {expense[idx].date} + {expense[idx].category.categoryName} +{expense[idx].person.name} + {expense[idx].purpose.purposeName} 
+                        {expense[idx].name} + £{expense[idx].amount/100} + {expense[idx].date} + {expense[idx].category.categoryName} +{expense[idx].person.name} + {expense[idx].purpose.purposeName} 
                         <details>
                             <summary>Edit</summary>
                             <p ><ExpenseEdit idx={expense[idx]} /></p>
