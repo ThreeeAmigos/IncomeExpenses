@@ -1,22 +1,24 @@
-import React, { useState, useEffect } from "react";
-import { getElements } from "../services/TrackerServices";
-import { v4 as uuidv4 } from 'uuid';
+import React, { useEffect, useState } from 'react';
+import { getElements } from '../../services/TrackerServices'
 
-const DashboardExpense = () => {
+const ExpenseEdit = (idx) => {
 
+
+    const [expenseName, setExpenseName] = useState('')
+    const [expense, setExpense] = useState('')
+    const [message, setMessage] = useState('')
+    const [deleteMessage, setDeleteMessage] = useState('')
     const [amount, setAmount] = useState(0)
     const [expensePlace, setExpensePlace] = useState('')
     const [necessityIndex, setNecessityIndex] = useState(0)
-    const [expenseName, setExpenseName] = useState('')
     const [categoryList, setCategoryList] = useState('')
     const [categoryId, setCategoryId] = useState(1)
     const [purposeList, setPurposeList] = useState('')
     const [personList, setPersonList] = useState('')
     const [purpose, setPurpose] = useState('')
     const [date, setDate] = useState()
+    const [directDebit, setDirectDebit] = useState(true)
     const [person, setPerson] = useState()
-    const [message, setMessage] = useState('')
-
 
     useEffect(() => {
         getElements("categories")
@@ -26,6 +28,7 @@ const DashboardExpense = () => {
         getElements("persons")
             .then(item => setPersonList(item))
     }, [])
+
 
 
     const handleAmountChange = (event) => {
@@ -54,12 +57,56 @@ const DashboardExpense = () => {
         setPerson(parseInt(event.target.value))
     }
 
+    const handleDirectDebitChange = (event) => {
+        setDirectDebit(Boolean(event))
+    }
 
-    const handleSubmit = async (event) => {
+
+
+    const fetchData = () => {
+        getElements("expenses")
+            .then(item => setExpense(item))
+    }
+
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+
+console.log(idx.idx.id)
+
+    const dUrl = "http://localhost:8080/expenses/?id="
+
+    const handleDelete = async (event) => {
         event.preventDefault()
         try {
-            const res = await fetch("http://localhost:8080/expenses", {
-                method: "POST",
+            const res = await fetch(dUrl + idx.idx.id, {
+                method: "DELETE"
+            })
+
+            const resJson = await res.json()
+            if (res.status === 202) {
+                setDeleteMessage("Expense DELETED")
+            } else {
+                setDeleteMessage("Error")
+            }
+            fetchData()
+        }
+        catch (err) {
+            console.log(err)
+        }
+
+    }
+
+
+    const url = "http://localhost:8080/expenses/"
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+        fetchData()
+        try {
+            const res = await fetch(url + idx.idx.id, {
+                method: "PUT",
                 headers: new Headers({ "Content-Type": "application/json" }),
                 body: JSON.stringify({
                     name: expenseName,
@@ -67,21 +114,23 @@ const DashboardExpense = () => {
                     amount: amount,
                     necessityIndex: necessityIndex,
                     date: date,
-                    directDebit: false,
+                    directDebit: directDebit,
                     category: {
                         id: categoryId
                     },
                     person: {
-                        id: person
+                        id: person.person.id
                     },
                     purpose: {
                         id: purpose
                     }
-                })
+                }
+                )
             })
+
             const resJson = await res.json()
-            if (res.status === 201) {
-                setMessage("Saved")
+            if (res.status === 202) {
+                setMessage("Expense Changed")
             } else {
                 setMessage("Error")
             }
@@ -89,13 +138,17 @@ const DashboardExpense = () => {
         catch (err) {
             console.log(err)
         }
+        fetchData()
+
     }
 
+    const handleExpenseChange = (event) => {
+        setExpenseName(event.target.value)
+        fetchData()
+    }
 
     return (
-
         <div>
-
             <form onSubmit={handleSubmit}>
                 <br />
                 <input type="text" onChange={handleNameChange} name="expenseName" placeholder="What is for" required />
@@ -113,33 +166,37 @@ const DashboardExpense = () => {
                 <select name="category" onChange={handleCategoryChange} required>
                     {Array.from(Array(categoryList.length)).map((number, idx) => {
                         return (
-                            <option value={categoryList[idx].id} id={uuidv4()} placeholder="Category">{categoryList[idx].categoryName}</option>
+                            <option value={categoryList[idx].id} placeholder="Category">{categoryList[idx].categoryName}</option>
                         )
                     })
                     }
                 </select>
+                <select name="directDebit" onChange={handleDirectDebitChange} required>
+                    <option value="true">true</option>
+                    <option value="false">false</option>
+                </select>
                 <br />
                 <p>Who Pay</p>
-        
-                    {Array.from(Array(personList.length)).map((number, idx) => {
 
-                        return (
-                            <>
-                                <input type="radio" name="person" id="person" onChange={handlePersonChange} required value={personList[idx].id} /><label for="person">{personList[idx].name}</label>
-                            </>
-                        )
-                    })
-                    }
-                
+                {Array.from(Array(personList.length)).map((number, idx) => {
+
+                    return (
+                        <>
+                            <input type="radio" name="person" id="person" onChange={handlePersonChange} required value={personList[idx].id} /><label for="person">{personList[idx].name}</label>
+                        </>
+                    )
+                })
+                }
+
                 <p for="purpose">Who For</p>
-                    {Array.from(Array(purposeList.length)).map((number, idx) => {
-                        return (
-                            <>
-                                <input type="radio" name="purpose" id="purpose" onChange={handlePurposeChange} required value={purposeList[idx].id} /><label for="purpose">{purposeList[idx].purposeName}</label>
-                            </>
-                        )
-                    })
-                    }
+                {Array.from(Array(purposeList.length)).map((number, idx) => {
+                    return (
+                        <>
+                            <input type="radio" name="purpose" id="purpose" onChange={handlePurposeChange} required value={purposeList[idx].id} /><label for="purpose">{purposeList[idx].purposeName}</label>
+                        </>
+                    )
+                })
+                }
                 <br />
 
                 <br />
@@ -148,9 +205,15 @@ const DashboardExpense = () => {
                 <br />
                 <button onClick={handleSubmit()} type="submit">Add expense</button>
             </form>
-
+            <form onSubmit={handleDelete}>
+                <div>
+                    <button onClick={handleDelete} type="submit-target" >Delete</button>
+                    <br />
+                    {deleteMessage}
+                </div>
+            </form>
         </div>
     )
 }
 
-export default DashboardExpense;
+export default ExpenseEdit
