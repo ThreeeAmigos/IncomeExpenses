@@ -26,7 +26,7 @@ public class Income {
 
     @ManyToOne
     @JoinColumn(name = "person_id", nullable = false)
-    @JsonBackReference
+//    @JsonBackReference
     private Person person;
 
     @Column(name = "is_salary", nullable = false)

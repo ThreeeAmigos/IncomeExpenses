@@ -73,9 +73,6 @@ const ExpenseEdit = (idx) => {
         fetchData()
     }, [])
 
-
-console.log(idx.idx.id)
-
     const dUrl = "http://localhost:8080/expenses/?id="
 
     const handleDelete = async (event) => {

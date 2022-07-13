@@ -26,7 +26,6 @@ public class Person {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "household_id", nullable = false)
-    @JsonBackReference
     private Household household;
 
 //    @OneToMany(mappedBy = "person")
