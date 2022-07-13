@@ -50,24 +50,18 @@ const GraphTest = () => {
     }
 
     const expenses_array_copy = expenses.map((element) => {
-        console.log(element.amount);
         if (element.amount !== null) {
             element.amount = Math.log(element.amount);
         }
         return element;
     });
-
-    console.log('this is ln(expenses)', expenses_array_copy);
 
     const incomes_array_copy = incomes.map((element) => {
-        console.log(element.amount);
         if (element.amount !== null) {
             element.amount = Math.log(element.amount);
         }
         return element;
     });
-
-    console.log('this is ln(incomes)', incomes_array_copy);
 
     const tally = expenses_array_copy.reduce((tally, currentExpense) => {
         const monthKey = currentExpense.date.split("-")[1]
@@ -84,15 +78,10 @@ const GraphTest = () => {
 
     const incomesWithNewKey = incomes_array_copy.map(income => ({ ...income, amount2: income.amount, amount: undefined }))
     const allTxs = expensesByMonth.concat(incomesWithNewKey)
-    const allTxsSorted = allTxs.sort((tx1, tx2) => Number(tx1.date.replace(/-/g, "")) - Number(tx2.date.replace(/-/g, "")))
-    const allTxsSortedPounds = allTxsSorted.map(txn => ({ ...txn, amount: txn.amount / 100 }))
+    const allTxsSortedByMonth = allTxs.sort((tx1, tx2) => Number(tx1.date.replace(/-/g, "")) - Number(tx2.date.replace(/-/g, "")))
 
-    // console.log('look here, all txnsorted', allTxsSortedPounds)
-
-    const incomesWithNewKey2 = incomes_array_copy.map(income => ({ ...income, amount2: income.amount, amount: undefined }))
-    const allTxs2 = expenses_array_copy.concat(incomesWithNewKey2)
-    const allTxsSorted2 = allTxs2.sort((tx1, tx2) => Number(tx1.date.replace(/-/g, "")) - Number(tx2.date.replace(/-/g, "")))
-    const allTxsSortedPounds2 = allTxsSorted2.map(txn => ({ ...txn, amount: txn.amount / 100 }))
+    const allTxs2 = expenses_array_copy.concat(incomesWithNewKey)
+    const allTxsSorted = allTxs2.sort((tx1, tx2) => Number(tx1.date.replace(/-/g, "")) - Number(tx2.date.replace(/-/g, "")))
 
 
 
@@ -127,7 +116,7 @@ const GraphTest = () => {
                     left: 50,
                     bottom: 50
                 }}
-                    data={allTxsSorted}>
+                    data={allTxsSortedByMonth}>
                     <XAxis dataKey="date" />
                     <YAxis />
                     <Tooltip />
@@ -147,7 +136,7 @@ const GraphTest = () => {
                     left: 50,
                     bottom: 50
                 }}
-                    data={allTxsSorted2}>
+                    data={allTxsSorted}>
                     <XAxis dataKey="date" />
                     <YAxis />
                     <Tooltip />
