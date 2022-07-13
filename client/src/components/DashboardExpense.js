@@ -143,7 +143,7 @@ const DashboardExpense = () => {
                     </div>
                     <br />
                     <br />
-                    <label for="purpose">Who For&nbsp;&nbsp;</label>
+                    <label for="purpose">Who For<br />&nbsp;&nbsp;</label>
                     <div class="form-control">
                         {Array.from(Array(purposeList.length)).map((number, idx) => {
                             return (
@@ -154,7 +154,6 @@ const DashboardExpense = () => {
                         })
                         }</div>
                     <br />
-
                     <br />
                     {message}
 
