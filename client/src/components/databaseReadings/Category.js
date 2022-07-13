@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getElements } from '../../services/TrackerServices'
 import CategoryEdit from './CategoryEdit';
+import SetupMenu from '../SetupMenu';
 
 const Category = () => {
 
@@ -52,36 +53,39 @@ const Category = () => {
 
     return (
 
-        <div>
+        <>
+            <SetupMenu />
 
+            <div class="align" id="margin">
+                <h1>Categories</h1>
+                {Array.from(Array(category.length)).map((number, idx) => {
 
+                    return (
+                        <div>
 
-            {Array.from(Array(category.length)).map((number, idx) => {
-                
-                return (
-                <div>
-                    
-                    <details>
-                            <summary>{category[idx].categoryName}</summary>
-                            <p ><CategoryEdit idx={category[idx]} /></p>
-                    </details>
-                    
-                </div>
-                )
-            })
-            }
+                            <details>
+                                <summary>{category[idx].categoryName}</summary>
+                                <p ><CategoryEdit idx={category[idx]} /></p>
+                            </details>
 
-            <p>Add a new Category</p>
-            <form onSubmit={handlePost}>
-
-                <input type="text" onChange={handleNewCategoryChange} value={newCategoryName} required /> <br />
-                <button onClick={handlePost} type="submit-target" >Add Category</button>
+                        </div>
+                    )
+                })
+                }
                 <br />
-                {message}
-            </form>
+                <br />
+                <p>Add a new Category</p>
+                <form onSubmit={handlePost}>
 
-            <br />
-        </div>
+                    <input type="text" onChange={handleNewCategoryChange} value={newCategoryName} required /> <br />
+                    <button onClick={handlePost} type="submit-target" >Add Category</button>
+                    <br />
+                    {message}
+                </form>
+
+                <br />
+            </div>
+        </>
     )
 }
 

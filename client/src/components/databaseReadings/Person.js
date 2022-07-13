@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getElements } from '../../services/TrackerServices'
 import PersonEdit from './PersonEdit';
+import SetupMenu from '../SetupMenu';
 
 const Person = () => {
 
@@ -76,10 +77,11 @@ const Person = () => {
 
     return (
 
-        <div>
+        <>
+        <SetupMenu/>
 
 
-
+        <div class="align">
             {Array.from(Array(person.length)).map((number, idx) => {
 
                 return (
@@ -113,7 +115,8 @@ const Person = () => {
             </form>
 
             <br />
-        </div>
+            </div>
+        </>
     )
 }
 
