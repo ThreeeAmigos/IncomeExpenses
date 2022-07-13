@@ -79,7 +79,7 @@ const RegisterCurrentBalance = (userList) => {
     return (
         <>
         
-            <button onClick={handleSavingClick}> add current balance </button>
+            <button class="btn btn-outline-primary" onClick={handleSavingClick}> add current balance </button>
             {Array.from(Array(inputSavingCount)).map((number, index) => {
                 return (<div >
                        <input type="number" onChange={handleChange} name="saving" id={index} />
@@ -90,7 +90,7 @@ const RegisterCurrentBalance = (userList) => {
             <br />
             <br />
 
-            <button onClick={handleDebtClick}> add current debt </button>
+            <button class="btn btn-outline-primary" onClick={handleDebtClick}> add current debt </button>
             {Array.from(Array(inputDebtCount)).map((number, index) => {
                 return (
                     <>
@@ -110,7 +110,7 @@ const RegisterCurrentBalance = (userList) => {
                 <br />
                 <div>This is for {userList.userList.purposeName}</div>
                 <br />
-                <button onClick={handleSubmit} type="submit">Set {userList.userList.purposeName}'s Account</button>
+                <button class="btn btn-outline-primary" onClick={handleSubmit} type="submit">Set {userList.userList.purposeName}'s Account</button>
                 <br />
                 
                 {message}

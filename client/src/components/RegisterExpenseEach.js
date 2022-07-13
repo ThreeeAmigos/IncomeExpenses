@@ -131,7 +131,7 @@ const RegisterExpenseEach = (person) => {
                 {message}
 
                 <br />
-                <button onClick={handleSubmit()} type="submit">Set a single direct debit</button>
+                <button class="btn btn-outline-primary" onClick={handleSubmit()} type="submit">Set a single direct debit</button>
             </form>
 
 

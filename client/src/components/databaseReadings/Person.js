@@ -140,10 +140,12 @@ const Person = () => {
 
 
 
+
                     <button class="btn btn-outline-primary"  onClick={handlePost} type="submit-target" >Add Person</button>
                     <br />
                     {message}
                 </form>
+
 
                 <br />
             </div >

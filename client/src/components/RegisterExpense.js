@@ -60,7 +60,7 @@ const RegisterExpense = () => {
                     {personList[0] == personList[index] ? <div >{personList[index].name}, What do you have going out?
                         <br />
 
-                        <button onClick={handleFormClick}> add your direct debit </button>
+                        <button class="btn btn-outline-primary" onClick={handleFormClick}> add your direct debit </button>
                         {Array.from(Array(formCount)).map((number, idx) => {
 
                             return (
@@ -73,7 +73,7 @@ const RegisterExpense = () => {
                         : <div key={uuidv4()} >{personList[index].name} you ?
 
                             <br />
-                            <button onClick={handleFormClick2}> add your direct debit </button>
+                            <button class="btn btn-outline-primary" onClick={handleFormClick2}> add your direct debit </button>
                             {Array.from(Array(formCount2)).map((number, idx) => {
 
                                 return (
