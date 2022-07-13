@@ -107,9 +107,9 @@ const DashboardExpense = () => {
                 <input class="form-control" type="number" onChange={handleAmountChange} name="amount" placeholder="how much" required />
                 <label class="form-label mt-4">How important is this purchase:</label>
                 <fieldset class="form-control">
-                        <label class="form-check-label" >
+                    <label class="form-check-label" >
                         <input class="form-check-input" type="radio" id="index1" onChange={handleNecessityIndex} name="necessityIntex" required value={1} /> 1 &nbsp;&nbsp;</label>
-                        <label class="form-check-label" >
+                    <label class="form-check-label" >
                         <input class="form-check-input" type="radio" onChange={handleNecessityIndex} name="necessityIntex" required value={2} /> 2 &nbsp;&nbsp;</label>
                     <input class="form-check-input" type="radio" id="index3" onChange={handleNecessityIndex} name="necessityIntex" required value={3} /><label for="index3"> 3 &nbsp;&nbsp;</label>
                 </fieldset>
@@ -118,7 +118,7 @@ const DashboardExpense = () => {
                     <input class="form-control" type="date" onChange={handleDateChange} name="date" value={date} required />
                     <br />
                     <label class="form-label mt-4" for="category">Category</label>
-                    <select class="form-select"  name="category" onChange={handleCategoryChange} required>
+                    <select class="form-select" name="category" onChange={handleCategoryChange} required>
                         {Array.from(Array(categoryList.length)).map((number, idx) => {
                             return (
                                 <option value={categoryList[idx].id} id={uuidv4()} placeholder="Category">{categoryList[idx].categoryName}</option>
@@ -128,27 +128,29 @@ const DashboardExpense = () => {
                     </select>
                     <br />
                     <p>Who Pay</p>
+                    <div class="form-control">
+                        {Array.from(Array(personList.length)).map((number, idx) => {
 
-                    {Array.from(Array(personList.length)).map((number, idx) => {
-
-                        return (
-                            <div class="form-control">
-                                <input type="radio" name="person" id="person" class="form-check-input"  onChange={handlePersonChange} required value={personList[idx].id} /><label for="person">&nbsp;{personList[idx].name}&nbsp;&nbsp;</label>
-                            </div>
-                        )
-                    })
-                    }
-<br/>
-<br/>
+                            return (
+                                <div>
+                                    <input type="radio" name="person" id="person" class="form-check-input" onChange={handlePersonChange} required value={personList[idx].id} /><label for="person">&nbsp;{personList[idx].name}&nbsp;&nbsp;</label>
+                                </div>
+                            )
+                        })
+                        }
+                    </div>
+                    <br />
+                    <br />
                     <label for="purpose">Who For&nbsp;&nbsp;</label>
-                    {Array.from(Array(purposeList.length)).map((number, idx) => {
-                        return (
-                            <div class="form-control">
-                                <input type="radio" class="form-check-input"  name="purpose" id="purpose" onChange={handlePurposeChange} required value={purposeList[idx].id} /><label for="purpose">&nbsp;&nbsp;{purposeList[idx].purposeName}&nbsp;&nbsp;</label>
-                            </div>
-                        )
-                    })
-                    }
+                    <div class="form-control">
+                        {Array.from(Array(purposeList.length)).map((number, idx) => {
+                            return (
+                                <div >
+                                    <input type="radio" class="form-check-input" name="purpose" id="purpose" onChange={handlePurposeChange} required value={purposeList[idx].id} /><label for="purpose">&nbsp;&nbsp;{purposeList[idx].purposeName}&nbsp;&nbsp;</label>
+                                </div>
+                            )
+                        })
+                        }</div>
                     <br />
 
                     <br />
