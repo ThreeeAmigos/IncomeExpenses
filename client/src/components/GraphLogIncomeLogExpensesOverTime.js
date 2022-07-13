@@ -40,7 +40,7 @@ const GraphLogIncomeLogExpensesOverTime = () => {
 
     return (
         <>
-            <ResponsiveContainer width="99%" aspect={1.5} >
+            <ResponsiveContainer width="99%" aspect={2} >
                 <ComposedChart margin={{
                     top: 100,
                     right: 100,
@@ -48,12 +48,12 @@ const GraphLogIncomeLogExpensesOverTime = () => {
                     bottom: 100
                 }}
                     data={allTxsSorted}>
-                    <XAxis dataKey="date" />
-                    <YAxis />
+                    <XAxis axisLine={false} dataKey="date" />
+                    <YAxis tick={false} axisLine={false}/>
                     <Tooltip />
-                    <Area type="monotone" dataKey="amount" fill="#8884d8" stroke="#8884d8" />
-                    <Bar dataKey="amount" barSize={20} fill="#413ea0" />
-                    <Scatter dataKey="amount2" fill="#82ca9d" />
+                    <Area type="monotone" dataKey="amount" fill="#638B7E" stroke="#638B7E" />
+                    <Bar dataKey="amount" barSize={20} fill="#638B7E" />
+                    <Scatter dataKey="amount2" fill="#89C0AE" />
                 </ComposedChart>
             </ResponsiveContainer>
         </>
