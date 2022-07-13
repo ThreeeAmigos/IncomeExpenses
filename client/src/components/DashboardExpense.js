@@ -102,8 +102,9 @@ const DashboardExpense = () => {
             <form onSubmit={handleSubmit}>
                 <br />
                 <input class="form-control" type="text" onChange={handleNameChange} name="expenseName" placeholder="What is for" required />
+                <br />
                 <input class="form-control" type="text" onChange={handlePlaceChange} name="expensePlace" placeholder="from where" required />
-
+                <br />
                 <input class="form-control" type="number" onChange={handleAmountChange} name="amount" placeholder="how much" required />
                 <label class="form-label mt-4">How important is this purchase:</label>
                 <fieldset class="form-control">
@@ -113,6 +114,7 @@ const DashboardExpense = () => {
                         <input class="form-check-input" type="radio" onChange={handleNecessityIndex} name="necessityIntex" required value={2} /> 2 &nbsp;&nbsp;</label>
                     <input class="form-check-input" type="radio" id="index3" onChange={handleNecessityIndex} name="necessityIntex" required value={3} /><label for="index3"> 3 &nbsp;&nbsp;</label>
                 </fieldset>
+                <br />
 
                 <div class="form-group">
                     <input class="form-control" type="date" onChange={handleDateChange} name="date" value={date} required />
