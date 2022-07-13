@@ -50,10 +50,10 @@ const Target = () => {
         <>
             <SetupMenu />
             <div class="align">
-            <h1>We've got goals to hit, here.</h1>
+            <h1>You wanna change your goal? You sure?</h1>
             <form class="form-group" onSubmit={handleSubmit}>
                 <div>
-                    So we need to save £
+                    What is it now? £
                     <br />
                     <br />
                     <input class="form-control" id="pound" type="number" onChange={handleTargetChange} value={target} required />
