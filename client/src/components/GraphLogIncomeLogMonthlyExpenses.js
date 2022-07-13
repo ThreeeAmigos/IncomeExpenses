@@ -3,7 +3,7 @@ import { ResponsiveContainer, LineChart, CartesianGrid, XAxis, YAxis, Tooltip, L
 import { getElements } from '../services/TrackerServices'
 
 
-const GraphTest = () => {
+const GraphLogIncomeLogExpensesMonthly = () => {
 
     const [expenses, setExpenses] = useState([])
     const [incomes, setIncomes] = useState([])
@@ -18,38 +18,7 @@ const GraphTest = () => {
             .then(item => setIncomes(item))
     }, [])
 
-    if (expenses[0] && incomes[0]) {
-
-        const expensesTally = (expenses) => {
-            let expenseTallyPounds = 0
-            expenses.forEach(expense => {
-                expenseTallyPounds += expense.amount / 100
-            });
-            return expenseTallyPounds
-        }
-
-
-        const incomeAmountPounds = incomes.map((income, index) => {
-            return income.amount / 100
-        })
-
-        const incomesTally = (incomes) => {
-            let incomeTallyPounds = 0
-            incomes.forEach(income => {
-                incomeTallyPounds += income.amount / 100
-            });
-            return incomeTallyPounds
-        }
-
-
-        const savingsTally = () => {
-            return incomesTally(incomes) - expensesTally(expenses)
-        }
-
-
-    }
-
-    const expenses_array_copy = expenses.map((element) => {
+    const lnExpenses = expenses.map((element) => {
         console.log(element.amount);
         if (element.amount !== null) {
             element.amount = Math.log(element.amount);
@@ -57,9 +26,7 @@ const GraphTest = () => {
         return element;
     });
 
-    console.log('this is ln(expenses)', expenses_array_copy);
-
-    const incomes_array_copy = incomes.map((element) => {
+    const lnIncomes = incomes.map((element) => {
         console.log(element.amount);
         if (element.amount !== null) {
             element.amount = Math.log(element.amount);
@@ -67,9 +34,7 @@ const GraphTest = () => {
         return element;
     });
 
-    console.log('this is ln(incomes)', incomes_array_copy);
-
-    const tally = expenses_array_copy.reduce((tally, currentExpense) => {
+    const tally = lnExpenses.reduce((tally, currentExpense) => {
         const monthKey = currentExpense.date.split("-")[1]
         const monthKeyAsMidMonth = `2022-${monthKey}-15`
         const currentTotalForMonth = tally[monthKeyAsMidMonth] || 0
@@ -81,21 +46,9 @@ const GraphTest = () => {
         return { date: midMonthDate, amount: tally[midMonthDate] }
     })
 
-
-    const incomesWithNewKey = incomes_array_copy.map(income => ({ ...income, amount2: income.amount, amount: undefined }))
-    const allTxs = expensesByMonth.concat(incomesWithNewKey)
-    const allTxsSorted = allTxs.sort((tx1, tx2) => Number(tx1.date.replace(/-/g, "")) - Number(tx2.date.replace(/-/g, "")))
-    const allTxsSortedPounds = allTxsSorted.map(txn => ({ ...txn, amount: txn.amount / 100 }))
-
-    // console.log('look here, all txnsorted', allTxsSortedPounds)
-
-    const incomesWithNewKey2 = incomes_array_copy.map(income => ({ ...income, amount2: income.amount, amount: undefined }))
-    const allTxs2 = expenses_array_copy.concat(incomesWithNewKey2)
-    const allTxsSorted2 = allTxs2.sort((tx1, tx2) => Number(tx1.date.replace(/-/g, "")) - Number(tx2.date.replace(/-/g, "")))
-    const allTxsSortedPounds2 = allTxsSorted2.map(txn => ({ ...txn, amount: txn.amount / 100 }))
-
-
-
+    const incomesWithNewKey = lnIncomes.map(income => ({ ...income, amount2: income.amount, amount: undefined }))
+    const allTxsByMonth = expensesByMonth.concat(incomesWithNewKey)
+    const allTxsByMonthSorted = allTxsByMonth.sort((tx1, tx2) => Number(tx1.date.replace(/-/g, "")) - Number(tx2.date.replace(/-/g, "")))
 
 
     return (
@@ -108,7 +61,7 @@ const GraphTest = () => {
                         left: 50,
                         bottom: 50
                     }}
-                    data={allTxsSorted}>
+                    data={allTxsByMonthSorted}>
                     {/* <CartesianGrid strokeDasharray="3 3" /> */}
                     <XAxis name="time" dataKey="date" />
                     <YAxis />
@@ -127,33 +80,13 @@ const GraphTest = () => {
                     left: 50,
                     bottom: 50
                 }}
-                    data={allTxsSorted}>
+                    data={allTxsByMonthSorted}>
                     <XAxis dataKey="date" />
                     <YAxis />
                     <Tooltip />
                     {/* <CartesianGrid stroke="#f5f5f5" /> */}
                     {/* <Area type="monotone" dataKey="amount2" fill="#8884d8" stroke="#8884d8" /> */}
                     {/* <Area type="monotone" dataKey="amount2" fill="#8884d8" stroke="#8884d8" /> */}
-                    <Bar dataKey="amount" barSize={20} fill="#413ea0" />
-                    {/* <Line type="monotone" dataKey="amount2" stroke="#ff7300" /> */}
-                    {/* <Scatter dataKey="amount" fill="#8884d8" /> */}
-                    <Scatter dataKey="amount2" fill="#82ca9d" />
-                </ComposedChart>
-            </ResponsiveContainer>
-            <ResponsiveContainer width="99%" aspect={2} >
-                <ComposedChart margin={{
-                    top: 50,
-                    right: 50,
-                    left: 50,
-                    bottom: 50
-                }}
-                    data={allTxsSorted2}>
-                    <XAxis dataKey="date" />
-                    <YAxis />
-                    <Tooltip />
-                    {/* <CartesianGrid stroke="#f5f5f5" /> */}
-                    {/* <Area type="monotone" dataKey="amount2" fill="#8884d8" stroke="#8884d8" /> */}
-                    <Area type="monotone" dataKey="amount" fill="#8884d8" stroke="#8884d8" />
                     <Bar dataKey="amount" barSize={20} fill="#413ea0" />
                     {/* <Line type="monotone" dataKey="amount2" stroke="#ff7300" /> */}
                     {/* <Scatter dataKey="amount" fill="#8884d8" /> */}
@@ -164,4 +97,4 @@ const GraphTest = () => {
     )
 }
 
-export default GraphTest
+export default GraphLogIncomeLogExpensesOverTime

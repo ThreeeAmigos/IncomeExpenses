@@ -9,9 +9,10 @@ import Category from "../components/databaseReadings/Category";
 import Expense from "../components/databaseReadings/Expense";
 import Income from "../components/databaseReadings/Income";
 import Person from "../components/databaseReadings/Person";
-import GraphTest from '../components/GraphTest';
+import GraphTest from '../components/GraphLogIncomeLogExpensesOverTime';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Footer from "../components/Footer";
+import GraphLogIncomeLogExpensesOverTime from "../components/GraphLogIncomeLogExpensesOverTime";
 
 
 const MainContainer = () => {
@@ -27,7 +28,7 @@ const MainContainer = () => {
         <Link to="/expense">Expense List</Link>
         <Link to="/income">Income List</Link>
         <Link to="/person">Person List</Link>
-        <Link to="/graph">Graph Test</Link>
+        <Link to="/graph">Graph Income Expenses</Link>
         <Routes>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/registerPurpose" element={<RegisterPurpose />} />
@@ -37,7 +38,7 @@ const MainContainer = () => {
           <Route path="/expense" element={<Expense />} />
           <Route path="/income" element={<Income />} />
           <Route path="/person" element={<Person />} />
-          <Route path="/graph" element={<GraphTest />} />
+          <Route path="/graph" element={<GraphLogIncomeLogExpensesOverTime />} />
         </Routes>
       </Router>
       <Footer />
