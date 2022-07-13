@@ -50,6 +50,7 @@ const Target = () => {
         <>
             <SetupMenu />
             <div class="align">
+            <h1>Setup</h1>
             <form class="form-group" onSubmit={handleSubmit}>
                 <div>
                     So we need £
