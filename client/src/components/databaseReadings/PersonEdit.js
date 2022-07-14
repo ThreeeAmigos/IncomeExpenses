@@ -114,28 +114,28 @@ const PersonEdit = (idx) => {
 
             <form onSubmit={handleSubmit}>
 
-                <input class="form-control" type="text" onChange={handleNewPersonChange} value={newPersonName} required placeholder="name" />
+                <input className="form-control" type="text" onChange={handleNewPersonChange} value={newPersonName} required placeholder="name" />
                 <br />
                 <br />
                 <br />
                 <label for="position">how much do you have now</label>
                 <br />
                 <br />
-                <input class="form-control" type="number" onChange={handleNewPositionChange} value={position} name="position" required /> <br />
+                <input className="form-control" type="number" onChange={handleNewPositionChange} value={position} name="position" required /> <br />
                 <br />
                 <br />
                 <label for="loan">loan</label>
                 <br />
                 <br />
-                <input class="form-control"  name="loan" type="number" onChange={handleLoanChange} value={loan} required /> <br />
+                <input className="form-control"  name="loan" type="number" onChange={handleLoanChange} value={loan} required /> <br />
 
-                <button class="btn btn-outline-primary"  onClick={handleSubmit} type="submit-target" >Edit Current Position</button>
+                <button className="btn btn-outline-primary"  onClick={handleSubmit} type="submit-target" >Edit Current Position</button>
                 <br />
                 {message}
             </form>
             <form onSubmit={handleDelete}>
                 <div>
-                    <button class="btn btn-outline-primary"  onClick={handleDelete} type="submit-target" >Delete</button>
+                    <button className="btn btn-outline-primary"  onClick={handleDelete} type="submit-target" >Delete</button>
                     <br />
                     {deleteMessage}
                 </div>

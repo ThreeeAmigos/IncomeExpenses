@@ -95,7 +95,7 @@ const RegisterExpenseEach = (person) => {
                 <input type="number" onChange={handleAmountChange} name="amount" placeholder="how much" />
 
                 <p>How important is this purchase:</p>
-                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
                 <input type="radio" id="index1" onChange={handleNecessityIndex} name="necessityIntex" required value={1} /><label for="index1">1</label>
                 <input type="radio" id="index2" onChange={handleNecessityIndex} name="necessityIntex" required value={2} /><label for="index2">2</label>
                 <input type="radio" id="index3" onChange={handleNecessityIndex} name="necessityIntex" required value={3} /><label for="index3">3</label>

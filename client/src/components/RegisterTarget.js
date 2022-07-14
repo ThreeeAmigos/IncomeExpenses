@@ -53,17 +53,17 @@ const RegisterTarget = () => {
 
     return (
         <>
-            <form class="form-group" onSubmit={handleSubmit}>
+            <form className="form-group" onSubmit={handleSubmit}>
                 <div>
                     So we need £ 
                     <br />
                     <br />
-                        <input class="form-control" id="pound" type="number" placeholder="20,000" onChange={handleTargetChange} value={target} required /> 
+                        <input className="form-control" id="pound" type="number" placeholder="20,000" onChange={handleTargetChange} value={target} required /> 
                     <br /> by 
                     <br />
                     <br />
-                        <input class="form-control" key={uuidv4()} type="date" onChange={handleDateChange} value={date} required /> <br />
-                    <button class="btn btn-outline-primary" onClick={handleSubmit} type="submit-target">Set Target</button>
+                        <input className="form-control" key={uuidv4()} type="date" onChange={handleDateChange} value={date} required /> <br />
+                    <button className="btn btn-outline-primary" onClick={handleSubmit} type="submit-target">Set Target</button>
                     <br />
                     {message}
                 </div>

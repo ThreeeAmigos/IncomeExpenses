@@ -59,7 +59,11 @@ details>summary::-webkit-details-marker {
 
 .center {
   margin: auto;
-  margin-top: 50px;
+  margin-top: 100px;
+}
+
+.center-text {
+  text-align: center;
 }
 
 .column-wide {

@@ -150,9 +150,9 @@ const ExpenseEdit = (idx) => {
         <>
             <form onSubmit={handleSubmit}>
                 <br />
-                <input class="form-control" type="text" onChange={handleNameChange} name="expenseName" placeholder="What is for" required />
-                <input class="form-control" type="text" onChange={handlePlaceChange} name="expensePlace" placeholder="from where" required />
-                <input class="form-control" type="number" onChange={handleAmountChange} name="amount" placeholder="how much" required />
+                <input className="form-control" type="text" onChange={handleNameChange} name="expenseName" placeholder="What is for" required />
+                <input className="form-control" type="text" onChange={handlePlaceChange} name="expensePlace" placeholder="from where" required />
+                <input className="form-control" type="number" onChange={handleAmountChange} name="amount" placeholder="how much" required />
                 <p>How important is this purchase:</p>
                 <input type="radio" id="index1" onChange={handleNecessityIndex} name="necessityIntex" required value={1} /><label for="index1">1</label>
                 <br/>
@@ -161,10 +161,10 @@ const ExpenseEdit = (idx) => {
                 <input type="radio" id="index3" onChange={handleNecessityIndex} name="necessityIntex" required value={3} /><label for="index3">3</label>
                 <br/>
                 <br/>
-                <input class="form-control" type="date" onChange={handleDateChange} name="date" value={date} required />
+                <input className="form-control" type="date" onChange={handleDateChange} name="date" value={date} required />
                 <br />
                 <label for="category">Category</label>
-                <select class="form-control" name="category" onChange={handleCategoryChange} required>
+                <select className="form-control" name="category" onChange={handleCategoryChange} required>
                     {Array.from(Array(categoryList.length)).map((number, idx) => {
                         return (
                             <option value={categoryList[idx].id} placeholder="Category">{categoryList[idx].categoryName}</option>
@@ -172,7 +172,7 @@ const ExpenseEdit = (idx) => {
                     })
                     }
                 </select>
-                <select class="btn btn-outline-primary" name="directDebit" onChange={handleDirectDebitChange} required>
+                <select className="btn btn-outline-primary" name="directDebit" onChange={handleDirectDebitChange} required>
                     <option value="true">Direct Debit</option>
                     <br/>
                     <option value="false">One-Off</option>
@@ -207,11 +207,11 @@ const ExpenseEdit = (idx) => {
                 {message}
 
                 <br />
-                <button class="btn btn-outline-primary" onClick={handleSubmit()} type="submit">Add expense</button>
+                <button className="btn btn-outline-primary" onClick={handleSubmit()} type="submit">Add expense</button>
             </form>
             <form onSubmit={handleDelete}>
                 <div>
-                    <button class="btn btn-outline-primary" onClick={handleDelete} type="submit-target" >Delete</button>
+                    <button className="btn btn-outline-primary" onClick={handleDelete} type="submit-target" >Delete</button>
                     <br />
                     {deleteMessage}
                 </div>

@@ -80,32 +80,32 @@ const Person = () => {
         <>
             <SetupMenu />
 
-            <div class="center">
+            <div className="center">
 
                 <h1>User List</h1>
                 <table >
                     <thead>
                         <tr>
                             <th ></th>
-                            <th class="column-wide">Name</th>
-                            <th class="column-wide">Current Position</th>
-                            <th class="column-wide">Debt</th>
+                            <th className="column-wide">Name</th>
+                            <th className="column-wide">Current Position</th>
+                            <th className="column-wide">Debt</th>
                         </tr>
                     </thead>
                 </table>
                 <table>
                     <tbody>
-                        <tr class="table table-hover">
+                        <tr className="table table-hover">
 
                             {Array.from(Array(person.length)).map((number, idx) => {
 
                                 return (
                                     <details>
                                         <summary>
-                                            <td class="column">{idx + 1}</td>
-                                            <td class="column-wide">{person[idx].name}</td>
-                                            <td class="column-wide">£{person[idx].currentPosition / 100}</td>
-                                            <td class="column-wide">£{person[idx].loan / 100}</td>
+                                            <td className="column">{idx + 1}</td>
+                                            <td className="column-wide">{person[idx].name}</td>
+                                            <td className="column-wide">£{person[idx].currentPosition / 100}</td>
+                                            <td className="column-wide">£{person[idx].loan / 100}</td>
                                         </summary>
                                         <p ><PersonEdit idx={person[idx]} /></p>
 
@@ -127,20 +127,20 @@ const Person = () => {
                 <p>Add a new Person</p>
                 <form onSubmit={handlePost}>
 
-                    <input class="form-control" type="text" onChange={handleNewPersonChange} value={newPersonName} required placeholder="name" /> 
+                    <input className="form-control" type="text" onChange={handleNewPersonChange} value={newPersonName} required placeholder="name" /> 
                     <br />
                     <label for="position">Current Position</label>
                     <br />
-                    <input class="form-control" type="number" onChange={handleNewPositionChange} value={position} name="position" required /> 
+                    <input className="form-control" type="number" onChange={handleNewPositionChange} value={position} name="position" required /> 
                     <br />
                     <label for="loan">Debt</label>
                     <br />
-                    <input class="form-control"  name="loan" type="number" onChange={handleLoanChange} value={loan} required /> <br />
+                    <input className="form-control"  name="loan" type="number" onChange={handleLoanChange} value={loan} required /> <br />
 
 
 
 
-                    <button class="btn btn-outline-primary"  onClick={handlePost} type="submit-target" >Add Person</button>
+                    <button className="btn btn-outline-primary"  onClick={handlePost} type="submit-target" >Add Person</button>
                     <br />
                     {message}
                 </form>

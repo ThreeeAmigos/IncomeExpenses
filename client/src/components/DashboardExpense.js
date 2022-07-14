@@ -99,28 +99,28 @@ const DashboardExpense = () => {
 
         <div >
 
-            <form class="align" onSubmit={handleSubmit}>
+            <form className="align" onSubmit={handleSubmit}>
                 <br />
-                <input class="form-control" type="text" onChange={handleNameChange} name="expenseName" placeholder="What is for" required />
+                <input className="form-control" type="text" onChange={handleNameChange} name="expenseName" placeholder="What is for" required />
                 <br />
-                <input class="form-control" type="text" onChange={handlePlaceChange} name="expensePlace" placeholder="from where" required />
+                <input className="form-control" type="text" onChange={handlePlaceChange} name="expensePlace" placeholder="from where" required />
                 <br />
-                <input class="form-control" type="number" onChange={handleAmountChange} name="amount" placeholder="how much" required />
-                <label class="form-label mt-4">How important is this purchase:</label>
-                <fieldset class="form-control">
-                    <label class="form-check-label" >
-                        <input class="form-check-input" type="radio" id="index1" onChange={handleNecessityIndex} name="necessityIntex" required value={1} /> 1 &nbsp;&nbsp;</label>
-                    <label class="form-check-label" >
-                        <input class="form-check-input" type="radio" onChange={handleNecessityIndex} name="necessityIntex" required value={2} /> 2 &nbsp;&nbsp;</label>
-                    <input class="form-check-input" type="radio" id="index3" onChange={handleNecessityIndex} name="necessityIntex" required value={3} /><label for="index3"> 3 &nbsp;&nbsp;</label>
+                <input className="form-control" type="number" onChange={handleAmountChange} name="amount" placeholder="how much" required />
+                <label className="form-label mt-4">How important is this purchase:</label>
+                <fieldset className="form-control">
+                    <label className="form-check-label" >
+                        <input className="form-check-input" type="radio" id="index1" onChange={handleNecessityIndex} name="necessityIntex" required value={1} /> 1 &nbsp;&nbsp;</label>
+                    <label className="form-check-label" >
+                        <input className="form-check-input" type="radio" onChange={handleNecessityIndex} name="necessityIntex" required value={2} /> 2 &nbsp;&nbsp;</label>
+                    <input className="form-check-input" type="radio" id="index3" onChange={handleNecessityIndex} name="necessityIntex" required value={3} /><label for="index3"> 3 &nbsp;&nbsp;</label>
                 </fieldset>
                 <br />
 
-                <div class="form-group">
-                    <input class="form-control" type="date" onChange={handleDateChange} name="date" value={date} required />
+                <div className="form-group">
+                    <input className="form-control" type="date" onChange={handleDateChange} name="date" value={date} required />
                     <br />
-                    <label class="form-label mt-4" for="category">Category</label>
-                    <select class="form-select" name="category" onChange={handleCategoryChange} required>
+                    <label className="form-label mt-4" for="category">Category</label>
+                    <select className="form-select" name="category" onChange={handleCategoryChange} required>
                         {Array.from(Array(categoryList.length)).map((number, idx) => {
                             return (
                                 <option value={categoryList[idx].id} id={uuidv4()} placeholder="Category">{categoryList[idx].categoryName}</option>
@@ -130,12 +130,12 @@ const DashboardExpense = () => {
                     </select>
                     <br />
                     <p>Who Pay</p>
-                    <div class="form-control">
+                    <div className="form-control">
                         {Array.from(Array(personList.length)).map((number, idx) => {
 
                             return (
                                 <div>
-                                    <input type="radio" name="person" id="person" class="form-check-input" onChange={handlePersonChange} required value={personList[idx].id} /><label for="person">&nbsp;{personList[idx].name}&nbsp;&nbsp;</label>
+                                    <input type="radio" name="person" id="person" className="form-check-input" onChange={handlePersonChange} required value={personList[idx].id} /><label for="person">&nbsp;{personList[idx].name}&nbsp;&nbsp;</label>
                                 </div>
                             )
                         })
@@ -144,11 +144,11 @@ const DashboardExpense = () => {
                     <br />
                     <br />
                     <label for="purpose">Who For<br />&nbsp;&nbsp;</label>
-                    <div class="form-control">
+                    <div className="form-control">
                         {Array.from(Array(purposeList.length)).map((number, idx) => {
                             return (
                                 <div >
-                                    <input type="radio" class="form-check-input" name="purpose" id="purpose" onChange={handlePurposeChange} required value={purposeList[idx].id} /><label for="purpose">&nbsp;&nbsp;{purposeList[idx].purposeName}&nbsp;&nbsp;</label>
+                                    <input type="radio" className="form-check-input" name="purpose" id="purpose" onChange={handlePurposeChange} required value={purposeList[idx].id} /><label for="purpose">&nbsp;&nbsp;{purposeList[idx].purposeName}&nbsp;&nbsp;</label>
                                 </div>
                             )
                         })
@@ -159,7 +159,7 @@ const DashboardExpense = () => {
 
                     <br />
                 </div>
-                <button class="btn btn-primary" onClick={handleSubmit()} type="submit">Add expense</button>
+                <button className="btn btn-primary" onClick={handleSubmit()} type="submit">Add expense</button>
             </form>
 
         </div>
