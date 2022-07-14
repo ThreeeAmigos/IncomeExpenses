@@ -8,17 +8,17 @@ import RegisterPurpose from './RegisterPurpose';
 const Main = () => {
 
 
-        const [purpose, setPurpose] = useState([])
+    const [person, setPerson] = useState([])
 
         useEffect(() => {
-            getElements("purposes")
-                .then(item => setPurpose(item))
+            getElements("persons")
+                .then(item => setPerson(item))
         }, [])
 
 
     return (
         <>
-            {purpose[0] ? <Dashboard /> : <RegisterPurpose />}
+            {person[0] ? <Dashboard /> : <RegisterPurpose />}
         </>
     )
 
