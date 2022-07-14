@@ -8,14 +8,15 @@ import menthe from "../img/menthe.png"
 
 const Header = () => {
   return (
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <div class="container-fluid" id="narrow">
-        <a class="navbar-brand" href="/dashboard">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div className="container-fluid" id="narrow">
+        <a className="navbar-brand" href="/dashboard">
           <img src={menthe} width="25"></img> MINTid</a>
-        <a class="navbar-brand" href="/expense" color="white">Expenses</a>
-        <a class="navbar-brand" href="/income" color="white">Income</a>
-        <a class="navbar-brand" href="/target" color="white">Goal</a>
-        <a class="navbar-brand" href="/registerPurpose" color="white">Household</a>
+        <a className="navbar-brand" href="/expense" color="white">Expense</a>
+        <a className="navbar-brand" href="/income" color="white">Income</a>
+        <a className="navbar-brand" href="/target" color="white">Goal</a>
+        <a className="navbar-brand" href="/registerPurpose" color="white">Household</a>
+
 
       </div>
     </nav>

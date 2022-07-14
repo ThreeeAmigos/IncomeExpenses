@@ -105,31 +105,30 @@ const DashboardExpense = () => {
 
         <div >
 
-            
+            <form className="align" onSubmit={handleSubmit}>
+            <h1>You been spending again?</h1>
+                <br />
+                <input className="form-control" type="text" onChange={handleNameChange} name="expenseName" placeholder="What did you buy then?" required />
+                <br />
+                <input className="form-control" type="text" onChange={handlePlaceChange} name="expensePlace" placeholder="from where" required />
+                <br />
+                <input className="form-control" type="number" onChange={handleAmountChange} name="amount" placeholder="What was the damage?"  required />
+                <label className="form-label mt-4">Essential, was it?</label>
+                <fieldset className="form-control">
+                    <label className="form-check-label" >
+                        <input className="form-check-input" type="radio" id="index1" onChange={handleNecessityIndex} name="necessityIntex" required value={1} /> 1: you can't live without &nbsp;&nbsp;</label>
+                    <label className="form-check-label" >
+                        <input className="form-check-input" type="radio" onChange={handleNecessityIndex} name="necessityIntex" required value={2} />  2: paying for a haircut etc &nbsp;&nbsp;</label>
+                    <input className="form-check-input" type="radio" id="index3" onChange={handleNecessityIndex} name="necessityIntex" required value={3} /><label for="index3"> 3: is just plain naughty and you know it &nbsp;&nbsp;</label>
 
-            <form class="align" onSubmit={handleSubmit}>
-                <h1>You been spending again?</h1>
-                <br />
-                <input class="form-control" type="text" onChange={handleNameChange} name="expenseName" placeholder="What did you buy then?" required />
-                <br />
-                <input class="form-control" type="text" onChange={handlePlaceChange} name="expensePlace" placeholder="Where from?" required />
-                <br />
-                <input class="form-control" type="number" onChange={handleAmountChange} name="amount" placeholder="What was the damage?" required />
-                <label class="form-label mt-4">Essential, was it?</label>
-                <fieldset class="form-control">
-                    <label class="form-check-label" >
-                        <input class="form-check-input" type="radio" id="index1" onChange={handleNecessityIndex} name="necessityIntex" required value={1} /> 1: you can't live without &nbsp;&nbsp;</label>
-                    <label class="form-check-label" >
-                        <input class="form-check-input" type="radio" onChange={handleNecessityIndex} name="necessityIntex" required value={2} /> 2: paying for a haircut etc &nbsp;&nbsp;</label>
-                    <input class="form-check-input" type="radio" id="index3" onChange={handleNecessityIndex} name="necessityIntex" required value={3} /><label for="index3"> 3: is just plain naughty and you know it &nbsp;&nbsp;</label>
                 </fieldset>
                 <br />
 
-                <div class="form-group">
-                    <input class="form-control" type="date" onChange={handleDateChange} name="date" value={date} required />
+                <div className="form-group">
+                    <input className="form-control" type="date" onChange={handleDateChange} name="date" value={date} required />
                     <br />
-                    <label class="form-label mt-4" for="category">Category</label>
-                    <select class="form-select" name="category" onChange={handleCategoryChange} required>
+                    <label className="form-label mt-4" for="category">Category</label>
+                    <select className="form-select" name="category" onChange={handleCategoryChange} required>
                         {Array.from(Array(categoryList.length)).map((number, idx) => {
                             return (
                                 <option value={categoryList[idx].id} id={uuidv4()} placeholder="Category">{categoryList[idx].categoryName}</option>
@@ -143,13 +142,17 @@ const DashboardExpense = () => {
                         <option value="false">One-Off</option>
                     </select>
                     <br />
+
                     <p>Whose account?</p>
                     <div class="form-control">
+
                         {Array.from(Array(personList.length)).map((number, idx) => {
 
                             return (
                                 <div>
-                                    <input type="radio" name="person" id="person" class="form-check-input" onChange={handlePersonChange} required value={personList[idx].id} /><label for="person">&nbsp;{personList[idx].name}'s&nbsp;&nbsp;</label>
+
+                                    <input type="radio" name="person" id="person" className="form-check-input" onChange={handlePersonChange} required value={personList[idx].id} /><label for="person">&nbsp;{personList[idx].name}'s&nbsp;&nbsp;</label>
+
                                 </div>
                             )
                         })
@@ -157,12 +160,14 @@ const DashboardExpense = () => {
                     </div>
                     <br />
                     <br />
+
                     <label for="purpose">Who was this actually for?<br />&nbsp;&nbsp;</label>
-                    <div class="form-control">
+                    <div className="form-control">
+
                         {Array.from(Array(purposeList.length)).map((number, idx) => {
                             return (
                                 <div >
-                                    <input type="radio" class="form-check-input" name="purpose" id="purpose" onChange={handlePurposeChange} required value={purposeList[idx].id} /><label for="purpose">&nbsp;&nbsp;{purposeList[idx].purposeName}&nbsp;&nbsp;</label>
+                                    <input type="radio" className="form-check-input" name="purpose" id="purpose" onChange={handlePurposeChange} required value={purposeList[idx].id} /><label for="purpose">&nbsp;&nbsp;{purposeList[idx].purposeName}&nbsp;&nbsp;</label>
                                 </div>
                             )
                         })
@@ -173,7 +178,7 @@ const DashboardExpense = () => {
 
                     <br />
                 </div>
-                <button class="btn btn-primary" onClick={handleSubmit()} type="submit">Add expense</button>
+                <button className="btn btn-primary" onClick={handleSubmit()} type="submit">Add expense</button>
             </form>
 
         </div>

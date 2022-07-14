@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { getElements } from '../services/TrackerServices';
 import RegisterIncomeEach from './RegisterIncomeEach';
+import FirstGraph from './FirstGraph';
 
 const RegisterIncome = () => {
 
 
     const [personList, setPersonList] = useState([])
     const [total, setTotal] = useState(0)
+    const [household, setHousehold] = useState([])
     const [formCount, setFormcount] = useState(1)
     const [formCount2, setFormcount2] = useState(1)
 
@@ -25,6 +27,10 @@ const RegisterIncome = () => {
     useEffect(() => {
         getElements("persons")
             .then(item => setPersonList(item))
+    }, [])
+    useEffect(() => {
+        getElements("households")
+            .then(item => setHousehold(item))
     }, [])
 
 
@@ -54,15 +60,15 @@ const RegisterIncome = () => {
 
     return (
         <>
-            <div class="align">
-                <div>OK We have £ {personList[0] ? calculateTotal() : <div> Loading </div>} </div>
+            <div className="align">
+            <br/>
+            <br/>
+                <div className="center-text" >OK We have £ {personList[0] ? calculateTotal() : <div> Loading </div>} </div>
+                <FirstGraph amount={personList[0] ? calculateTotal() : <div> Loading </div>} amount2={household[0] ? household[0].target : <p> Loading </p>} />
                 <br />
-                <div>+ Cam's Graph +</div>
-
-                {/* Graph by Cam */}
 
                 <br />
-                <div>£000 per month we need not to waste! </div>
+                <div className="center-text ">£{household[0] ?household[0].target : <p> Loading </p>} we need not to waste! </div>
 
 
                 <br />
@@ -75,7 +81,9 @@ const RegisterIncome = () => {
                             {personList[0] == personList[index] ? <div key={uuidv4()} >Right, {personList[index].name}, what're you bringing home each month?
                                 <br />
                                 <br />
-                                <button class="btn btn-outline-primary" onClick={handleFormClick}> Add Another Source </button>
+
+                                <button className="btn btn-outline-primary" onClick={handleFormClick}> Add Another Source </button>
+
                                 {Array.from(Array(formCount)).map((number, idx) => {
 
                                     return (
@@ -88,7 +96,9 @@ const RegisterIncome = () => {
                                 : <div key={uuidv4()} >And you, {personList[index].name}? What you stacking?
                                     <br />
                                     <br />
-                                    <button class="btn btn-outline-primary" onClick={handleFormClick2}> Add Another Source </button>
+
+                                    <button className="btn btn-outline-primary" onClick={handleFormClick2}> Add Another Source </button>
+
                                     {Array.from(Array(formCount2)).map((number, idx) => {
 
                                         return (

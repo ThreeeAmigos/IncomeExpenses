@@ -114,29 +114,32 @@ const PersonEdit = (idx) => {
 
             <form onSubmit={handleSubmit}>
 
-                <input class="form-control" type="text" onChange={handleNewPersonChange} value={newPersonName} required placeholder="You change your name?" />
+                <input className="form-control" type="text" onChange={handleNewPersonChange} value={newPersonName} required placeholder="You change your name?" />
+
                 <br />
                 <br />
                 <br />
                 <label for="position">What's your positive balance now?</label>
                 <br />
                 <br />
-                <input class="form-control" type="number" onChange={handleNewPositionChange} value={position} name="position" required /> <br />
+                <input className="form-control" type="number" onChange={handleNewPositionChange} value={position} name="position" required /> <br />
                 <br />
                 <br />
                 <label for="loan">Still got debts?</label>
                 <br />
                 <br />
-                <input class="form-control"  name="loan" type="number" onChange={handleLoanChange} value={loan} required /> <br />
+                <input className="form-control"  name="loan" type="number" onChange={handleLoanChange} value={loan} required /> <br />
 
-                <button class="btn btn-outline-primary"  onClick={handleSubmit} type="submit-target" >Update Person's Position</button>
 
-                <br />
+                <button className="btn btn-outline-primary"  onClick={handleSubmit} type="submit-target" >Update Person's Position</button>
+
+   <br />
                 {message}
             </form>
             <form onSubmit={handleDelete}>
                 <div>
-                    <button class="btn btn-outline-primary"  onClick={handleDelete} type="submit-target" >Delete Person</button>
+
+                    <button className="btn btn-outline-primary"  onClick={handleDelete} type="submit-target" >Delete Person</button>
 
                     <br />
                     {deleteMessage}

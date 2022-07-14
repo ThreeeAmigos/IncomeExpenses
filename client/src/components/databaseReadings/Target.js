@@ -49,19 +49,23 @@ const Target = () => {
     return (
         <>
             <SetupMenu />
-            <div class="align">
+
+            <div className="align">
             <h1>You wanna change your goal? You sure?</h1>
             <form class="form-group" onSubmit={handleSubmit}>
+
                 <div>
                     What is it now? £
                     <br />
                     <br />
-                    <input class="form-control" id="pound" type="number" onChange={handleTargetChange} value={target} required />
+
+                    <input className="form-control" id="pound" type="number" onChange={handleTargetChange} value={target} required />
                     <br /> By
                     <br />
                     <br />
-                    <input class="form-control" type="date" onChange={handleDateChange} value={date} required /> <br />
-                    <button class="btn btn-outline-primary" onClick={handleSubmit} type="submit-target">Set Goal</button>
+                    <input className="form-control" type="date" onChange={handleDateChange} value={date} required /> <br />
+                    <button className="btn btn-outline-primary" onClick={handleSubmit} type="submit-target">Set Goal</button>
+
                     <br />
                     {message}
                 </div>

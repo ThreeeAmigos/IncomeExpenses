@@ -37,7 +37,6 @@ const GraphLogIncomeLogExpensesOverTime = () => {
     const allTxs = lnExpenses.concat(incomesWithNewKey)
     const allTxsSorted = allTxs.sort((tx1, tx2) => Number(tx1.date.replace(/-/g, "")) - Number(tx2.date.replace(/-/g, "")))
 
-
     return (
         <>
             <ResponsiveContainer width="99%" aspect={2} >

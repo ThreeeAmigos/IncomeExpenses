@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { getElements } from '../../services/TrackerServices'
 import ExpenseEdit from './ExpenseEdit';
 
-const Expense = () => {
+const ExpenseNec = () => {
 
     const [expense, setExpense] = useState([])
 
 
     useEffect(() => {
-        getElements("expenses")
+        getElements("expenses?necessityindex=2")
             .then(item => setExpense(item))
     }, [])
 
@@ -28,8 +28,9 @@ const Expense = () => {
                     <li className="breadcrumb-item active"><a href="/expenseNec3">NI 3</a></li>
                 </ol>
             </div>
+
         <div className="center">
-            
+
             <h1>Expense</h1>
             <table >
                 <thead>
@@ -88,6 +89,6 @@ const Expense = () => {
     )
 }
 
-export default Expense
+export default ExpenseNec
 
 

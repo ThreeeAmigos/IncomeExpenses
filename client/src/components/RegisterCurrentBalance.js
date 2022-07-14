@@ -51,8 +51,8 @@ const RegisterCurrentBalance = (userList) => {
                 headers: new Headers({ "Content-Type": "application/json" }),
                 body: JSON.stringify({
                     name: userList.userList.purposeName,
-                    loan: totalDebts,
-                    currentPosition: totalSavings - totalDebts,
+                    loan: totalDebts*100,
+                    currentPosition: (totalSavings - totalDebts)*100,
                     household: {
                         id: 1
                     }
@@ -79,10 +79,12 @@ const RegisterCurrentBalance = (userList) => {
     return (
         <>
         
-            <button class="btn btn-outline-primary" onClick={handleSavingClick}> add current balance </button>
+
+            <button className="btn btn-outline-primary" onClick={handleSavingClick}> add current balance </button>
+
             {Array.from(Array(inputSavingCount)).map((number, index) => {
                 return (<div >
-                       <input type="number" onChange={handleChange} name="saving" id={index} />
+                    <input classNameNameName="form-control" type="number" onChange={handleChange} name="saving" id={index} />
                     </div>
                    )
             })}
@@ -90,12 +92,14 @@ const RegisterCurrentBalance = (userList) => {
             <br />
             <br />
 
-            <button class="btn btn-outline-primary" onClick={handleDebtClick}> add current debt </button>
+
+            <button className="btn btn-outline-primary" onClick={handleDebtClick}> add current debt </button>
+
             {Array.from(Array(inputDebtCount)).map((number, index) => {
                 return (
                     <>
                         <br />
-                        <input type="number" onChange={handleDebtChange} name="debt" id={index} />
+                        <input classNameNameName="form-control" type="number" onChange={handleDebtChange} name="debt" id={index} />
                     </>
                 )
             })}
@@ -108,9 +112,10 @@ const RegisterCurrentBalance = (userList) => {
                 <br />
                 <div>Total Current Balance: {totalSavings - totalDebts} </div>
                 <br />
-                <div>This is for {userList.userList.purposeName}</div>
                 <br />
-                <button class="btn btn-outline-primary" onClick={handleSubmit} type="submit">Set {userList.userList.purposeName}'s Account</button>
+
+                <button className="btn btn-outline-primary" onClick={handleSubmit} type="submit">Set {userList.userList.purposeName}'s Account</button>
+
                 <br />
                 
                 {message}

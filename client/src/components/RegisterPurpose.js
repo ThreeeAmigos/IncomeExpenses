@@ -5,6 +5,7 @@ import RegisterCurrentBalance from './RegisterCurrentBalance';
 import { getElements } from '../services/TrackerServices';
 import '../css/input.css';
 import '../css/list.css';
+import '../css/texteffect.css';
 import {
     BrowserRouter as Router,
     Routes,
@@ -30,9 +31,9 @@ const RegisterPurpose = () => {
         fetchData()
     }, [])
 
-    
 
-    
+
+
 
 
 
@@ -67,7 +68,7 @@ const RegisterPurpose = () => {
         fetchData();
 
     }
-    
+
 
     const handleChange = (event) => {
         setPurposeName(event.target.value)
@@ -85,19 +86,22 @@ const RegisterPurpose = () => {
 
 
     return (
-        <div class="align">
+        <div className="align">
             <br/>
             <h1>OK, LET'S GET MINTid</h1>
+
             <br />
             <h3>Who's in?</h3>
             <br />
             <form onSubmit={handleSubmit}>
                 <div>
+
                     Just the one? Are we talking shared goals?
+
                     <br />
                     <br />
-                    <input class="form-control" type="text" onChange={handleChange} value={purposeName} placeholder='Your name' required />  <br />
-                    <button class="btn btn-outline-primary" type="submit" onClick={handleAdd}>Add</button>
+                    <input className="form-control" type="text" onChange={handleChange} value={purposeName} placeholder='Your name' required />  <br />
+                    <button className="btn btn-outline-primary" type="submit" onClick={handleAdd}>Add</button>
                 </div>
             </form>
             <div>
@@ -110,12 +114,26 @@ const RegisterPurpose = () => {
 
             <div>
                 <hr />
-                <ul>
-                    <li>Money doesn't buy happiness. But it usually f***ing helps. In the meantime, let's just focus on the goal...</li>
-                    <li></li>
-                    <li></li>
-                </ul>
+                <p className="rotatingText">
+                    <br />
+                    Money doesn't buy happiness. But it usually f***ing helps. In the meantime, let's just focus on the goal...
+                    <br />
+                    We want to
+                    <br/>
+                    <br/>
+                    <div className="rotatingText-adjective">buy a house</div>
+                    <div className="rotatingText-adjective">have alpacas</div>
+                    <div className="rotatingText-adjective">go to Holiday</div>
+                    <div className="rotatingText-adjective">marry</div>
+                    <div className="rotatingText-adjective">buy a house</div>
+                    <div className="rotatingText-adjective">do kitchen</div>
+                    <div className="rotatingText-adjective">have many cats</div>
+                    <div className="rotatingText-adjective">have many cats</div>
+                    <div className="rotatingText-adjective">have many cats</div>
+                    </p>
+
             </div>
+            <br/>
             <hr />
 
             <RegisterTarget />
@@ -131,7 +149,7 @@ const RegisterPurpose = () => {
                     <div key={uuidv4()}>
                         <br />
                         <hr />
-                        {userList[0] == userList[index] ? <div key={uuidv4()} >{userList[index].purposeName},Empty your Pocket</div> : <div key={uuidv4()} >You too,{userList[index].purposeName}, cough up!</div>}
+                        {userList[0] == userList[index] ? <div key={uuidv4()} >{userList[index].purposeName}, Empty your Pocket</div> : <div key={uuidv4()} >You too, {userList[index].purposeName}, cough up!</div>}
                         <br />
                         <RegisterCurrentBalance userList={userList[index]} />
                     </div>

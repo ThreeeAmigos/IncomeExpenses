@@ -56,7 +56,7 @@ const Category = () => {
         <>
             <SetupMenu />
 
-            <div class="align" id="margin">
+            <div className="align" id="margin">
                 <h1>Categories</h1>
                 {Array.from(Array(category.length)).map((number, idx) => {
 

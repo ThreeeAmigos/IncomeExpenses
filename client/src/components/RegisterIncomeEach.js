@@ -34,7 +34,7 @@ const RegisterIncomeEach = (person) => {
                 headers: new Headers({ "Content-Type": "application/json" }),
                 body: JSON.stringify({
                     incomeName: incomeName,
-                    amount: amount,
+                    amount: amount * 100,
                     date: date,
                     salary: true,
                     person: {
@@ -57,19 +57,19 @@ const RegisterIncomeEach = (person) => {
 
     return (
         <>
+
             
                     <form onSubmit={handleSubmit}>
                         <br />
-                        <input class="form-control" type="text" onChange={handleNameChange} name="incomeName" id={uuidv4()} placeholder="from where" />
-                        <input class="form-control" type="number" onChange={handleAmountChange} name="amount" id={uuidv4()} placeholder="how much" />
-                        <input class="form-control" type="date" onChange={handleDateChange} name="date" value={date} id={uuidv4()} />
+                        <input className="form-control" type="text" onChange={handleNameChange} name="incomeName" id={uuidv4()} placeholder="from where" />
+                        <input className="form-control" type="number" onChange={handleAmountChange} name="amount" id={uuidv4()} placeholder="how much" />
+                        <input className="form-control" type="date" onChange={handleDateChange} name="date" value={date} id={uuidv4()} />
                         <br />
                         
                         {message}
                         
-                        <button class="btn btn-outline-primary" onClick={handleSubmit()} type="submit">Set Income Source</button>
+                        <button className="btn btn-outline-primary" onClick={handleSubmit()} type="submit">Set Income Source</button>
                     </form>
-      
 
 
 

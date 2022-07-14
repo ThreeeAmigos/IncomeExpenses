@@ -119,14 +119,16 @@ const IncomeEdit = (idx) => {
         <div>
             <form onSubmit={handleSubmit}>
                 <br />
-                <input class="form-control" type="text" onChange={handleNameChange} name="incomeName" placeholder="Where's it coming from?" required />
-                
-                <input class="form-control" type="number" onChange={handleAmountChange} name="amount" placeholder="How much?" required />
 
-                <input class="form-control" type="date" onChange={handleDateChange} name="date" required />
+                <input className="form-control" type="text" onChange={handleNameChange} name="incomeName" placeholder="Where's it coming from?" required />
+                
+                <input className="form-control" type="number" onChange={handleAmountChange} name="amount" placeholder="How much?" required />
+
+
+                <input className="form-control" type="date" onChange={handleDateChange} name="date" required />
                 <br />
 
-                <select class="btn btn-outline-primary" name="salaryChange" onChange={handleSalaryChange} required>
+                <select className="btn btn-outline-primary" name="salaryChange" onChange={handleSalaryChange} required>
                     <option value="true">Salary</option>
                     <option value="false">Other</option>
                     <br/>   
@@ -142,7 +144,9 @@ const IncomeEdit = (idx) => {
 
                     return (
                         <>
-                            <input type="radio" name="person" id="person" onChange={handlePersonChange}  required value={personList[index].id} /><label for="person">{personList[index].name}</label>
+
+                            <input type="radio" name="person" id="person" onChange={handlePersonChange}  className="form-control" required value={personList[index].id} /><label for="person">{personList[index].name}</label>
+
                             <br/>
                         </>
                     )
@@ -152,12 +156,12 @@ const IncomeEdit = (idx) => {
                 {message}
 
                 <br />
-                <button class="btn btn-outline-primary" onClick={handleSubmit()} type="submit">Update</button>
+                <button className="btn btn-outline-primary" onClick={handleSubmit()} type="submit">Update</button>
                 <br/>
             </form>
             <form onSubmit={handleDelete}>
                 <div>
-                    <button class="btn btn-outline-primary" onClick={handleDelete} type="submit-target" >Delete</button>
+                    <button className="btn btn-outline-primary" onClick={handleDelete} type="submit-target" >Delete</button>
                     {deleteMessage}
                     <br/>
                 </div>
