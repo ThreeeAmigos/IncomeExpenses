@@ -68,7 +68,7 @@ const RegisterIncome = () => {
                 <br />
 
                 <br />
-                <div className="center-text ">£{household[0] ?household[0].target : <p> Loading </p>} we need not to waste! </div>
+                <div className="center-text ">£{household[0] ?household[0].target/100 : <p> Loading </p>} we need not to waste! </div>
 
 
                 <br />

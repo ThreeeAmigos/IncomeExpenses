@@ -71,7 +71,7 @@ const DashboardExpense = () => {
                 body: JSON.stringify({
                     name: expenseName,
                     place: expensePlace,
-                    amount: amount*100,
+                    amount: amount * 100,
                     necessityIndex: necessityIndex,
                     date: date,
                     directDebit: false,
@@ -87,7 +87,7 @@ const DashboardExpense = () => {
                 })
             })
 
-            
+
             const resJson = await res.json()
             if (res.status === 201) {
                 setMessage("Saved")
@@ -106,22 +106,22 @@ const DashboardExpense = () => {
         <div >
 
             <form className="align" onSubmit={handleSubmit}>
-            <h1>You been spending again?</h1>
+                <h1>You been spending again?</h1>
                 <br />
                 <input className="form-control" type="text" onChange={handleNameChange} name="expenseName" placeholder="What did you buy then?" required />
                 <br />
                 <input className="form-control" type="text" onChange={handlePlaceChange} name="expensePlace" placeholder="from where" required />
                 <br />
-                <input className="form-control" type="number" onChange={handleAmountChange} name="amount" placeholder="What was the damage?"  required />
+                <input className="form-control" type="number" onChange={handleAmountChange} name="amount" placeholder="What was the damage?" required />
                 <label className="form-label mt-4">Essential, was it?</label>
                 <fieldset className="form-control">
                     <label className="form-check-label" >
-            
+
                         <input className="form-check-input" type="radio" id="index1" onChange={handleNecessityIndex} name="necessityIntex" required value={1} /> 1: you can't live without &nbsp;&nbsp;</label>
-                        <br/>
+                    <br />
                     <label className="form-check-label" >
                         <input className="form-check-input" type="radio" onChange={handleNecessityIndex} name="necessityIntex" required value={2} />  2: paying for a haircut etc &nbsp;&nbsp;</label>
-                        <br/>
+                    <br />
                     <input className="form-check-input" type="radio" id="index3" onChange={handleNecessityIndex} name="necessityIntex" required value={3} /> <label for="index3">  3: is just plain naughty and you know it &nbsp;&nbsp;</label>
 
                 </fieldset>
@@ -139,11 +139,13 @@ const DashboardExpense = () => {
                         })
                         }
                     </select>
+                    <br />
                     <select class="btn btn-outline-primary" name="directDebit" onChange={handleDirectDebitChange} required>
                         <option value="true">Direct Debit</option>
-                        <br/>
+                        <br />
                         <option value="false">One-Off</option>
                     </select>
+                    <br />
                     <br />
 
                     <p>Whose account?</p>

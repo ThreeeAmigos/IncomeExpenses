@@ -65,10 +65,9 @@ const RegisterIncomeEach = (person) => {
                         <input className="form-control" type="number" onChange={handleAmountChange} name="amount" id={uuidv4()} placeholder="how much" />
                         <input className="form-control" type="date" onChange={handleDateChange} name="date" value={date} id={uuidv4()} />
                         <br />
-                        
-                        {message}
-                        
-                        <button className="btn btn-outline-primary" onClick={handleSubmit()} type="submit">Set Income Source</button>
+                <button className="btn btn-outline-primary" onClick={handleSubmit()} type="submit">Set Income Source</button><br />
+
+                {message}
                     </form>
 
 

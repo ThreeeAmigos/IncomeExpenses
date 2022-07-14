@@ -41,7 +41,7 @@ const FirstGraph = () => {
                         }}
                             data={[{ amount: persons[0].currentPosition + persons[1].currentPosition, date: today }, { amount: households[0].target, date: households[0].date }]} >
                             <XAxis dataKey="date" />
-                            <YAxis />
+                            <YAxis tick={false} axisLine={false} />
                             <Tooltip />
                             <CartesianGrid stroke="#f5f5f5" />
                             <Area type="monotone" dataKey="amount" fill="#8884d8" stroke="#8884d8" />
