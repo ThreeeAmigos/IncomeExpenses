@@ -116,10 +116,13 @@ const DashboardExpense = () => {
                 <label className="form-label mt-4">Essential, was it?</label>
                 <fieldset className="form-control">
                     <label className="form-check-label" >
+            
                         <input className="form-check-input" type="radio" id="index1" onChange={handleNecessityIndex} name="necessityIntex" required value={1} /> 1: you can't live without &nbsp;&nbsp;</label>
+                        <br/>
                     <label className="form-check-label" >
                         <input className="form-check-input" type="radio" onChange={handleNecessityIndex} name="necessityIntex" required value={2} />  2: paying for a haircut etc &nbsp;&nbsp;</label>
-                    <input className="form-check-input" type="radio" id="index3" onChange={handleNecessityIndex} name="necessityIntex" required value={3} /><label for="index3"> 3: is just plain naughty and you know it &nbsp;&nbsp;</label>
+                        <br/>
+                    <input className="form-check-input" type="radio" id="index3" onChange={handleNecessityIndex} name="necessityIntex" required value={3} /> <label for="index3">  3: is just plain naughty and you know it &nbsp;&nbsp;</label>
 
                 </fieldset>
                 <br />
