@@ -119,9 +119,11 @@ const IncomeEdit = (idx) => {
         <div>
             <form onSubmit={handleSubmit}>
                 <br />
-                <input className="form-control" type="text" onChange={handleNameChange} name="incomeName" placeholder="What is for" required />
+
+                <input className="form-control" type="text" onChange={handleNameChange} name="incomeName" placeholder="Where's it coming from?" required />
                 
-                <input className="form-control" type="number" onChange={handleAmountChange} name="amount" placeholder="how much" required />
+                <input className="form-control" type="number" onChange={handleAmountChange} name="amount" placeholder="How much?" required />
+
 
                 <input className="form-control" type="date" onChange={handleDateChange} name="date" required />
                 <br />
@@ -135,14 +137,16 @@ const IncomeEdit = (idx) => {
 
                 <p>
                 <br/>
-                Who's income
+                Whose Income?
                 </p>
                 
                 {Array.from(Array(personList.length)).map((number, index) => {
 
                     return (
                         <>
-                            <input type="radio" name="person" id="person" onChange={handlePersonChange} className="form-control"  required value={personList[index].id} /><label for="person">{personList[index].name}</label>
+
+                            <input type="radio" name="person" id="person" onChange={handlePersonChange}  className="form-control" required value={personList[index].id} /><label for="person">{personList[index].name}</label>
+
                             <br/>
                         </>
                     )

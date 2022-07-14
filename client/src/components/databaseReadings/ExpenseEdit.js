@@ -150,15 +150,19 @@ const ExpenseEdit = (idx) => {
         <>
             <form onSubmit={handleSubmit}>
                 <br />
-                <input className="form-control" type="text" onChange={handleNameChange} name="expenseName" placeholder="What is for" required />
-                <input className="form-control" type="text" onChange={handlePlaceChange} name="expensePlace" placeholder="from where" required />
-                <input className="form-control" type="number" onChange={handleAmountChange} name="amount" placeholder="how much" required />
-                <p>How important is this purchase:</p>
-                <input type="radio" id="index1" onChange={handleNecessityIndex} name="necessityIntex" required value={1} /><label for="index1">1</label>
-                <br/>
-                <input type="radio" id="index2" onChange={handleNecessityIndex} name="necessityIntex" required value={2} /><label for="index2">2</label>
-                <br/>
-                <input type="radio" id="index3" onChange={handleNecessityIndex} name="necessityIntex" required value={3} /><label for="index3">3</label>
+
+                <input className="form-control" type="text" onChange={handleNameChange} name="expenseName" placeholder="What you buy then?" required />
+                <input className="form-control" type="text" onChange={handlePlaceChange} name="expensePlace" placeholder="Where from?" required />
+                <input className="form-control" type="number" onChange={handleAmountChange} name="amount" placeholder="What was the damage?" required />
+                <label className="form-label mt-4">Essential, was it?</label>
+                <fieldset className="form-control">
+                    <label className="form-check-label" >
+                        <input className="form-check-input" type="radio" id="index1" onChange={handleNecessityIndex} name="necessityIntex" required value={1} /> 1: you can't live without &nbsp;&nbsp;</label>
+                    <label className="form-check-label" >
+                        <input className="form-check-input" type="radio" onChange={handleNecessityIndex} name="necessityIntex" required value={2} /> 2: paying for a haircut etc &nbsp;&nbsp;</label>
+                    <input className="form-check-input" type="radio" id="index3" onChange={handleNecessityIndex} name="necessityIntex" required value={3} /><label for="index3"> 3: is just plain naughty and you know it &nbsp;&nbsp;</label>
+                </fieldset>
+
                 <br/>
                 <br/>
                 <input className="form-control" type="date" onChange={handleDateChange} name="date" value={date} required />
@@ -172,14 +176,17 @@ const ExpenseEdit = (idx) => {
                     })
                     }
                 </select>
+
+                <br/>
                 <select className="btn btn-outline-primary" name="directDebit" onChange={handleDirectDebitChange} required>
+
                     <option value="true">Direct Debit</option>
                     <br/>
                     <option value="false">One-Off</option>
+                    <br/>
                 </select>
-                <br />
-                <br/>
-                <p>Who Pay</p>
+                
+                <p>Whose Account?</p>
 
                 {Array.from(Array(personList.length)).map((number, idx) => {
 
@@ -187,27 +194,34 @@ const ExpenseEdit = (idx) => {
                         <>
                             <input type="radio" name="person" id="person" onChange={handlePersonChange} required value={personList[idx].id} /><label for="person">{personList[idx].name}</label>
                             <br/>
+                            <br/>
                         </>
                     )
                 })
                 }
 
-                <p for="purpose">Who For</p>
+                <p for="purpose">Who was this actually for?</p>
+                
                 {Array.from(Array(purposeList.length)).map((number, idx) => {
                     return (
                         <>
                             <input type="radio" name="purpose" id="purpose" onChange={handlePurposeChange} required value={purposeList[idx].id} /><label for="purpose">{purposeList[idx].purposeName}</label>
+                            <br/>
+                            <br/>
                         </>
                     )
                 })
                 }
-                <br />
+                
 
-                <br />
+                
                 {message}
+                
 
                 <br />
-                <button className="btn btn-outline-primary" onClick={handleSubmit()} type="submit">Add expense</button>
+
+                <button className="btn btn-outline-primary" onClick={handleSubmit()} type="submit">Update</button>
+
             </form>
             <form onSubmit={handleDelete}>
                 <div>

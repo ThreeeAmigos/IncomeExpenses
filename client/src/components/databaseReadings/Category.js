@@ -77,8 +77,8 @@ const Category = () => {
                 <p>Add a new Category</p>
                 <form onSubmit={handlePost}>
 
-                    <input type="text" onChange={handleNewCategoryChange} value={newCategoryName} required /> <br />
-                    <button onClick={handlePost} type="submit-target" >Add Category</button>
+                    <input class="form-control" type="text" onChange={handleNewCategoryChange} value={newCategoryName} required /> <br />
+                    <button class="btn btn-outline-primary" onClick={handlePost} type="submit-target" >Add Category</button>
                     <br />
                     {message}
                 </form>

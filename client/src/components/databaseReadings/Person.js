@@ -82,14 +82,16 @@ const Person = () => {
 
             <div className="center">
 
-                <h1>User List</h1>
+                <h1>Who's in?</h1>
                 <table >
                     <thead>
                         <tr>
                             <th ></th>
-                            <th className="column-wide">Name</th>
-                            <th className="column-wide">Current Position</th>
-                            <th className="column-wide">Debt</th>
+
+                            <th className="column-wide" >Name</th>
+                            <th className="column-wide">Current Positive Balance</th>
+                            <th className="column-wide">Debts</th>
+
                         </tr>
                     </thead>
                 </table>
@@ -124,26 +126,31 @@ const Person = () => {
                 <br />
                 <br />
                 <br />
-                <p>Add a new Person</p>
+                <p>Add Someone Else?</p>
                 <form onSubmit={handlePost}>
 
-                    <input className="form-control" type="text" onChange={handleNewPersonChange} value={newPersonName} required placeholder="name" /> 
+                    <input className="form-control" type="text" onChange={handleNewPersonChange} value={newPersonName} required placeholder="Name" /> 
+
                     <br />
-                    <label for="position">Current Position</label>
+                    <label for="position">Current Positive Balance</label>
                     <br />
                     <input className="form-control" type="number" onChange={handleNewPositionChange} value={position} name="position" required /> 
                     <br />
-                    <label for="loan">Debt</label>
+                    <label for="loan">Debts</label>
                     <br />
                     <input className="form-control"  name="loan" type="number" onChange={handleLoanChange} value={loan} required /> <br />
 
 
 
 
-                    <button className="btn btn-outline-primary"  onClick={handlePost} type="submit-target" >Add Person</button>
+
+
+                    <button className="btn btn-outline-primary"  onClick={handlePost} type="submit-target" >Add Someone Else</button>
+
                     <br />
                     {message}
                 </form>
+
 
                 <br />
             </div >

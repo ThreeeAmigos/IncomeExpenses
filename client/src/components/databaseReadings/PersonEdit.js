@@ -114,28 +114,33 @@ const PersonEdit = (idx) => {
 
             <form onSubmit={handleSubmit}>
 
-                <input className="form-control" type="text" onChange={handleNewPersonChange} value={newPersonName} required placeholder="name" />
+                <input className="form-control" type="text" onChange={handleNewPersonChange} value={newPersonName} required placeholder="You change your name?" />
+
                 <br />
                 <br />
                 <br />
-                <label for="position">how much do you have now</label>
+                <label for="position">What's your positive balance now?</label>
                 <br />
                 <br />
                 <input className="form-control" type="number" onChange={handleNewPositionChange} value={position} name="position" required /> <br />
                 <br />
                 <br />
-                <label for="loan">loan</label>
+                <label for="loan">Still got debts?</label>
                 <br />
                 <br />
                 <input className="form-control"  name="loan" type="number" onChange={handleLoanChange} value={loan} required /> <br />
 
-                <button className="btn btn-outline-primary"  onClick={handleSubmit} type="submit-target" >Edit Current Position</button>
-                <br />
+
+                <button className="btn btn-outline-primary"  onClick={handleSubmit} type="submit-target" >Update Person's Position</button>
+
+   <br />
                 {message}
             </form>
             <form onSubmit={handleDelete}>
                 <div>
-                    <button className="btn btn-outline-primary"  onClick={handleDelete} type="submit-target" >Delete</button>
+
+                    <button className="btn btn-outline-primary"  onClick={handleDelete} type="submit-target" >Delete Person</button>
+
                     <br />
                     {deleteMessage}
                 </div>

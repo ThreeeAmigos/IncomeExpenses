@@ -87,13 +87,17 @@ const RegisterPurpose = () => {
 
     return (
         <div className="align">
-            <h1>TRACK YOUR EXPENSE</h1>
+            <br/>
+            <h1>OK, LET'S GET MINTid</h1>
+
             <br />
-            <h3>We're gonna make you rich!</h3>
+            <h3>Who's in?</h3>
             <br />
             <form onSubmit={handleSubmit}>
                 <div>
-                    Who we are talking to ?
+
+                    Just the one? Are we talking shared goals?
+
                     <br />
                     <br />
                     <input className="form-control" type="text" onChange={handleChange} value={purposeName} placeholder='Your name' required />  <br />
@@ -112,6 +116,8 @@ const RegisterPurpose = () => {
                 <hr />
                 <p className="rotatingText">
                     <br />
+                    Money doesn't buy happiness. But it usually f***ing helps. In the meantime, let's just focus on the goal...
+                    <br />
                     We want to
                     <br/>
                     <br/>
@@ -125,6 +131,7 @@ const RegisterPurpose = () => {
                     <div className="rotatingText-adjective">have many cats</div>
                     <div className="rotatingText-adjective">have many cats</div>
                     </p>
+
             </div>
             <br/>
             <hr />
@@ -151,7 +158,7 @@ const RegisterPurpose = () => {
             }
             )
             }
-            <Link to="/registerIncome">Register Income</Link>
+            <Link to="/registerIncome">Add Incomes</Link>
         </div>
     )
 
